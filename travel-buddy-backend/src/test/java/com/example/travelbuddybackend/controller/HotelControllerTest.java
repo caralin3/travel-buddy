@@ -5,7 +5,7 @@ import com.example.travelbuddybackend.dao.HotelDao;
 import com.example.travelbuddybackend.model.Hotel;
 import com.example.travelbuddybackend.model.Trip;
 import com.example.travelbuddybackend.model.User;
-import com.example.travelbuddybackend.model.type.HotelRoomType;
+import com.example.travelbuddybackend.model.type.RoomType;
 import com.example.travelbuddybackend.model.type.State;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,7 +19,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Currency;
 import java.util.List;
@@ -74,7 +73,7 @@ public class HotelControllerTest {
                 .setCurrency(Currency.getInstance("USD"))
                 .setCheckInDate(LocalDate.of(2022, 4, 6))
                 .setCheckOutDate(LocalDate.of(2022, 4, 16))
-                .setRoomType(HotelRoomType.DOUBLE)
+                .setRoomType(RoomType.DOUBLE)
                 .setRoomCount(2)
                 .setAddressLine1("123 Main St.")
                 .setCity("Newark")
@@ -90,7 +89,7 @@ public class HotelControllerTest {
                 .setCurrency(Currency.getInstance("USD"))
                 .setCheckInDate(LocalDate.of(2022, 5, 20))
                 .setCheckOutDate(LocalDate.of(2022, 5, 23))
-                .setRoomType(HotelRoomType.SINGLE)
+                .setRoomType(RoomType.SINGLE)
                 .setRoomCount(1)
                 .setTrip(trip2)
                 .build();
@@ -156,7 +155,7 @@ public class HotelControllerTest {
                 .setCurrency(Currency.getInstance("USD"))
                 .setCheckInDate(LocalDate.of(2022, 4, 6))
                 .setCheckOutDate(LocalDate.of(2022, 4, 16))
-                .setRoomType(HotelRoomType.DOUBLE)
+                .setRoomType(RoomType.DOUBLE)
                 .setRoomCount(2)
                 .setAddressLine1("123 Main St.")
                 .setCity("Manhattan")

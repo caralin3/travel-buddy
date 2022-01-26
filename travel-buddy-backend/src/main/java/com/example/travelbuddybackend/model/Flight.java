@@ -136,8 +136,7 @@ public class Flight {
                 ", type=" + type +
                 ", flightClass=" + flightClass +
                 ", currency=" + currency +
-                ", cost=" + cost +
-                '}';
+                ", cost=" + cost;
     }
 
     public static class Builder {

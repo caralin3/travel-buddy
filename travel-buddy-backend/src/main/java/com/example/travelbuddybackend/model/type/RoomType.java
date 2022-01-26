@@ -1,6 +1,6 @@
 package com.example.travelbuddybackend.model.type;
 
-public enum HotelRoomType {
+public enum RoomType {
     SINGLE,
     DOUBLE,
     SUITE

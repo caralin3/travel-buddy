@@ -1,6 +1,6 @@
 package com.example.travelbuddybackend.model;
 
-import com.example.travelbuddybackend.model.type.HotelRoomType;
+import com.example.travelbuddybackend.model.type.RoomType;
 import com.example.travelbuddybackend.model.type.State;
 
 import javax.persistence.*;
@@ -22,7 +22,7 @@ public class Hotel {
 
     @Enumerated(EnumType.ORDINAL)
     @Column(name="room_type")
-    private HotelRoomType roomType;
+    private RoomType roomType;
 
     @Column(name="room_count")
     private int roomCount;
@@ -95,7 +95,7 @@ public class Hotel {
         return description;
     }
 
-    public HotelRoomType getRoomType() {
+    public RoomType getRoomType() {
         return roomType;
     }
 
@@ -149,7 +149,7 @@ public class Hotel {
 
     @Override
     public String toString() {
-        return "Hotel{" +
+        return "Hotel: " +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
@@ -164,15 +164,14 @@ public class Hotel {
                 ", city='" + city + '\'' +
                 ", state=" + state +
                 ", country='" + country + '\'' +
-                ", postalCode='" + postalCode + '\'' +
-                '}';
+                ", postalCode='" + postalCode + '\'';
     }
 
     public static class Builder {
         private long id;
         private String name;
         private String description;
-        private HotelRoomType roomType;
+        private RoomType roomType;
         private int roomCount;
         private LocalDate checkInDate;
         private LocalDate checkOutDate;
@@ -204,7 +203,7 @@ public class Hotel {
             return this;
         }
 
-        public Builder setRoomType(HotelRoomType roomType) {
+        public Builder setRoomType(RoomType roomType) {
             this.roomType = roomType;
             return this;
         }

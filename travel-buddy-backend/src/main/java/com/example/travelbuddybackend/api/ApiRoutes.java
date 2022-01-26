@@ -15,4 +15,7 @@ public class ApiRoutes {
 
     public static final String HOTELS = "/hotels";
     public static final String HOTELS_BY_ID = "/hotels/{id}";
+
+    public static final String CRUISES = "/cruises";
+    public static final String CRUISES_BY_ID = "/cruises/{id}";
 }
