@@ -53,7 +53,6 @@ public class Flight {
     private Trip trip;
 
     public Flight() {
-
     }
 
     public Flight(Builder builder) {
@@ -69,6 +68,7 @@ public class Flight {
         this.terminal = builder.terminal;
         this.gate = builder.gate;
         this.seats = builder.seats;
+        this.trip = builder.trip;
     }
     public long getId() {
         return id;

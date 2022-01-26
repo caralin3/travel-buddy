@@ -1,12 +1,12 @@
 package com.example.travelbuddybackend.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import com.example.travelbuddybackend.dao.FlightDao;
-import com.example.travelbuddybackend.model.Flight;
+import com.example.travelbuddybackend.dao.HotelDao;
+import com.example.travelbuddybackend.model.Hotel;
 import com.example.travelbuddybackend.model.Trip;
 import com.example.travelbuddybackend.model.User;
-import com.example.travelbuddybackend.model.type.FlightClass;
-import com.example.travelbuddybackend.model.type.FlightType;
+import com.example.travelbuddybackend.model.type.HotelRoomType;
+import com.example.travelbuddybackend.model.type.State;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -28,16 +28,16 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-public class FlightControllerTest {
+public class HotelControllerTest {
     @InjectMocks
-    private FlightController flightController;
+    private HotelController hotelController;
 
     @Mock
-    private FlightDao flightDao;
+    private HotelDao hotelDao;
 
     private Trip trip1;
-    private List<Flight> flights;
-    private Flight flight1;
+    private List<Hotel> hotels;
+    private Hotel hotel1;
 
     @BeforeEach
     public void init() {
@@ -67,127 +67,131 @@ public class FlightControllerTest {
                 user2
 
         );
-        flight1 = new Flight.Builder()
+        hotel1 = new Hotel.Builder()
                 .setId(1)
-                .setFlightNumber("1234")
-                .setAirline("Delta")
-                .setAirportCode("EWR")
+                .setName("Marriott")
                 .setCost(230.67)
                 .setCurrency(Currency.getInstance("USD"))
-                .setScheduledDate(LocalDateTime.of(2022, 4, 6, 3, 30))
-                .setType(FlightType.DEPARTURE)
+                .setCheckInDate(LocalDate.of(2022, 4, 6))
+                .setCheckOutDate(LocalDate.of(2022, 4, 16))
+                .setRoomType(HotelRoomType.DOUBLE)
+                .setRoomCount(2)
+                .setAddressLine1("123 Main St.")
+                .setCity("Newark")
+                .setState(State.NEW_JERSEY)
+                .setCountry("US")
+                .setPostalCode("03451")
                 .setTrip(trip1)
-                .setFlightClass(FlightClass.FIRST)
                 .build();
-        Flight flight2 = new Flight.Builder()
+        Hotel hotel2 = new Hotel.Builder()
                 .setId(2)
-                .setFlightNumber("7346")
-                .setAirline("JetBlue")
-                .setAirportCode("JFK")
+                .setName("Hilton")
                 .setCost(130.43)
                 .setCurrency(Currency.getInstance("USD"))
-                .setGate("100")
-                .setScheduledDate(LocalDateTime.of(2022, 6, 23, 5, 00))
-                .setType(FlightType.ARRIVAL)
-                .setFlightClass(FlightClass.ECONOMY)
+                .setCheckInDate(LocalDate.of(2022, 5, 20))
+                .setCheckOutDate(LocalDate.of(2022, 5, 23))
+                .setRoomType(HotelRoomType.SINGLE)
+                .setRoomCount(1)
                 .setTrip(trip2)
                 .build();
-        flights = new ArrayList<>();
-        flights.add(flight1);
-        flights.add(flight2);
+        hotels = new ArrayList<>();
+        hotels.add(hotel1);
+        hotels.add(hotel2);
     }
 
     @Test
-    public void shouldGetAllFlights() {
+    public void shouldGetAllHotels() {
         // given
-        when(flightDao.findAll()).thenReturn(flights);
+        when(hotelDao.findAll()).thenReturn(hotels);
 
         // when
-        List<Flight> result = flightController.getAllFlights();
+        List<Hotel> result = hotelController.getAllHotels();
 
         // then
         assertThat(result.size()).isEqualTo(2);
-        assertThat(result.get(0).getFlightNumber())
-                .isEqualTo(flights.get(0).getFlightNumber());
-        assertThat(result.get(1).getFlightNumber())
-                .isEqualTo(flights.get(1).getFlightNumber());
+        assertThat(result.get(0).getName())
+                .isEqualTo(hotels.get(0).getName());
+        assertThat(result.get(1).getName())
+                .isEqualTo(hotels.get(1).getName());
     }
 
     @Test
-    public void shouldGetFlightById() {
+    public void shouldGetHotelById() {
         // given
         MockHttpServletRequest request = new MockHttpServletRequest();
         RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
-        when(flightDao.findById(flight1.getId()))
-                .thenReturn(java.util.Optional.of(flight1));
+        when(hotelDao.findById(hotel1.getId()))
+                .thenReturn(java.util.Optional.of(hotel1));
 
         // when
-        ResponseEntity<Flight> result = flightController.getFlightById(flight1.getId());
+        ResponseEntity<Hotel> result = hotelController.getHotelById(hotel1.getId());
 
         // then
-        assertThat(result.equals(flight1));
+        assertThat(result.equals(hotel1));
         assertThat(result.getStatusCodeValue()).isEqualTo(200);
     }
 
     @Test
-    public void shouldCreateFlight() {
+    public void shouldCreateHotel() {
         // given
-        when(flightDao.save(flight1)).thenReturn(flight1);
+        when(hotelDao.save(hotel1)).thenReturn(hotel1);
 
         // when
-        Flight result = flightController.createFlight(flight1);
+        Hotel result = hotelController.createHotel(hotel1);
 
         // then
-        assertThat(result.getId()).isEqualTo(flight1.getId());
-        assertThat(result.getFlightNumber()).isEqualTo(flight1.getFlightNumber());
+        assertThat(result.getId()).isEqualTo(hotel1.getId());
+        assertThat(result.getName()).isEqualTo(hotel1.getName());
     }
 
     @Test
-    public void shouldUpdateFlight() {
+    public void shouldUpdateHotel() {
         // given
         MockHttpServletRequest request = new MockHttpServletRequest();
         RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
 
-        Flight flight1Update = new Flight.Builder()
-                .setFlightNumber("1234")
-                .setAirline("Delta")
-                .setAirportCode("EWR")
+        Hotel hotel1Update = new Hotel.Builder()
+                .setName("Hilton")
                 .setCost(230.67)
                 .setCurrency(Currency.getInstance("USD"))
-                .setGate("C23")
-                .setScheduledDate(LocalDateTime.of(2022, 4, 6, 3, 30))
-                .setSeats("12A, 12B")
-                .setTerminal("1")
-                .setType(FlightType.DEPARTURE)
+                .setCheckInDate(LocalDate.of(2022, 4, 6))
+                .setCheckOutDate(LocalDate.of(2022, 4, 16))
+                .setRoomType(HotelRoomType.DOUBLE)
+                .setRoomCount(2)
+                .setAddressLine1("123 Main St.")
+                .setCity("Manhattan")
+                .setState(State.NEW_YORK)
+                .setCountry("US")
+                .setPostalCode("03451")
                 .setTrip(trip1)
                 .build();
 
-        when(flightDao.existsById(flight1.getId()))
-                .thenReturn(flight1.getId() == 1);
-        when(flightDao.save(any(Flight.class))).thenReturn(flight1Update);
+        when(hotelDao.existsById(hotel1.getId()))
+                .thenReturn(hotel1.getId() == 1);
+        when(hotelDao.save(any(Hotel.class))).thenReturn(hotel1Update);
 
         // when
-        ResponseEntity<Flight> result = flightController.updateFlight(flight1.getId(), flight1Update);
+        ResponseEntity<Hotel> result = hotelController.updateHotel(hotel1.getId(), hotel1Update);
 
         // then
-        assertThat(result.equals(flight1Update));
+        assertThat(result.equals(hotel1Update));
         assertThat(result.getStatusCodeValue()).isEqualTo(200);
     }
 
     @Test
-    public void shouldDeleteFlight() {
+    public void shouldDeleteHotel() {
         // given
         MockHttpServletRequest request = new MockHttpServletRequest();
         RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
 
-        when(flightDao.findById(flight1.getId()))
-                .thenReturn(java.util.Optional.of(flight1));
+        when(hotelDao.findById(hotel1.getId()))
+                .thenReturn(java.util.Optional.of(hotel1));
 
         // when
-        ResponseEntity<Flight> result = flightController.deleteFlight(flight1.getId());
+        ResponseEntity<Hotel> result = hotelController.deleteHotel(hotel1.getId());
 
         // then
-        assertThat(result.equals(flight1));
+        assertThat(result.equals(hotel1));
         assertThat(result.getStatusCodeValue()).isEqualTo(200);
     }
 }
