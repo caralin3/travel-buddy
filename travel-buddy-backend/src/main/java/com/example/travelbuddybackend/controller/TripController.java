@@ -53,6 +53,7 @@ public class TripController {
         trip.setStartDate(tripDetails.getStartDate());
         trip.setTotalCost(tripDetails.getTotalCost());
         trip.setUniqueLink(tripDetails.getUniqueLink());
+        trip.setUser(tripDetails.getUser());
 
         Trip updatedTrip = tripDao.save(trip);
 

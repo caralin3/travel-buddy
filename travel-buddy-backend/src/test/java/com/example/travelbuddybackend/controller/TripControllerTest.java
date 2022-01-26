@@ -3,7 +3,8 @@ package com.example.travelbuddybackend.controller;
 import static org.assertj.core.api.Assertions.assertThat;
 import com.example.travelbuddybackend.dao.TripDao;
 import com.example.travelbuddybackend.model.Trip;
-import org.hibernate.type.CurrencyType;
+import com.example.travelbuddybackend.model.User;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -29,10 +30,15 @@ public class TripControllerTest {
     @Mock
     private TripDao tripDao;
 
-    @Test
-    public void testGetTrips() {
-        // given
-        Trip trip1 = new Trip(
+    private User user1;
+    private Trip trip1;
+    private List<Trip> trips;
+
+    @BeforeEach
+    public void init() {
+        user1 = new User(1, "John", "Doe", "jDoe@example.com");
+        User user2 = new User(2, "Jane", "Doe", "janeDoe@example.com");
+        trip1 = new Trip(
                 1,
                 "Trip 1",
                 LocalDate.of(2022, 1, 14),
@@ -40,7 +46,8 @@ public class TripControllerTest {
                 Currency.getInstance("USD"),
                 0.00,
                 "",
-                ""
+                "",
+                user1
 
         );
         Trip trip2 = new Trip(
@@ -51,13 +58,18 @@ public class TripControllerTest {
                 Currency.getInstance("USD"),
                 0.00,
                 "",
-                ""
+                "",
+                user2
 
         );
-        List<Trip> trips = new ArrayList<>();
+        trips = new ArrayList<>();
         trips.add(trip1);
         trips.add(trip2);
+    }
 
+    @Test
+    public void shouldGetAllTrips() {
+        // given
         when(tripDao.findAll()).thenReturn(trips);
 
         // when
@@ -66,27 +78,16 @@ public class TripControllerTest {
         // then
         assertThat(result.size()).isEqualTo(2);
         assertThat(result.get(0).getTitle())
-                .isEqualTo(trip1.getTitle());
+                .isEqualTo(trips.get(0).getTitle());
         assertThat(result.get(1).getTitle())
-                .isEqualTo(trip2.getTitle());
+                .isEqualTo(trips.get(1).getTitle());
     }
 
     @Test
-    public void testGetTripById() {
+    public void shouldGetTripById() {
         // given
         MockHttpServletRequest request = new MockHttpServletRequest();
         RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
-        Trip trip1 = new Trip(
-                1,
-                "Trip 1",
-                LocalDate.of(2022, 1, 14),
-                LocalDate.of(2022, 2, 7),
-                Currency.getInstance("USD"),
-                0.00,
-                "",
-                ""
-
-        );
 
         when(tripDao.findById(trip1.getId()))
                 .thenReturn(java.util.Optional.of(trip1));
@@ -100,19 +101,8 @@ public class TripControllerTest {
     }
 
     @Test
-    public void testCreateTrip() {
+    public void shouldCreateTrip() {
         // given
-        Trip trip1 = new Trip(
-                1,
-                "Trip 1",
-                LocalDate.of(2022, 1, 14),
-                LocalDate.of(2022, 2, 7),
-                Currency.getInstance("USD"),
-                0.00,
-                "",
-                ""
-
-        );
         when(tripDao.save(trip1)).thenReturn(trip1);
 
         // when
@@ -124,21 +114,10 @@ public class TripControllerTest {
     }
 
     @Test
-    public void testUpdateTrip() {
+    public void shouldUpdateTrip() {
         // given
         MockHttpServletRequest request = new MockHttpServletRequest();
         RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
-        Trip trip1 = new Trip(
-                1,
-                "Trip 1",
-                LocalDate.of(2022, 1, 14),
-                LocalDate.of(2022, 2, 7),
-                Currency.getInstance("USD"),
-                0.00,
-                "",
-                ""
-
-        );
         Trip trip1Update = new Trip(
                 1,
                 "Trip 1 Updated",
@@ -147,8 +126,8 @@ public class TripControllerTest {
                 Currency.getInstance("USD"),
                 0.00,
                 "",
-                ""
-
+                "",
+                user1
         );
 
         when(tripDao.findById(trip1.getId()))
@@ -164,21 +143,10 @@ public class TripControllerTest {
     }
 
     @Test
-    public void testDeleteTrip() {
+    public void shouldDeleteTrip() {
         // given
         MockHttpServletRequest request = new MockHttpServletRequest();
         RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
-        Trip trip1 = new Trip(
-                1,
-                "Trip 1",
-                LocalDate.of(2022, 1, 14),
-                LocalDate.of(2022, 2, 7),
-                Currency.getInstance("USD"),
-                0.00,
-                "",
-                ""
-
-        );
 
         when(tripDao.findById(trip1.getId()))
                 .thenReturn(java.util.Optional.of(trip1));

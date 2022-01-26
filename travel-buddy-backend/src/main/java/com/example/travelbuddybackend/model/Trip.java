@@ -47,7 +47,8 @@ public class Trip {
             Currency currency,
             double totalCost,
             String description,
-            String uniqueLink
+            String uniqueLink,
+            User user
     ) {
         super();
         this.currency = currency;
@@ -58,6 +59,7 @@ public class Trip {
         this.title = title;
         this.totalCost = totalCost;
         this.uniqueLink = uniqueLink;
+        this.user = user;
     }
 
     public long getId() {
@@ -115,11 +117,20 @@ public class Trip {
     public void setTotalCost(double totalCost) {
         this.totalCost = totalCost;
     }
+
     public String getUniqueLink() {
         return uniqueLink;
     }
 
     public void setUniqueLink(String uniqueLink) {
         this.uniqueLink = uniqueLink;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

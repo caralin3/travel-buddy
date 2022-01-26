@@ -27,7 +27,7 @@ public class UserControllerTest {
     private UserDao userDao;
 
     @Test
-    public void testGetUsers() {
+    public void shouldGetAllUsers() {
         // given
         User user1 = new User(1, "John", "Doe", "jDoe@email.com");
         User user2 = new User(2, "Jane", "Doe", "janeDoe@email.com");
@@ -49,7 +49,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void testGetUserById() {
+    public void shouldGetUserById() {
         // given
         MockHttpServletRequest request = new MockHttpServletRequest();
         RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
@@ -67,7 +67,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void testCreateUser() {
+    public void shouldCreateUser() {
         // given
         User user1 = new User(1, "John", "Doe", "jDoe@email.com");
         when(userDao.save(user1)).thenReturn(user1);
@@ -81,7 +81,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void testUpdateUser() {
+    public void shouldUpdateUser() {
         // given
         MockHttpServletRequest request = new MockHttpServletRequest();
         RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
@@ -101,7 +101,7 @@ public class UserControllerTest {
     }
 
     @Test
-    public void testDeleteUser() {
+    public void shouldDeleteUser() {
         // given
         MockHttpServletRequest request = new MockHttpServletRequest();
         RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
