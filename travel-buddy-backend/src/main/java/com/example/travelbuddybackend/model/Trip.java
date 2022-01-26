@@ -1,8 +1,8 @@
 package com.example.travelbuddybackend.model;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Currency;
-import java.util.Date;
 
 @Entity
 @Table(name="trip")
@@ -15,10 +15,10 @@ public class Trip {
     private String description;
 
     @Column(name="end_date")
-    private Date endDate;
+    private LocalDate endDate;
 
     @Column(name="start_date")
-    private Date startDate;
+    private LocalDate startDate;
 
     @Column(name="title")
     private String title;
@@ -39,7 +39,16 @@ public class Trip {
 
     }
 
-    public Trip(long id, String description, Date endDate, Date startDate, String title, Currency currency, double totalCost, String uniqueLink) {
+    public Trip(
+            long id,
+            String title,
+            LocalDate startDate,
+            LocalDate endDate,
+            Currency currency,
+            double totalCost,
+            String description,
+            String uniqueLink
+    ) {
         super();
         this.currency = currency;
         this.id = id;
@@ -75,19 +84,19 @@ public class Trip {
         this.description = description;
     }
 
-    public Date getEndDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
     }
 
-    public Date getStartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
     }
 
