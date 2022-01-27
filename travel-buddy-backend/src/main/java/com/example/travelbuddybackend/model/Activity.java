@@ -1,8 +1,12 @@
 package com.example.travelbuddybackend.model;
 
+import com.example.travelbuddybackend.constants.Messages;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Currency;
+import java.util.List;
 
 @Entity
 @Table(name="activity")
@@ -26,7 +30,7 @@ public class Activity {
     @Column(name="end_date")
     private LocalDateTime endDate;
 
-    @Column(name="cost")
+    @Column(name="cost", precision=10, scale=2)
     private double cost;
 
     @Column(name="currency")
@@ -282,7 +286,34 @@ public class Activity {
         // build method to deal with outer class
         // to return outer instance
         public Activity build() {
+            this.validate();
             return new Activity(this);
+        }
+
+        private void validate() throws IllegalStateException {
+            List<String> msgs = new ArrayList<>();
+            if (title == null) {
+                msgs.add(Messages.VALIDATION.NULL_TITLE);
+            }
+            if (currency == null) {
+                msgs.add(Messages.VALIDATION.NULL_CURRENCY);
+            }
+            if (startDate == null) {
+                msgs.add(Messages.VALIDATION.NULL_START_DATE);
+            } else if (startDate.isAfter(endDate)) {
+                msgs.add(Messages.VALIDATION.INVALID_START_DATE);
+            }
+            if (endDate == null) {
+                msgs.add(Messages.VALIDATION.NULL_END_DATE);
+            } else if (endDate.isBefore(startDate)) {
+                msgs.add(Messages.VALIDATION.INVALID_END_DATE);
+            }
+            if (trip == null) {
+                msgs.add(Messages.VALIDATION.NULL_TRIP);
+            }
+            if (msgs.size() > 0) {
+                throw new IllegalStateException(msgs.toString());
+            }
         }
     }
 }

@@ -1,11 +1,14 @@
 package com.example.travelbuddybackend.model;
 
+import com.example.travelbuddybackend.constants.Messages;
 import com.example.travelbuddybackend.model.type.RoomType;
 import com.example.travelbuddybackend.model.type.State;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Currency;
+import java.util.List;
 
 @Entity
 @Table(name="hotel")
@@ -33,7 +36,7 @@ public class Hotel {
     @Column(name="check_out_date")
     private LocalDate checkOutDate;
 
-    @Column(name="cost")
+    @Column(name="cost", precision=10, scale=2)
     private double cost;
 
     @Column(name="currency")
@@ -48,9 +51,8 @@ public class Hotel {
     @Column(name="city")
     private String city;
 
-    @Enumerated(EnumType.ORDINAL)
     @Column(name="state")
-    private State state;
+    private String state;
 
     @Column(name="country")
     private String country;
@@ -131,7 +133,7 @@ public class Hotel {
         return city;
     }
 
-    public State getState() {
+    public String getState() {
         return state;
     }
 
@@ -149,7 +151,7 @@ public class Hotel {
 
     @Override
     public String toString() {
-        return "Hotel: " +
+        return "Hotel{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
@@ -162,9 +164,10 @@ public class Hotel {
                 ", addressLine1='" + addressLine1 + '\'' +
                 ", addressLine2='" + addressLine2 + '\'' +
                 ", city='" + city + '\'' +
-                ", state=" + state +
+                ", state='" + state + '\'' +
                 ", country='" + country + '\'' +
-                ", postalCode='" + postalCode + '\'';
+                ", postalCode='" + postalCode + '\'' +
+                ", trip=" + trip.getId();
     }
 
     public static class Builder {
@@ -180,7 +183,7 @@ public class Hotel {
         private String addressLine1;
         private String addressLine2;
         private String city;
-        private State state;
+        private String state;
         private String country;
         private String postalCode;
         private Trip trip;
@@ -248,7 +251,7 @@ public class Hotel {
             return this;
         }
 
-        public Builder setState(State state) {
+        public Builder setState(String state) {
             this.state = state;
             return this;
         }
@@ -271,7 +274,34 @@ public class Hotel {
         // build method to deal with outer class
         // to return outer instance
         public Hotel build() {
+            this.validate();
             return new Hotel(this);
+        }
+
+        public void validate() throws IllegalStateException {
+            List<String> msgs = new ArrayList<>();
+            if (name == null) {
+                msgs.add(Messages.VALIDATION.NULL_NAME);
+            }
+            if (currency == null) {
+                msgs.add(Messages.VALIDATION.NULL_CURRENCY);
+            }
+            if (checkInDate == null) {
+                msgs.add(Messages.VALIDATION.NULL_CHECK_IN_DATE);
+            } else if (checkInDate.isAfter(checkOutDate)) {
+                msgs.add(Messages.VALIDATION.INVALID_CHECK_IN_DATE);
+            }
+            if (checkOutDate == null) {
+                msgs.add(Messages.VALIDATION.NULL_CHECK_OUT_DATE);
+            } else if (checkOutDate.isBefore(checkInDate)) {
+                msgs.add(Messages.VALIDATION.INVALID_CHECK_OUT_DATE);
+            }
+            if (trip == null) {
+                msgs.add(Messages.VALIDATION.NULL_TRIP);
+            }
+            if (msgs.size() > 0) {
+                throw new IllegalStateException(msgs.toString());
+            }
         }
     }
 }

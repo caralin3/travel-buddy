@@ -1,12 +1,16 @@
 package com.example.travelbuddybackend.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
+import com.example.travelbuddybackend.constants.Messages;
 import com.example.travelbuddybackend.dao.FlightDao;
 import com.example.travelbuddybackend.model.Flight;
 import com.example.travelbuddybackend.model.Trip;
 import com.example.travelbuddybackend.model.User;
 import com.example.travelbuddybackend.model.type.FlightClass;
 import com.example.travelbuddybackend.model.type.FlightType;
+import com.example.travelbuddybackend.model.type.RoomType;
+import com.example.travelbuddybackend.model.type.State;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,6 +28,8 @@ import java.util.ArrayList;
 import java.util.Currency;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -43,30 +49,23 @@ public class FlightControllerTest {
     public void init() {
         User user1 = new User(1, "John", "Doe", "jDoe@example.com");
         User user2 = new User(2, "Jane", "Doe", "janeDoe@example.com");
-        trip1 = new Trip(
-                1,
-                "Trip 1",
-                LocalDate.of(2022, 1, 14),
-                LocalDate.of(2022, 2, 7),
-                Currency.getInstance("USD"),
-                0.00,
-                "Trip 1",
-                "",
-                user1
-
-        );
-        Trip trip2 = new Trip(
-                2,
-                "Trip 2",
-                LocalDate.of(2022, 4, 4),
-                LocalDate.of(2022, 6, 19),
-                Currency.getInstance("USD"),
-                123.30,
-                "Trip 2",
-                "",
-                user2
-
-        );
+        trip1 = new Trip.Builder()
+                .setId(1)
+                .setTitle("Trip 1")
+                .setDescription("description")
+                .setStartDate(LocalDate.of(2022, 1, 14))
+                .setEndDate(LocalDate.of(2022, 2, 7))
+                .setUser(user1)
+                .build();
+        Trip trip2 = new Trip.Builder()
+                .setId(2)
+                .setTitle("Trip 2")
+                .setDescription("description")
+                .setUniqueLink("https://google.com")
+                .setStartDate(LocalDate.of(2022, 1, 31))
+                .setEndDate(LocalDate.of(2022, 2, 18))
+                .setUser(user2)
+                .build();
         flight1 = new Flight.Builder()
                 .setId(1)
                 .setFlightNumber("1234")
@@ -143,6 +142,29 @@ public class FlightControllerTest {
     }
 
     @Test
+    public void shouldThrowValidationErrorOnCreateFlight() {
+        // given
+        Throwable thrown = assertThrows(IllegalStateException.class, () -> {
+            new Flight.Builder()
+                    .setId(1)
+                    .setAirline("Delta")
+                    .setAirportCode("EWR")
+                    .setCost(230.67)
+                    .setTrip(trip1)
+                    .build();
+        });
+
+        // when
+        String actualMessage = thrown.getMessage();
+
+        // then
+        assertTrue(actualMessage.contains(Messages.VALIDATION.NULL_FLIGHT_NUMBER));
+        assertTrue(actualMessage.contains(Messages.VALIDATION.NULL_CURRENCY));
+        assertTrue(actualMessage.contains(Messages.VALIDATION.NULL_FLIGHT_CLASS));
+        assertTrue(actualMessage.contains(Messages.VALIDATION.NULL_SCHEDULED_DATE));
+    }
+
+    @Test
     public void shouldUpdateFlight() {
         // given
         MockHttpServletRequest request = new MockHttpServletRequest();
@@ -160,6 +182,7 @@ public class FlightControllerTest {
                 .setTerminal("1")
                 .setType(FlightType.DEPARTURE)
                 .setTrip(trip1)
+                .setFlightClass(FlightClass.ECONOMY)
                 .build();
 
         when(flightDao.existsById(flight1.getId()))

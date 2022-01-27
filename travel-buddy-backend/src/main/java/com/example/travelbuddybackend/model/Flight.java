@@ -1,11 +1,14 @@
 package com.example.travelbuddybackend.model;
 
+import com.example.travelbuddybackend.constants.Messages;
 import com.example.travelbuddybackend.model.type.FlightClass;
 import com.example.travelbuddybackend.model.type.FlightType;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Currency;
+import java.util.List;
 
 @Entity
 @Table(name="flight")
@@ -136,7 +139,8 @@ public class Flight {
                 ", type=" + type +
                 ", flightClass=" + flightClass +
                 ", currency=" + currency +
-                ", cost=" + cost;
+                ", cost=" + cost +
+                ", trip=" + trip.getId();
     }
 
     public static class Builder {
@@ -187,7 +191,6 @@ public class Flight {
             return this;
         }
 
-
         public Builder setSeats(String seats) {
             this.seats = seats;
             return this;
@@ -226,7 +229,39 @@ public class Flight {
         // build method to deal with outer class
         // to return outer instance
         public Flight build() {
+            this.validate();
             return new Flight(this);
+        }
+
+        public void validate() throws IllegalStateException {
+            List<String> msgs = new ArrayList<>();
+            if (flightNumber == null) {
+                msgs.add(Messages.VALIDATION.NULL_FLIGHT_NUMBER);
+            }
+            if (airline == null) {
+                msgs.add(Messages.VALIDATION.NULL_AIRLINE);
+            }
+            if (airportCode == null) {
+                msgs.add(Messages.VALIDATION.NULL_AIRPORT_CODE);
+            }
+            if (scheduledDate == null) {
+                msgs.add(Messages.VALIDATION.NULL_SCHEDULED_DATE);
+            }
+            if (type == null) {
+                msgs.add(Messages.VALIDATION.NULL_FLIGHT_TYPE);
+            }
+            if (currency == null) {
+                msgs.add(Messages.VALIDATION.NULL_CURRENCY);
+            }
+            if (flightClass == null) {
+                msgs.add(Messages.VALIDATION.NULL_FLIGHT_CLASS);
+            }
+            if (trip == null) {
+                msgs.add(Messages.VALIDATION.NULL_TRIP);
+            }
+            if (msgs.size() > 0) {
+                throw new IllegalStateException(msgs.toString());
+            }
         }
     }
 }

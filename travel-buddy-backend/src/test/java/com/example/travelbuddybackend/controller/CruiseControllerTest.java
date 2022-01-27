@@ -1,6 +1,8 @@
 package com.example.travelbuddybackend.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
+import com.example.travelbuddybackend.constants.Messages;
 import com.example.travelbuddybackend.dao.CruiseDao;
 import com.example.travelbuddybackend.model.Cruise;
 import com.example.travelbuddybackend.model.Trip;
@@ -23,6 +25,8 @@ import java.util.ArrayList;
 import java.util.Currency;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -42,30 +46,23 @@ public class CruiseControllerTest {
     public void init() {
         User user1 = new User(1, "John", "Doe", "jDoe@example.com");
         User user2 = new User(2, "Jane", "Doe", "janeDoe@example.com");
-        trip1 = new Trip(
-                1,
-                "Trip 1",
-                LocalDate.of(2022, 1, 14),
-                LocalDate.of(2022, 2, 7),
-                Currency.getInstance("USD"),
-                0.00,
-                "Trip 1",
-                "",
-                user1
-
-        );
-        Trip trip2 = new Trip(
-                2,
-                "Trip 2",
-                LocalDate.of(2022, 4, 4),
-                LocalDate.of(2022, 6, 19),
-                Currency.getInstance("USD"),
-                123.30,
-                "Trip 2",
-                "",
-                user2
-
-        );
+        trip1 = new Trip.Builder()
+                .setId(1)
+                .setTitle("Trip 1")
+                .setDescription("description")
+                .setStartDate(LocalDate.of(2022, 1, 14))
+                .setEndDate(LocalDate.of(2022, 2, 7))
+                .setUser(user1)
+                .build();
+        Trip trip2 = new Trip.Builder()
+                .setId(2)
+                .setTitle("Trip 2")
+                .setDescription("description")
+                .setUniqueLink("https://google.com")
+                .setStartDate(LocalDate.of(2022, 1, 31))
+                .setEndDate(LocalDate.of(2022, 2, 18))
+                .setUser(user2)
+                .build();
         cruise1 = new Cruise.Builder()
                 .setId(1)
                 .setCruiseLine("Princess")
@@ -149,6 +146,38 @@ public class CruiseControllerTest {
         // then
         assertThat(result.getId()).isEqualTo(cruise1.getId());
         assertThat(result.getShipName()).isEqualTo(cruise1.getShipName());
+    }
+
+    @Test
+    public void shouldThrowValidationErrorOnCreateCruise() {
+        // given
+        Throwable thrown = assertThrows(IllegalStateException.class, () -> {
+            new Cruise.Builder()
+                    .setId(1)
+                    .setCost(4324.40)
+                    .setStartDate(LocalDate.of(2022, 6, 20))
+                    .setEndDate(LocalDate.of(2022, 5, 23))
+                    .setDepartureCity("Beacon")
+                    .setDepartureState(State.NEW_YORK.name())
+                    .setDepartureCountry("US")
+                    .setDestinationCity("Key West")
+                    .setDestinationState(State.FLORIDA.name())
+                    .setDestinationCountry("US")
+                    .setRoundTrip(false)
+                    .build();
+        });
+
+        // when
+        String actualMessage = thrown.getMessage();
+
+        // then
+        assertTrue(actualMessage.contains(Messages.VALIDATION.NULL_CRUISE_LINE));
+        assertTrue(actualMessage.contains(Messages.VALIDATION.NULL_CABIN_TYPE));
+        assertTrue(actualMessage.contains(Messages.VALIDATION.NULL_CABIN_NUMBER));
+        assertTrue(actualMessage.contains(Messages.VALIDATION.NULL_CURRENCY));
+        assertTrue(actualMessage.contains(Messages.VALIDATION.NULL_SHIP_NAME));
+        assertTrue(actualMessage.contains(Messages.VALIDATION.INVALID_START_DATE));
+        assertTrue(actualMessage.contains(Messages.VALIDATION.NULL_TRIP));
     }
 
     @Test

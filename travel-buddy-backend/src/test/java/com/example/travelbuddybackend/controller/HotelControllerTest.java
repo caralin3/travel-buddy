@@ -1,6 +1,8 @@
 package com.example.travelbuddybackend.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
+
+import com.example.travelbuddybackend.constants.Messages;
 import com.example.travelbuddybackend.dao.HotelDao;
 import com.example.travelbuddybackend.model.Hotel;
 import com.example.travelbuddybackend.model.Trip;
@@ -23,6 +25,8 @@ import java.util.ArrayList;
 import java.util.Currency;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -42,30 +46,23 @@ public class HotelControllerTest {
     public void init() {
         User user1 = new User(1, "John", "Doe", "jDoe@example.com");
         User user2 = new User(2, "Jane", "Doe", "janeDoe@example.com");
-        trip1 = new Trip(
-                1,
-                "Trip 1",
-                LocalDate.of(2022, 1, 14),
-                LocalDate.of(2022, 2, 7),
-                Currency.getInstance("USD"),
-                0.00,
-                "Trip 1",
-                "",
-                user1
-
-        );
-        Trip trip2 = new Trip(
-                2,
-                "Trip 2",
-                LocalDate.of(2022, 4, 4),
-                LocalDate.of(2022, 6, 19),
-                Currency.getInstance("USD"),
-                123.30,
-                "Trip 2",
-                "",
-                user2
-
-        );
+        trip1 = new Trip.Builder()
+                .setId(1)
+                .setTitle("Trip 1")
+                .setDescription("description")
+                .setStartDate(LocalDate.of(2022, 1, 14))
+                .setEndDate(LocalDate.of(2022, 2, 7))
+                .setUser(user1)
+                .build();
+        Trip trip2 = new Trip.Builder()
+                .setId(2)
+                .setTitle("Trip 2")
+                .setDescription("description")
+                .setUniqueLink("https://google.com")
+                .setStartDate(LocalDate.of(2022, 1, 31))
+                .setEndDate(LocalDate.of(2022, 2, 18))
+                .setUser(user2)
+                .build();
         hotel1 = new Hotel.Builder()
                 .setId(1)
                 .setName("Marriott")
@@ -77,7 +74,7 @@ public class HotelControllerTest {
                 .setRoomCount(2)
                 .setAddressLine1("123 Main St.")
                 .setCity("Newark")
-                .setState(State.NEW_JERSEY)
+                .setState(State.NEW_JERSEY.name())
                 .setCountry("US")
                 .setPostalCode("03451")
                 .setTrip(trip1)
@@ -144,6 +141,34 @@ public class HotelControllerTest {
     }
 
     @Test
+    public void shouldThrowValidationErrorOnCreateHotel() {
+        // given
+        Throwable thrown = assertThrows(IllegalStateException.class, () -> {
+            new Hotel.Builder()
+                    .setId(1)
+                    .setCheckInDate(LocalDate.of(2022, 4, 6))
+                    .setCheckOutDate(LocalDate.of(2022, 3, 16))
+                    .setRoomType(RoomType.DOUBLE)
+                    .setRoomCount(2)
+                    .setAddressLine1("123 Main St.")
+                    .setCity("Manhattan")
+                    .setState(State.NEW_YORK.name())
+                    .setCountry("US")
+                    .setPostalCode("03451")
+                    .build();
+        });
+
+        // when
+        String actualMessage = thrown.getMessage();
+
+        // then
+        assertTrue(actualMessage.contains(Messages.VALIDATION.NULL_NAME));
+        assertTrue(actualMessage.contains(Messages.VALIDATION.NULL_CURRENCY));
+        assertTrue(actualMessage.contains(Messages.VALIDATION.NULL_TRIP));
+        assertTrue(actualMessage.contains(Messages.VALIDATION.INVALID_CHECK_OUT_DATE));
+    }
+
+    @Test
     public void shouldUpdateHotel() {
         // given
         MockHttpServletRequest request = new MockHttpServletRequest();
@@ -159,7 +184,7 @@ public class HotelControllerTest {
                 .setRoomCount(2)
                 .setAddressLine1("123 Main St.")
                 .setCity("Manhattan")
-                .setState(State.NEW_YORK)
+                .setState(State.NEW_YORK.name())
                 .setCountry("US")
                 .setPostalCode("03451")
                 .setTrip(trip1)

@@ -1,10 +1,13 @@
 package com.example.travelbuddybackend.model;
 
+import com.example.travelbuddybackend.constants.Messages;
 import com.example.travelbuddybackend.model.type.RoomType;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Currency;
+import java.util.List;
 
 @Entity
 @Table(name="cruise")
@@ -19,7 +22,7 @@ public class Cruise {
     @Column(name="ship_name")
     private String shipName;
 
-    @Column(name="cost")
+    @Column(name="cost", precision=10, scale=2)
     private double cost;
 
     @Column(name="currency")
@@ -281,7 +284,46 @@ public class Cruise {
         // build method to deal with outer class
         // to return outer instance
         public Cruise build() {
+            this.validate();
             return new Cruise(this);
+        }
+
+        public void validate() throws IllegalStateException {
+            List<String> msgs = new ArrayList<>();
+            if (cruiseLine == null) {
+                msgs.add(Messages.VALIDATION.NULL_CRUISE_LINE);
+            }
+            if (cabinType == null) {
+                msgs.add(Messages.VALIDATION.NULL_CABIN_TYPE);
+            }
+            if (cabinNumber == null) {
+                msgs.add(Messages.VALIDATION.NULL_CABIN_NUMBER);
+            }
+            if (departureCity == null) {
+                msgs.add(Messages.VALIDATION.NULL_DEPARTURE_CITY);
+            }
+            if (shipName == null) {
+                msgs.add(Messages.VALIDATION.NULL_SHIP_NAME);
+            }
+            if (currency == null) {
+                msgs.add(Messages.VALIDATION.NULL_CURRENCY);
+            }
+            if (startDate == null) {
+                msgs.add(Messages.VALIDATION.NULL_START_DATE);
+            } else if (startDate.isAfter(endDate)) {
+                msgs.add(Messages.VALIDATION.INVALID_START_DATE);
+            }
+            if (endDate == null) {
+                msgs.add(Messages.VALIDATION.NULL_END_DATE);
+            } else if (endDate.isBefore(startDate)) {
+                msgs.add(Messages.VALIDATION.INVALID_END_DATE);
+            }
+            if (trip == null) {
+                msgs.add(Messages.VALIDATION.NULL_TRIP);
+            }
+            if (msgs.size() > 0) {
+                throw new IllegalStateException(msgs.toString());
+            }
         }
     }
 }

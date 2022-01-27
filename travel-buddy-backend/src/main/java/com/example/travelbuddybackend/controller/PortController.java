@@ -1,6 +1,6 @@
 package com.example.travelbuddybackend.controller;
 
-import com.example.travelbuddybackend.api.ApiRoutes;
+import com.example.travelbuddybackend.constants.ApiRoutes;
 import com.example.travelbuddybackend.dao.PortDao;
 import com.example.travelbuddybackend.exception.ResourceNotFoundException;
 import com.example.travelbuddybackend.model.Port;

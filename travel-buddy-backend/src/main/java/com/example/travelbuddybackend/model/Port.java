@@ -1,7 +1,11 @@
 package com.example.travelbuddybackend.model;
 
+import com.example.travelbuddybackend.constants.Messages;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name="port")
@@ -95,7 +99,8 @@ public class Port {
                 ", departure=" + departure +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
-                ", country='" + country;
+                ", country='" + country + '\'' +
+                ", cruise=" + cruise.getId();
     }
 
     public static class Builder {
@@ -157,7 +162,34 @@ public class Port {
         // build method to deal with outer class
         // to return outer instance
         public Port build() {
+            this.validate();
             return new Port(this);
+        }
+
+        public void validate() throws IllegalStateException {
+            List<String> msgs = new ArrayList<>();
+            if (cruise == null) {
+                msgs.add(Messages.VALIDATION.NULL_CRUISE);
+            }
+            if (day == 0) {
+                msgs.add(Messages.VALIDATION.NULL_DAY);
+            }
+            if (city == null) {
+                msgs.add(Messages.VALIDATION.NULL_CITY);
+            }
+            if (arrival == null) {
+                msgs.add(Messages.VALIDATION.NULL_ARRIVAL);
+            } else if (arrival.isAfter(departure)) {
+                msgs.add(Messages.VALIDATION.INVALID_ARRIVAL);
+            }
+            if (departure == null) {
+                msgs.add(Messages.VALIDATION.NULL_DEPARTURE);
+            } else if (departure.isBefore(arrival)) {
+                msgs.add(Messages.VALIDATION.INVALID_DEPARTURE);
+            }
+            if (msgs.size() > 0) {
+                throw new IllegalStateException(msgs.toString());
+            }
         }
     }
 }

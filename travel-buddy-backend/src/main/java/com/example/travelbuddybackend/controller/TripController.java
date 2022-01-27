@@ -1,6 +1,6 @@
 package com.example.travelbuddybackend.controller;
 
-import com.example.travelbuddybackend.api.ApiRoutes;
+import com.example.travelbuddybackend.constants.ApiRoutes;
 import com.example.travelbuddybackend.dao.TripDao;
 import com.example.travelbuddybackend.exception.ResourceNotFoundException;
 import com.example.travelbuddybackend.model.Trip;
@@ -42,22 +42,24 @@ public class TripController {
     // update trip
     @PutMapping(ApiRoutes.TRIPS_BY_ID)
     public ResponseEntity<Trip> updateTrip(@PathVariable Long id, @RequestBody Trip tripDetails) {
-        Trip trip = tripDao.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException(
-                        "Trip does not exist with id: " + id
-                ));
-        trip.setCurrency(tripDetails.getCurrency());
-        trip.setDescription(tripDetails.getDescription());
-        trip.setEndDate(tripDetails.getEndDate());
-        trip.setTitle(tripDetails.getTitle());
-        trip.setStartDate(tripDetails.getStartDate());
-        trip.setTotalCost(tripDetails.getTotalCost());
-        trip.setUniqueLink(tripDetails.getUniqueLink());
-        trip.setUser(tripDetails.getUser());
+        if (tripDao.existsById(id)) {
+            Trip trip = new Trip.Builder()
+                    .setTitle(tripDetails.getTitle())
+                    .setDescription(tripDetails.getDescription())
+                    .setStartDate(tripDetails.getStartDate())
+                    .setEndDate(tripDetails.getEndDate())
+                    .setUniqueLink(tripDetails.getUniqueLink())
+                    .setUser(tripDetails.getUser())
+                    .build();
 
         Trip updatedTrip = tripDao.save(trip);
 
         return ResponseEntity.ok(updatedTrip);
+        } else {
+            throw new ResourceNotFoundException(
+                    "Trip does not exist with id: " + id
+            );
+        }
     }
 
     @DeleteMapping(ApiRoutes.TRIPS_BY_ID)

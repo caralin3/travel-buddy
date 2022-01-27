@@ -1,4 +1,4 @@
-package com.example.travelbuddybackend.api;
+package com.example.travelbuddybackend.constants;
 
 public class ApiRoutes {
     public static final String API_VERSION = "/api/v1";
