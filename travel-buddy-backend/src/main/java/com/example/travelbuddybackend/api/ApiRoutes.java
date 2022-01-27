@@ -18,4 +18,7 @@ public class ApiRoutes {
 
     public static final String CRUISES = "/cruises";
     public static final String CRUISES_BY_ID = "/cruises/{id}";
+
+    public static final String PORTS = "/ports";
+    public static final String PORTS_BY_ID = "/ports/{id}";
 }
