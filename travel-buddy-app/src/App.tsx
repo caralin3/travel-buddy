@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { Link, Route, Routes } from 'react-router-dom';
+import { Button } from 'reactstrap';
 
 function Home() {
   return (
@@ -23,6 +24,7 @@ function About() {
       <main>
         <h2>Who are we?</h2>
         <p>That feels like an existential question, don't you think?</p>
+        <Button size="large">Button</Button>
       </main>
       <nav>
         <Link to="/">Home</Link>
