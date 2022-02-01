@@ -4,7 +4,7 @@ import './App.css';
 import { Link, Route, Routes } from 'react-router-dom';
 import { Button } from 'reactstrap';
 import TripService from './api/services/TripService';
-import { Footer, Header } from './components';
+import { Featured, Footer, Header } from './03-components';
 
 function Home() {
   React.useEffect(() => {
@@ -24,6 +24,7 @@ function Home() {
   return (
     <>
       <main>
+        <Featured />
         <h2>Welcome to the homepage!</h2>
         <p>You can do this, I believe in you.</p>
       </main>

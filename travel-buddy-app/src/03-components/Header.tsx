@@ -9,11 +9,11 @@ export const Header: React.FC = () => (
         Travel Buddy
       </NavbarBrand>
       <NavbarToggler onClick={function noRefCheck() {}} />
-      <Collapse navbar>
+      <Collapse navbar className="flex-grow-0">
         <Nav className="me-auto" navbar>
           <NavItem>
-            <NavLink tag={Link} to="/about">
-              About
+            <NavLink tag={Link} to="/">
+              Home
             </NavLink>
           </NavItem>
           <NavItem>
