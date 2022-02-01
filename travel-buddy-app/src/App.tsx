@@ -3,8 +3,23 @@ import logo from './logo.svg';
 import './App.css';
 import { Link, Route, Routes } from 'react-router-dom';
 import { Button } from 'reactstrap';
+import TripService from './api/services/TripService';
 
 function Home() {
+  React.useEffect(() => {
+    fetchEmployees();
+  }, []);
+
+  async function fetchEmployees() {
+    try {
+      const res = await TripService.getTrips();
+      const res2 = await TripService.getTripById(1);
+      console.log('res', res);
+      console.log('res2', res2);
+    } catch (err) {
+      console.error(err);
+    }
+  }
   return (
     <>
       <main>
