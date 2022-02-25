@@ -4,7 +4,7 @@ import com.example.travelbuddybackend.model.type.RoleEnum;
 
 import javax.persistence.*;
 @Entity
-@Table(name = "role")
+@Table(name="role", uniqueConstraints = { @UniqueConstraint(columnNames = "name") })
 public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
