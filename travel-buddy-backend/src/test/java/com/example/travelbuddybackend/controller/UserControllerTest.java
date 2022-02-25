@@ -29,8 +29,8 @@ public class UserControllerTest {
     @Test
     public void shouldGetAllUsers() {
         // given
-        User user1 = new User(1, "John", "Doe", "jDoe@email.com");
-        User user2 = new User(2, "Jane", "Doe", "janeDoe@email.com");
+        User user1 = new User("John", "Doe", "jDoe@email.com", "password");
+        User user2 = new User("Jane", "Doe", "janeDoe@email.com", "password");
         List<User> users = new ArrayList<>();
         users.add(user1);
         users.add(user2);
@@ -53,7 +53,7 @@ public class UserControllerTest {
         // given
         MockHttpServletRequest request = new MockHttpServletRequest();
         RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
-        User user1 = new User(1, "John", "Doe", "jDoe@email.com");
+        User user1 = new User("John", "Doe", "jDoe@email.com", "password");
 
         when(userDao.findById(user1.getId()))
                 .thenReturn(java.util.Optional.of(user1));
@@ -69,7 +69,7 @@ public class UserControllerTest {
     @Test
     public void shouldCreateUser() {
         // given
-        User user1 = new User(1, "John", "Doe", "jDoe@email.com");
+        User user1 = new User("John", "Doe", "jDoe@email.com", "password");
         when(userDao.save(user1)).thenReturn(user1);
 
         // when
@@ -85,8 +85,8 @@ public class UserControllerTest {
         // given
         MockHttpServletRequest request = new MockHttpServletRequest();
         RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
-        User user1 = new User(1, "John", "Doe", "jDoe@email.com");
-        User user1Update = new User(1, "John", "Doe", "johnDoe@email.com");
+        User user1 = new User("John", "Doe", "jDoe@email.com", "password");
+        User user1Update = new User("John", "Doe", "johnDoe@email.com", "password");
 
         when(userDao.findById(user1.getId()))
                 .thenReturn(java.util.Optional.of(user1));
@@ -105,7 +105,7 @@ public class UserControllerTest {
         // given
         MockHttpServletRequest request = new MockHttpServletRequest();
         RequestContextHolder.setRequestAttributes(new ServletRequestAttributes(request));
-        User user1 = new User(1, "John", "Doe", "jDoe@email.com");
+        User user1 = new User("John", "Doe", "jDoe@email.com", "password");
 
         when(userDao.findById(user1.getId()))
                 .thenReturn(java.util.Optional.of(user1));

@@ -40,8 +40,8 @@ public class TripControllerTest {
 
     @BeforeEach
     public void init() {
-        user1 = new User(1, "John", "Doe", "jDoe@example.com");
-        User user2 = new User(2, "Jane", "Doe", "janeDoe@example.com");
+        user1 = new User("John", "Doe", "jDoe@example.com", "password");
+        User user2 = new User("Jane", "Doe", "janeDoe@example.com", "password");
         trip1 = new Trip.Builder()
                 .setId(1)
                 .setTitle("Trip 1")

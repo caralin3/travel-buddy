@@ -4,6 +4,10 @@ public class ApiRoutes {
     public static final String API_VERSION = "/api/v1";
     public static final String CROSS_ORIGIN_URL = "http://localhost:3000";
 
+    public static final String AUTH = API_VERSION + "/auth";
+    public static final String REGISTER = "/register";
+    public static final String LOGIN = "/login";
+
     public static final String TRIPS = "/trips";
     public static final String TRIPS_BY_ID = "/trips/{id}";
 
