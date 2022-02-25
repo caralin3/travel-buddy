@@ -1,7 +1,7 @@
 package com.example.travelbuddybackend.dao;
 
 import com.example.travelbuddybackend.model.Role;
-import com.example.travelbuddybackend.model.type.RoleEnum;
+import com.example.travelbuddybackend.model.enums.RoleEnum;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package com.example.travelbuddybackend.model.type;
+package com.example.travelbuddybackend.model.enums;
 
 import java.util.HashMap;
 import java.util.Map;

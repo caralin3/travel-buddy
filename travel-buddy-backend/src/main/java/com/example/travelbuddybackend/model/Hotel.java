@@ -1,8 +1,7 @@
 package com.example.travelbuddybackend.model;
 
 import com.example.travelbuddybackend.constants.Messages;
-import com.example.travelbuddybackend.model.type.RoomType;
-import com.example.travelbuddybackend.model.type.State;
+import com.example.travelbuddybackend.model.enums.RoomType;
 
 import javax.persistence.*;
 import java.time.LocalDate;

@@ -1,4 +1,4 @@
-package com.example.travelbuddybackend.payload;
+package com.example.travelbuddybackend.api.responses;
 
 import java.util.List;
 

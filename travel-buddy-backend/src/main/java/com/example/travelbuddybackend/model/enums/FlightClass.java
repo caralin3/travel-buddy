@@ -1,4 +1,4 @@
-package com.example.travelbuddybackend.model.type;
+package com.example.travelbuddybackend.model.enums;
 
 public enum FlightClass {
     ECONOMY,

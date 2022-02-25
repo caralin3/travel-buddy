@@ -1,6 +1,6 @@
 package com.example.travelbuddybackend.model;
 
-import com.example.travelbuddybackend.model.type.RoleEnum;
+import com.example.travelbuddybackend.model.enums.RoleEnum;
 
 import javax.persistence.*;
 @Entity

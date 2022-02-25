@@ -1,8 +1,8 @@
 package com.example.travelbuddybackend.model;
 
 import com.example.travelbuddybackend.constants.Messages;
-import com.example.travelbuddybackend.model.type.FlightClass;
-import com.example.travelbuddybackend.model.type.FlightType;
+import com.example.travelbuddybackend.model.enums.FlightClass;
+import com.example.travelbuddybackend.model.enums.FlightType;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
