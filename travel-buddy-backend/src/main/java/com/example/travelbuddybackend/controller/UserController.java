@@ -4,6 +4,8 @@ import com.example.travelbuddybackend.constants.ApiRoutes;
 import com.example.travelbuddybackend.dao.UserDao;
 import com.example.travelbuddybackend.exception.ResourceNotFoundException;
 import com.example.travelbuddybackend.model.User;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,12 +15,19 @@ import java.util.List;
 @CrossOrigin(origins = ApiRoutes.CROSS_ORIGIN_URL)
 @RestController
 @RequestMapping(ApiRoutes.API_VERSION)
+@Tag(
+        name = "User",
+        description = "User operations"
+)
 public class UserController {
     @Autowired
     private UserDao userDao;
 
     // get all users
     @GetMapping(ApiRoutes.USERS)
+    @Operation(
+            summary = "Finds all users"
+    )
     public List<User> getAllUsers() {
         return userDao.findAll();
     }

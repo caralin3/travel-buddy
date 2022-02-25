@@ -4,6 +4,7 @@ import com.example.travelbuddybackend.constants.ApiRoutes;
 import com.example.travelbuddybackend.dao.FlightDao;
 import com.example.travelbuddybackend.exception.ResourceNotFoundException;
 import com.example.travelbuddybackend.model.Flight;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,10 @@ import java.util.List;
 @CrossOrigin(origins = ApiRoutes.CROSS_ORIGIN_URL)
 @RestController
 @RequestMapping(ApiRoutes.API_VERSION)
+@Tag(
+        name = "Flight",
+        description = "Flight operations"
+)
 public class FlightController {
     @Autowired
     private FlightDao flightDao;
