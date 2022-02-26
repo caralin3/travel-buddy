@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Form } from '../../02-molecules';
-import { FormGroup, Input, Label } from 'reactstrap';
+import { Form, FormGroup } from '../../02-molecules';
+import { Input, Label } from 'reactstrap';
 
 export default {
   title: 'Molecules/Form',
