@@ -6,7 +6,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import java.util.Set;
 
 @Schema(description = "The response for successful user registration.")
-public class UserRegistrationResponse {
+public class RegistrationResponse {
 
     @Schema(description = "Unique id for user")
     protected long id;
@@ -23,10 +23,10 @@ public class UserRegistrationResponse {
     @Schema(description = "User roles")
     protected Set<Role> roles;
 
-    public UserRegistrationResponse() {
+    public RegistrationResponse() {
     }
 
-    public UserRegistrationResponse(ResponseBuilder builder) {
+    public RegistrationResponse(ResponseBuilder builder) {
         this.id = builder.id;
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
@@ -93,8 +93,8 @@ public class UserRegistrationResponse {
             return this;
         }
 
-        public UserRegistrationResponse build() {
-            return new UserRegistrationResponse(this);
+        public RegistrationResponse build() {
+            return new RegistrationResponse(this);
         }
     }
 }

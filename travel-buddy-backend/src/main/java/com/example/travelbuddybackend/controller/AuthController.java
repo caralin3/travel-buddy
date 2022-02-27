@@ -6,8 +6,9 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import com.example.travelbuddybackend.api.request.LoginRequest;
+import com.example.travelbuddybackend.api.request.RegisterRequest;
 import com.example.travelbuddybackend.api.response.ErrorResponse;
-import com.example.travelbuddybackend.api.response.UserRegistrationResponse;
+import com.example.travelbuddybackend.api.response.RegistrationResponse;
 import com.example.travelbuddybackend.constants.ApiRoutes;
 import com.example.travelbuddybackend.dao.RoleDao;
 import com.example.travelbuddybackend.dao.UserDao;
@@ -33,7 +34,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpClientErrorException;
 
 @CrossOrigin(origins = ApiRoutes.CROSS_ORIGIN_URL)
 @RestController
@@ -119,7 +119,7 @@ public class AuthController {
             requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
                     required = true,
                     content = @Content(
-                        schema = @Schema(implementation = User.class)
+                        schema = @Schema(implementation = RegisterRequest.class)
                     )
             ),
             responses = {
@@ -127,7 +127,7 @@ public class AuthController {
                             responseCode = "200",
                             description = "User successfully registered and logged in.",
                             content = @Content(
-                                    schema = @Schema(implementation = UserRegistrationResponse.class)
+                                    schema = @Schema(implementation = RegistrationResponse.class)
                             )
                     ),
                     @ApiResponse(
@@ -143,55 +143,56 @@ public class AuthController {
                                                             + "\"code\": \"CONFLICT\","
                                                             + "\"message\": \"User already exists with that email.\","
                                                             + "\"stacktrace\": null,"
-                                                            + "\"email\": \"jDoe@email.com.\""
+                                                            + "\"data\": \"jDoe@email.com.\""
                                                             + "}")
                             )
                     )
             }
     )
-    public ResponseEntity<?> registerUser(@RequestBody User newUser) {
-        if (userDao.existsByEmail(newUser.getEmail())) {
-            return ResponseEntity
-                    .badRequest()
-                    .body(new ErrorResponse<>(
+    public ResponseEntity<?> registerUser(@RequestBody RegisterRequest registerRequest) {
+        if (userDao.existsByEmail(registerRequest.getEmail())) {
+            return new ResponseEntity<>(
+                    new ErrorResponse<>(
                             HttpStatus.CONFLICT,
                             "User already exists with that email.",
                             null,
-                            newUser.getEmail()
-                    ));
+                            registerRequest.getEmail()
+                    ),
+                    HttpStatus.CONFLICT
+            );
         }
         // Create new user's account
         User user = new User(
-                newUser.getFirstName(),
-                newUser.getLastName(),
-                newUser.getEmail(),
-                encoder.encode(newUser.getPassword()));
-        Set<String> strRoles = newUser.getRoles().stream().map(role -> role.getName().name())
-                .collect(Collectors.toSet());
+                registerRequest.getFirstName(),
+                registerRequest.getLastName(),
+                registerRequest.getEmail(),
+                encoder.encode(registerRequest.getPassword()));
+//        Set<String> strRoles = registerRequest.getRoles().stream().map(role -> role.getName().name())
+//                .collect(Collectors.toSet());
         Set<Role> roles = new HashSet<>();
-        if (strRoles.size() == 0) {
+//        if (strRoles.size() == 0) {
             Role userRole = roleDao.findByName(RoleEnum.ROLE_USER)
                     .orElseThrow(() -> new NullPointerException("Role is not found."));
             roles.add(userRole);
-        } else {
-            strRoles.forEach(role -> {
-                switch (role) {
-                    case "admin":
-                        Role adminRole = roleDao.findByName(RoleEnum.ROLE_ADMIN)
-                                .orElseThrow(() -> new NullPointerException("Role is not found."));
-                        roles.add(adminRole);
-                        break;
-                    default:
-                        Role userRole = roleDao.findByName(RoleEnum.ROLE_USER)
-                                .orElseThrow(() -> new NullPointerException("Role is not found."));
-                        roles.add(userRole);
-                }
-            });
-        }
+//        } else {
+//            strRoles.forEach(role -> {
+//                switch (role) {
+//                    case "admin":
+//                        Role adminRole = roleDao.findByName(RoleEnum.ROLE_ADMIN)
+//                                .orElseThrow(() -> new NullPointerException("Role is not found."));
+//                        roles.add(adminRole);
+//                        break;
+//                    default:
+//                        Role userRole = roleDao.findByName(RoleEnum.ROLE_USER)
+//                                .orElseThrow(() -> new NullPointerException("Role is not found."));
+//                        roles.add(userRole);
+//                }
+//            });
+//        }
         user.setRoles(roles);
         userDao.save(user);
 
-        UserRegistrationResponse res = UserRegistrationResponse.builder()
+        RegistrationResponse res = RegistrationResponse.builder()
                 .setId(user.getId())
                 .setFirstName(user.getFirstName())
                 .setLastName(user.getLastName())
