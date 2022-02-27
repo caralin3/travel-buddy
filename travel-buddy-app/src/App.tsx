@@ -1,48 +1,8 @@
 import React from 'react';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
-import { Button } from 'reactstrap';
-import TripService from './api/services/TripService';
-import { Featured, Footer, Header } from './03-components';
-import { RegisterPage } from './04-pages';
-
-function Home() {
-  React.useEffect(() => {
-    fetchEmployees();
-  }, []);
-
-  async function fetchEmployees() {
-    try {
-      const res = await TripService.getTrips();
-      const res2 = await TripService.getTripById(1);
-      console.log('res', res);
-      console.log('res2', res2);
-    } catch (err) {
-      console.error(err);
-    }
-  }
-  return (
-    <>
-      <main>
-        <Featured />
-        <h2>Welcome to the homepage!</h2>
-        <p>You can do this, I believe in you.</p>
-      </main>
-    </>
-  );
-}
-
-function About() {
-  return (
-    <>
-      <main>
-        <h2>Who are we?</h2>
-        <p>That feels like an existential question, don't you think?</p>
-        <Button size="large">Button</Button>
-      </main>
-    </>
-  );
-}
+import { Footer, Header } from './03-components';
+import { LoginPage, RegisterPage } from './04-pages';
 
 function App() {
   return (
@@ -50,7 +10,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<RegisterPage />} />
-        <Route path="about" element={<About />} />
+        <Route path="about" element={<LoginPage />} />
       </Routes>
       <Footer />
     </div>

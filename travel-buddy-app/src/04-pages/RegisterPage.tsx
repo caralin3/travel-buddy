@@ -1,6 +1,8 @@
 import React from 'react';
 import { Container } from 'reactstrap';
 import { RegisterForm } from '../03-components';
+import { handleError } from '../api';
+import AuthService from '../api/services/AuthService';
 
 export interface RegisterPageProps {}
 
@@ -11,8 +13,20 @@ export const RegisterPage: React.FC<RegisterPageProps> = () => {
   const [password, setPassword] = React.useState('');
   const [passwordConfirm, setPasswordConfirm] = React.useState('');
 
-  const handleRegister = () => {
-    console.log(email, password, passwordConfirm);
+  const handleRegister = async () => {
+    try {
+      await AuthService.registerUser({
+        firstName,
+        lastName,
+        email,
+        password,
+      });
+      const loginRes = await AuthService.loginUser({ email, password });
+      // @TODO: save token to state
+      // @TODO: redirect to home
+    } catch (err) {
+      handleError(err);
+    }
   };
 
   return (
