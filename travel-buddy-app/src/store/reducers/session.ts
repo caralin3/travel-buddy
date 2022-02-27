@@ -11,6 +11,14 @@ const initialState: SessionState = {
   isAuthenticated: false,
 };
 
+// const login = createAsyncThunk('session/login', async (loginRequest: LoginRequest) => {
+//   const res = await AuthService.loginUser(loginRequest);
+//   if (LoginSuccessResponse.is(res)) {
+//     return res as LoginSuccessResponse;
+//   }
+//   return null;
+// });
+
 export const SessionSlice = createSlice({
   name: 'Session',
   initialState,

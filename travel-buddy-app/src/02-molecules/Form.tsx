@@ -1,13 +1,16 @@
 import React, { FormEvent } from 'react';
-import { Button, Form as BSForm, FormGroup as BSFormGroup, FormGroupProps, LabelProps, Spinner } from 'reactstrap';
+import { Link } from 'react-router-dom';
+import { Button, Form as BSForm, FormGroup as BSFormGroup, FormGroupProps, Spinner } from 'reactstrap';
+import { LinkItem } from '../types';
 
 export interface FormProps {
+  additionalLinks?: LinkItem[];
   loading?: boolean;
   onSubmit: () => void;
   title?: string;
 }
 
-export const Form: React.FC<FormProps> = ({ children, loading = false, onSubmit, title }) => {
+export const Form: React.FC<FormProps> = ({ additionalLinks, children, loading = false, onSubmit, title }) => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit();
@@ -29,6 +32,13 @@ export const Form: React.FC<FormProps> = ({ children, loading = false, onSubmit,
           <Spinner size="sm">Loading...</Spinner>
         </Button>
       )}
+      {!!additionalLinks &&
+        additionalLinks.length > 0 &&
+        additionalLinks.map((link) => (
+          <Link className="mt-3" key={link.path} to={link.path}>
+            {link.label}
+          </Link>
+        ))}
     </BSForm>
   );
 };

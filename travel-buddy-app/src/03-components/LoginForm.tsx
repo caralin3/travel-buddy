@@ -1,6 +1,8 @@
 import React from 'react';
 import { Label, Input } from 'reactstrap';
 import { Form, FormGroup } from '../02-molecules';
+import { REGISTER_ROUTE } from '../router';
+import { LinkItem } from '../types';
 import { isEmailValid } from '../utils';
 
 export interface LoginFormProps {
@@ -30,8 +32,10 @@ export const LoginForm: React.FC<LoginFormProps> = ({
     }
   };
 
+  const additionalLinks: LinkItem[] = [{ label: 'Not a user yet? Register here.', path: REGISTER_ROUTE }];
+
   return (
-    <Form title="Login" onSubmit={onSubmit} loading={loading}>
+    <Form title="Login" onSubmit={onSubmit} loading={loading} additionalLinks={additionalLinks}>
       <FormGroup>
         <Label for="login-email">Email</Label>
         <Input

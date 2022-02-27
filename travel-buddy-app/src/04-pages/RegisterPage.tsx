@@ -5,8 +5,9 @@ import { Container } from 'reactstrap';
 import { RegisterForm } from '../03-components';
 import { handleError, LoginSuccessResponse } from '../api';
 import AuthService from '../api/services/AuthService';
-import { HOME } from '../routes';
+import { DASHBOARD_ROUTE } from '../router';
 import * as sessionState from '../store/reducers/session';
+import { login } from '../utils';
 
 export interface RegisterPageProps {}
 
@@ -31,12 +32,11 @@ export const RegisterPage: React.FC<RegisterPageProps> = () => {
         email,
         password,
       });
-      const loginRes = await AuthService.loginUser({ email, password });
-      if (LoginSuccessResponse.is(loginRes)) {
-        dispatch(sessionState.setLogin(loginRes));
+      const res = await login({ email, password });
+      if (LoginSuccessResponse.is(res)) {
+        dispatch(sessionState.setLogin(res));
+        navigate(DASHBOARD_ROUTE, { replace: true });
       }
-      setLoading(false);
-      navigate(HOME, { replace: true });
     } catch (err) {
       setLoading(false);
       handleError(err, (msg) => setErrorMessage(msg));

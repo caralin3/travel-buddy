@@ -1,5 +1,7 @@
 import * as t from 'io-ts';
 
+/* eslint-disable @typescript-eslint/no-redeclare */
+
 export const GenericErrorResponse = t.interface({
   timestamp: t.string,
   code: t.number,
