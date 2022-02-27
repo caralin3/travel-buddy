@@ -104,13 +104,16 @@ public class AuthController {
         String jwt = jwtUtils.generateJwtToken(authentication);
 
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
-        List<String> roles = userDetails.getAuthorities().stream()
-                .map(item -> item.getAuthority())
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(new JwtResponse(jwt,
-                userDetails.getId(),
-                userDetails.getEmail(),
-                roles));
+        User loggedInUser = userDao.findByEmail(userDetails.getEmail());
+        return ResponseEntity.ok(JwtResponse.builder()
+                        .setAccessToken(jwt)
+                        .setTokenType("Bearer")
+                        .setId(loggedInUser.getId())
+                        .setEmail(loggedInUser.getEmail())
+                        .setFirstName(loggedInUser.getFirstName())
+                        .setLastName(loggedInUser.getLastName())
+                        .setRoles(loggedInUser.getRoles())
+                        .build());
     }
 
     @PostMapping(ApiRoutes.REGISTER)

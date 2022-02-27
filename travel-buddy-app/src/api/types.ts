@@ -1,13 +1,5 @@
 import * as t from 'io-ts';
 
-export const User = t.interface({
-  email: t.string,
-  firstName: t.string,
-  id: t.number,
-  lastName: t.string,
-});
-export type User = t.TypeOf<typeof User>;
-
 export const GenericErrorResponse = t.interface({
   timestamp: t.string,
   code: t.number,
@@ -25,6 +17,15 @@ export const Role = t.interface({
   id: t.number,
   name: RoleName,
 });
+
+export const User = t.interface({
+  email: t.string,
+  firstName: t.string,
+  id: t.number,
+  lastName: t.string,
+  roles: t.array(Role),
+});
+export type User = t.TypeOf<typeof User>;
 
 export const RegisterRequest = t.interface({
   firstName: t.string,
@@ -56,8 +57,10 @@ export type LoginRequest = t.TypeOf<typeof LoginRequest>;
 export const LoginSuccessResponse = t.interface({
   accessToken: t.string,
   id: t.number,
+  firstName: t.string,
+  lastName: t.string,
   email: t.string,
-  roles: t.array(RoleName),
+  roles: t.array(Role),
   tokenType: t.string,
 });
 export type LoginSuccessResponse = t.TypeOf<typeof LoginSuccessResponse>;

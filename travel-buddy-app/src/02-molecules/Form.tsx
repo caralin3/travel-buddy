@@ -1,12 +1,13 @@
 import React, { FormEvent } from 'react';
-import { Button, Form as BSForm, FormGroup as BSFormGroup, FormGroupProps, LabelProps } from 'reactstrap';
+import { Button, Form as BSForm, FormGroup as BSFormGroup, FormGroupProps, LabelProps, Spinner } from 'reactstrap';
 
 export interface FormProps {
+  loading?: boolean;
   onSubmit: () => void;
   title?: string;
 }
 
-export const Form: React.FC<FormProps> = ({ children, onSubmit, title }) => {
+export const Form: React.FC<FormProps> = ({ children, loading = false, onSubmit, title }) => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit();
@@ -19,7 +20,15 @@ export const Form: React.FC<FormProps> = ({ children, onSubmit, title }) => {
     >
       {!!title && <h2 className="mb-4">{title}</h2>}
       {children}
-      <Button className="mt-3 text-align-center align-self-center">Submit</Button>
+      {!loading ? (
+        <Button color="primary" className="mt-3 text-align-center align-self-center">
+          Submit
+        </Button>
+      ) : (
+        <Button className="mt-3 px-4 text-align-center align-self-center" disabled={true}>
+          <Spinner size="sm">Loading...</Spinner>
+        </Button>
+      )}
     </BSForm>
   );
 };
