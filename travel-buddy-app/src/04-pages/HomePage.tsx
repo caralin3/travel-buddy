@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Col, Row } from 'reactstrap';
+import { Col, Container, Row } from 'reactstrap';
 import { RegisterFormContainer } from '../containers';
 import { RootState } from '../store';
 
@@ -10,7 +10,7 @@ export const HomePage: React.FC<HomePageProps> = () => {
   const isAuthenticated = useSelector((state: RootState) => state.session.isAuthenticated);
 
   return (
-    <>
+    <Container className="py-5">
       <Row className="pb-5">
         <Col xs={12} md={!isAuthenticated ? 6 : 12}>
           <h1 className="text-start">Travel Buddy</h1>
@@ -54,6 +54,6 @@ export const HomePage: React.FC<HomePageProps> = () => {
           </p>
         </Col>
       </Row>
-    </>
+    </Container>
   );
 };

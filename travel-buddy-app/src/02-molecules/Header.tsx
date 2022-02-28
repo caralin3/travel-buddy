@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
-import { ABOUT_ROUTE, DASHBOARD_ROUTE, HOME_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE } from '../router';
+import { ABOUT_ROUTE, DASHBOARD_ROUTE, HOME_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE, TRIPS_ROUTE } from '../router';
 import { LinkItem } from '../types';
 
 export interface HeaderProps {
@@ -18,8 +18,9 @@ export const Header: React.FC<HeaderProps> = ({ auth = false, logout }) => {
   ];
 
   const authLinks: LinkItem[] = [
-    { label: 'Home', path: HOME_ROUTE },
     { label: 'Dashboard', path: DASHBOARD_ROUTE },
+    { label: 'Trips', path: TRIPS_ROUTE },
+    { label: 'Account', path: HOME_ROUTE },
   ];
 
   const links = auth ? authLinks : publicLinks;

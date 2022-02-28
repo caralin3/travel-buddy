@@ -1,17 +1,16 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { DashboardPage, RegisterPage, LoginPage, HomePage } from '../04-pages';
-import { ABOUT_ROUTE, DASHBOARD_ROUTE, HOME_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE } from './pageRoutes';
+import { DashboardPage, RegisterPage, LoginPage, HomePage, TripsPage } from '../04-pages';
 import { PublicRoute } from './PublicRoute';
 import { RequireAuth } from './RequireAuth';
 
 export const Router: React.FC = () => (
   <Routes>
-    <Route path={HOME_ROUTE} element={<HomePage />} />
+    <Route path="/" element={<HomePage />} />
     {/* @TODO */}
-    <Route path={ABOUT_ROUTE} element={<HomePage />} />
+    <Route path="about" element={<HomePage />} />
     <Route
-      path={REGISTER_ROUTE}
+      path="register"
       element={
         <PublicRoute>
           <RegisterPage />
@@ -19,7 +18,7 @@ export const Router: React.FC = () => (
       }
     />
     <Route
-      path={LOGIN_ROUTE}
+      path="login"
       element={
         <PublicRoute>
           <LoginPage />
@@ -27,12 +26,37 @@ export const Router: React.FC = () => (
       }
     />
     <Route
-      path={DASHBOARD_ROUTE}
+      path="dashboard"
       element={
         <RequireAuth>
           <DashboardPage />
         </RequireAuth>
       }
     />
+    <Route
+      path="trips"
+      element={
+        <RequireAuth>
+          <TripsPage />
+        </RequireAuth>
+      }
+    >
+      <Route
+        path="add"
+        element={
+          <RequireAuth>
+            <TripsPage />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path=":id"
+        element={
+          <RequireAuth>
+            <TripsPage />
+          </RequireAuth>
+        }
+      />
+    </Route>
   </Routes>
 );

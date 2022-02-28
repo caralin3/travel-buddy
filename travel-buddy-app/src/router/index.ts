@@ -1,2 +1,2 @@
-export * from './pageRoutes';
+export * from './routes';
 export * from './router';

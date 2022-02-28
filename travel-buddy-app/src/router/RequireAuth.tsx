@@ -1,6 +1,6 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { LOGIN_ROUTE } from './pageRoutes';
+import { LOGIN_ROUTE } from './routes';
 import { useSelector } from 'react-redux';
 import { RootState } from '../store';
 

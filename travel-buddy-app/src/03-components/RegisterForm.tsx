@@ -1,5 +1,5 @@
 import React from 'react';
-import { Label, Input, Row, Col, Progress } from 'reactstrap';
+import { Label, Input, Row, Col } from 'reactstrap';
 import { Form, FormGroup, PasswordStrengthMeter } from '../02-molecules';
 import { LOGIN_ROUTE } from '../router';
 import { LinkItem } from '../types';
