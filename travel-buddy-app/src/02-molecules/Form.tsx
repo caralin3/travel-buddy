@@ -17,10 +17,7 @@ export const Form: React.FC<FormProps> = ({ additionalLinks, children, loading =
   };
 
   return (
-    <BSForm
-      className="d-flex flex-column align-items-center shadow-sm px-5 py-4 border rounded"
-      onSubmit={handleSubmit}
-    >
+    <BSForm className="d-flex flex-column shadow-sm px-5 py-4 border rounded" onSubmit={handleSubmit}>
       {!!title && <h2 className="mb-4">{title}</h2>}
       {children}
       {!loading ? (

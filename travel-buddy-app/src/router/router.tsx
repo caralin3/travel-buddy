@@ -1,6 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { DasboardPage, RegisterPage, LoginPage, HomePage } from '../04-pages';
+import { DashboardPage, RegisterPage, LoginPage, HomePage } from '../04-pages';
 import { ABOUT_ROUTE, DASHBOARD_ROUTE, HOME_ROUTE, LOGIN_ROUTE, REGISTER_ROUTE } from './pageRoutes';
 import { PublicRoute } from './PublicRoute';
 import { RequireAuth } from './RequireAuth';
@@ -30,7 +30,7 @@ export const Router: React.FC = () => (
       path={DASHBOARD_ROUTE}
       element={
         <RequireAuth>
-          <DasboardPage />
+          <DashboardPage />
         </RequireAuth>
       }
     />
