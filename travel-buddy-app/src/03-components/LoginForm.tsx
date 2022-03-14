@@ -1,6 +1,6 @@
 import React from 'react';
-import { Label, Input } from 'reactstrap';
-import { Form, FormGroup } from '../02-molecules';
+import { Input } from 'reactstrap';
+import { Form, FormGroup, Label } from '../02-molecules';
 import { REGISTER_ROUTE } from '../router';
 import { LinkItem } from '../types';
 import { isEmailValid } from '../utils';
@@ -37,7 +37,9 @@ export const LoginForm: React.FC<LoginFormProps> = ({
   return (
     <Form title="Login" onSubmit={onSubmit} loading={loading} additionalLinks={additionalLinks}>
       <FormGroup>
-        <Label for="login-email">Email</Label>
+        <Label required for="login-email">
+          Email
+        </Label>
         <Input
           required
           id="login-email"
@@ -55,7 +57,9 @@ export const LoginForm: React.FC<LoginFormProps> = ({
         />
       </FormGroup>
       <FormGroup>
-        <Label for="login-password">Password</Label>
+        <Label required for="login-password">
+          Password
+        </Label>
         <Input
           required
           id="login-password"

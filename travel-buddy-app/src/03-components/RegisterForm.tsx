@@ -1,6 +1,6 @@
 import React from 'react';
-import { Label, Input, Row, Col } from 'reactstrap';
-import { Form, FormGroup, PasswordStrengthMeter } from '../02-molecules';
+import { Input, Row, Col } from 'reactstrap';
+import { Form, FormGroup, Label, PasswordStrengthMeter } from '../02-molecules';
 import { LOGIN_ROUTE } from '../router';
 import { LinkItem } from '../types';
 import { isEmailValid } from '../utils';
@@ -51,7 +51,9 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
       <Row>
         <Col sm={12} md={6}>
           <FormGroup>
-            <Label for="register-first-name">First Name</Label>
+            <Label required for="register-first-name">
+              First Name
+            </Label>
             <Input
               required
               id="register-first-name"
@@ -68,7 +70,9 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
         </Col>
         <Col sm={12} md={6}>
           <FormGroup>
-            <Label for="register-last-name">Last Name</Label>
+            <Label required for="register-last-name">
+              Last Name
+            </Label>
             <Input
               required
               id="register-last-name"
@@ -87,7 +91,9 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
       <Row>
         <Col sm={12}>
           <FormGroup>
-            <Label for="register-email">Email</Label>
+            <Label required for="register-email">
+              Email
+            </Label>
             <Input
               required
               id="register-email"
@@ -108,7 +114,9 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
       <Row>
         <Col sm={12} md={6}>
           <FormGroup>
-            <Label for="register-password">Password</Label>
+            <Label required for="register-password">
+              Password
+            </Label>
             <Input
               required
               id="register-password"
@@ -125,7 +133,9 @@ export const RegisterForm: React.FC<RegisterFormProps> = ({
         </Col>
         <Col sm={12} md={6}>
           <FormGroup>
-            <Label for="register-confirm-password">Confim Password</Label>
+            <Label required for="register-confirm-password">
+              Confim Password
+            </Label>
             <Input
               required
               id="register-confirm-password"

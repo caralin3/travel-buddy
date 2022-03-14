@@ -24,19 +24,19 @@ export const DashboardPage: React.FC<DashboardPagePageProps> = () => {
       <Container className="py-5">
         <Row>
           <Col sm={4}>
-            <Card title="Trips" link={{ label: 'Add Trip', path: ADD_TRIPS_ROUTE }}>
+            <Card title="Trips" link={{ label: 'Create Trip', path: ADD_TRIPS_ROUTE }}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
               dolore magna aliqua.
             </Card>
           </Col>
           <Col sm={4}>
-            <Card title="Flights" link={{ label: 'Add Flight', path: ADD_FLIGHTS_ROUTE }}>
+            <Card title="Flights" link={{ label: 'Create Flight', path: ADD_FLIGHTS_ROUTE }}>
               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
               consequat.
             </Card>
           </Col>
           <Col sm={4}>
-            <Card title="Cruises" link={{ label: 'Add Cruise', path: ADD_CRUISES_ROUTE }}>
+            <Card title="Cruises" link={{ label: 'Create Cruise', path: ADD_CRUISES_ROUTE }}>
               Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
             </Card>
           </Col>

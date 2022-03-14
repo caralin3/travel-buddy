@@ -1,9 +1,18 @@
 import React, { FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Form as BSForm, FormGroup as BSFormGroup, FormGroupProps, Spinner } from 'reactstrap';
+import {
+  Button,
+  Form as BSForm,
+  FormProps as BSFormProps,
+  FormGroup as BSFormGroup,
+  FormGroupProps,
+  Label as BSLabel,
+  LabelProps as BSLabelProps,
+  Spinner,
+} from 'reactstrap';
 import { LinkItem } from '../types';
 
-export interface FormProps {
+export interface FormProps extends BSFormProps {
   additionalLinks?: LinkItem[];
   loading?: boolean;
   onSubmit: () => void;
@@ -44,4 +53,15 @@ export const FormGroup: React.FC<FormGroupProps> = ({ children, props }) => (
   <BSFormGroup className="d-flex flex-column align-items-start" {...props}>
     {children}
   </BSFormGroup>
+);
+
+export interface LabelProps extends BSLabelProps {
+  required?: boolean;
+}
+
+export const Label: React.FC<LabelProps> = ({ children, props, required = false }) => (
+  <BSLabel {...props}>
+    {children}
+    {required && <span className="text-danger">*</span>}
+  </BSLabel>
 );

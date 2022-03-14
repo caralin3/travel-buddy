@@ -6,7 +6,7 @@ export const REGISTER_ROUTE = '/register';
 
 export const TRIPS_ROUTE = '/trips';
 export const ADD_TRIPS_ROUTE = '/trips/add';
-export const EDIT_TRIPS_ROUTE = '/trips/:id';
+export const EDIT_TRIPS_ROUTE = '/trips/edit/:id';
 
 export const FLIGHTS_ROUTE = '/flights';
 export const ADD_FLIGHTS_ROUTE = '/flights/add';

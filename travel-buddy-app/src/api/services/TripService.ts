@@ -1,10 +1,11 @@
-import axios, { AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
+import { axiosWithHeader } from '../axios';
 import { getTripsUrl, getTripsByIdUrl } from '../routes';
-import { Trip, Trips } from '../types';
+import { TripRequest, Trip, Trips } from '../types';
 
 class TripService {
-  async getTrips() {
-    const request: AxiosResponse<Trips> = await axios.get(getTripsUrl());
+  async getTrips(token: string) {
+    const request: AxiosResponse<Trips> = await axiosWithHeader(token).get(getTripsUrl());
     const { data } = request;
     if (!Trips.is(data)) {
       throw new Error('Malformed response from getTrips.');
@@ -12,8 +13,8 @@ class TripService {
     return request.data;
   }
 
-  async createTrip(trip: Trip) {
-    const request: AxiosResponse<Trip> = await axios.post(getTripsUrl(), trip);
+  async createTrip(requestBody: TripRequest, token: string) {
+    const request: AxiosResponse<Trip> = await axiosWithHeader(token).post(getTripsUrl(), requestBody);
     const { data } = request;
     if (!Trip.is(data)) {
       throw new Error('Malformed response from createTrips.');
@@ -21,8 +22,8 @@ class TripService {
     return request.data;
   }
 
-  async getTripById(id: number) {
-    const request: AxiosResponse<Trip> = await axios.get(getTripsByIdUrl(id));
+  async getTripById(id: number, token: string) {
+    const request: AxiosResponse<Trip> = await axiosWithHeader(token).get(getTripsByIdUrl(id));
     const { data } = request;
     if (!Trip.is(data)) {
       throw new Error('Malformed response from getTripById.');
@@ -30,8 +31,8 @@ class TripService {
     return request.data;
   }
 
-  async updateTrip(trip: Trip, id: number) {
-    const request: AxiosResponse<Trip> = await axios.post(getTripsByIdUrl(id), trip);
+  async updateTrip(trip: Trip, id: number, token: string) {
+    const request: AxiosResponse<Trip> = await axiosWithHeader(token).post(getTripsByIdUrl(id), trip);
     const { data } = request;
     if (!Trip.is(data)) {
       throw new Error('Malformed response from updateTrip.');
@@ -39,8 +40,8 @@ class TripService {
     return request.data;
   }
 
-  async deleteTrip(id: number) {
-    const request: AxiosResponse<Trip> = await axios.post(getTripsByIdUrl(id));
+  async deleteTrip(id: number, token: string) {
+    const request: AxiosResponse<Trip> = await axiosWithHeader(token).post(getTripsByIdUrl(id));
     const { data } = request;
     if (!Trip.is(data)) {
       throw new Error('Malformed response from deleteTrip.');

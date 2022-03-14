@@ -2,7 +2,7 @@ import axios, { AxiosError } from 'axios';
 import { BASE_URL } from './routes';
 import { GenericErrorResponse } from './types';
 
-export const getAxiosWithHeader = (token: string) =>
+export const axiosWithHeader = (token: string) =>
   axios.create({
     baseURL: BASE_URL,
     headers: {

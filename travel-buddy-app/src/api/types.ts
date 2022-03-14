@@ -71,16 +71,44 @@ export const LoginResponse = t.union([LoginSuccessResponse, GenericErrorResponse
 
 export type LoginResponse = t.TypeOf<typeof LoginResponse>;
 
-export const Trip = t.interface({
-  description: t.union([t.string, t.undefined]),
-  endDate: t.string,
-  id: t.number,
-  startDate: t.string,
-  title: t.string,
-  uniqueLink: t.union([t.string, t.undefined]),
-  user: User,
-});
+export const Trip = t.intersection([
+  t.interface({
+    endDate: t.string,
+    id: t.number,
+    startDate: t.string,
+    title: t.string,
+    user: User,
+  }),
+  t.partial({
+    uniqueLink: t.union([t.null, t.string]),
+  }),
+  t.partial({
+    description: t.string,
+  }),
+]);
 export type Trip = t.TypeOf<typeof Trip>;
 
 export const Trips = t.array(Trip);
 export type Trips = t.TypeOf<typeof Trips>;
+
+export const TripRequestPartial = t.partial({
+  uniqueLink: t.string,
+});
+
+export const TripRequest = t.intersection([
+  t.interface({
+    endDate: t.string,
+    startDate: t.string,
+    title: t.string,
+    userId: t.number,
+  }),
+  t.partial({
+    uniqueLink: t.string,
+  }),
+  t.partial({
+    description: t.string,
+  }),
+]);
+export type TripRequest = t.TypeOf<typeof TripRequest>;
+
+export const TripResponse = t.union([Trip, GenericErrorResponse]);
