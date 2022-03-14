@@ -1,9 +1,7 @@
 package com.example.travelbuddybackend.controller;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 import com.example.travelbuddybackend.api.request.LoginRequest;
 import com.example.travelbuddybackend.api.request.RegisterRequest;

@@ -61,10 +61,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
+
                 .authorizeRequests()
                 .antMatchers(ApiRoutes.AUTH + "/**").permitAll()
                 .antMatchers("/docs/**").permitAll()
-                .anyRequest().authenticated().and()
+                .antMatchers("/**").permitAll().and()
+//                .antMatchers(ApiRoutes.API_VERSION + "/**").permitAll().and()
+//                .anyRequest().permitAll().and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);

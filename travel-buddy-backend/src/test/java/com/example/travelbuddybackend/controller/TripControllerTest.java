@@ -2,8 +2,11 @@ package com.example.travelbuddybackend.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import com.example.travelbuddybackend.api.request.CreateTripRequest;
+import com.example.travelbuddybackend.api.response.TripResponse;
 import com.example.travelbuddybackend.constants.Messages;
 import com.example.travelbuddybackend.dao.TripDao;
+import com.example.travelbuddybackend.dao.UserDao;
 import com.example.travelbuddybackend.model.Trip;
 import com.example.travelbuddybackend.model.User;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,6 +27,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -33,6 +37,9 @@ public class TripControllerTest {
 
     @Mock
     private TripDao tripDao;
+
+    @Mock
+    private UserDao userDao;
 
     private User user1;
     private Trip trip1;
@@ -100,14 +107,16 @@ public class TripControllerTest {
     @Test
     public void shouldCreateTrip() {
         // given
-        when(tripDao.save(trip1)).thenReturn(trip1);
+        CreateTripRequest createTripRequest = tripController.createTripRequest(trip1, user1.getId());
+        when(userDao.findById(user1.getId())).thenReturn(java.util.Optional.ofNullable(user1));
+        lenient().when(tripDao.save(trip1)).thenReturn(trip1);
 
         // when
-        Trip result = tripController.createTrip(trip1);
+        ResponseEntity<TripResponse> result = tripController.createTrip(createTripRequest);
 
         // then
-        assertThat(result.getId()).isEqualTo(trip1.getId());
-        assertThat(result.getTitle()).isEqualTo(trip1.getTitle());
+//        assertThat(result.getBody().getId()).isEqualTo(trip1.getId());
+        assertThat(result.getBody().getTitle()).isEqualTo(trip1.getTitle());
     }
 
     @Test
