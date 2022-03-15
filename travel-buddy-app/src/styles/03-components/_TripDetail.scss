@@ -1,0 +1,30 @@
+.trip-detail {
+  &__header {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+
+    @include media-breakpoint-up(md) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__until {
+    font-size: $font-size-lg;
+    padding-top: $spacer;
+    text-align: center;
+
+    @include media-breakpoint-up(md) {
+      padding-top: 0;
+    }
+  }
+}
+
+.itinerary {
+  &__title {
+    text-align: left;
+  }
+}

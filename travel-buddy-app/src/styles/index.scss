@@ -1,0 +1,10 @@
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/root';
+
+@import './app.scss';
+@import './01-atoms/index.scss';
+@import './02-molecules/index.scss';
+@import './03-components/index.scss';
+@import './04-pages/index.scss';

@@ -112,3 +112,85 @@ export const TripRequest = t.intersection([
 export type TripRequest = t.TypeOf<typeof TripRequest>;
 
 export const TripResponse = t.union([Trip, GenericErrorResponse]);
+
+export const FlightType = t.keyof({
+  ARRIVAL: null,
+  DEPARTURE: null,
+});
+
+export const FlightClass = t.keyof({
+  BUSINESS: null,
+  ECONOMY: null,
+  ECONOMY_PLUS: null,
+  FIRST: null,
+});
+
+export const Flight = t.intersection([
+  t.interface({
+    id: t.number,
+    airline: t.string,
+    arrivalAirport: t.string,
+    arrivalCity: t.string,
+    arrivalDate: t.string,
+    confirmationCode: t.string,
+    departureAirport: t.string,
+    departureCity: t.string,
+    departureDate: t.string,
+    flightClass: FlightClass,
+    flightNumber: t.string,
+    terminal: t.string,
+    // type: FlightType,
+    trip: Trip,
+  }),
+  t.partial({
+    cost: t.number,
+    currency: t.string,
+  }),
+  t.partial({
+    gate: t.string,
+  }),
+  t.partial({
+    seats: t.string,
+  }),
+]);
+export type Flight = t.TypeOf<typeof Flight>;
+
+export const Flights = t.array(Flight);
+export type Flights = t.TypeOf<typeof Flights>;
+
+export const RoomType = t.keyof({
+  SINGLE: null,
+  DOUBLE: null,
+  SUITE: null,
+});
+
+export const Hotel = t.intersection([
+  t.interface({
+    id: t.number,
+    name: t.string,
+    roomType: RoomType,
+    roomCount: t.number,
+    checkInDate: t.string,
+    checkOutDate: t.string,
+    cost: t.number,
+    currency: t.string,
+    addressLine1: t.string,
+    city: t.string,
+    state: t.string,
+    trip: Trip,
+  }),
+  t.partial({
+    addressLine2: t.string,
+  }),
+  t.partial({
+    description: t.string,
+  }),
+  t.partial({
+    country: t.string,
+    postalCode: t.string,
+  }),
+]);
+export type Hotel = t.TypeOf<typeof Hotel>;
+
+export const Hotels = t.array(Hotel);
+export type Hotels = t.TypeOf<typeof Hotels>;

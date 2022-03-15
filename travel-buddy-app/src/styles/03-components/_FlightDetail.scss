@@ -1,0 +1,17 @@
+.flight-detail {
+  text-align: left;
+
+  &__name {
+    font-size: $font-size-lg;
+    font-weight: bold;
+  }
+
+  &__cities {
+    text-align: right;
+  }
+
+  &__label {
+    font-weight: bold;
+    margin: 0;
+  }
+}

@@ -1,0 +1,21 @@
+.hotel-detail {
+  text-align: left;
+
+  &__name {
+    font-size: $font-size-lg;
+    font-weight: bold;
+  }
+
+  &__address {
+    font-style: italic;
+
+    @include media-breakpoint-up(sm) {
+      text-align: right;
+    }
+  }
+
+  &__label {
+    font-weight: bold;
+    margin: 0;
+  }
+}

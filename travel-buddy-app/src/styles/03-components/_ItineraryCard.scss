@@ -1,0 +1,19 @@
+.itinerary-card {
+  &__date {
+    font-size: $font-size-lg;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  &__detail {
+    border-bottom: dashed #ddd;
+    margin-bottom: $spacer;
+    padding-bottom: $spacer;
+
+    &:last-of-type {
+      border: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+}
