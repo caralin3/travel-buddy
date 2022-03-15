@@ -4,6 +4,9 @@ export const getDaysUntil = (date: string) => moment(date).diff(moment(), 'days'
 
 export const getDurationDays = (startDate: string, endDate: string) => moment(endDate).diff(startDate, 'days') + 1;
 
+export const getDurationHours = (startDate: string, endDate: string) =>
+  moment.duration(moment(endDate).diff(startDate)).asHours();
+
 export function getAllDays(startDate: string, endDate: string) {
   const days = [startDate];
   let date = moment(startDate);

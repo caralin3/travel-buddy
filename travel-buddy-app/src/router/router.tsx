@@ -1,7 +1,17 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { DashboardPage, RegisterPage, LoginPage, HomePage, TripsPage, TripsEditPage, TripsAddPage } from '../04-pages';
-import { TripDetailPage } from '../04-pages/TripDetailPage';
+import {
+  DashboardPage,
+  RegisterPage,
+  LoginPage,
+  HomePage,
+  TripsPage,
+  TripsEditPage,
+  TripsAddPage,
+  FlightDetailPage,
+  FlightsPage,
+  TripDetailPage,
+} from '../04-pages';
 import { PublicRoute } from './PublicRoute';
 import { RequireAuth } from './RequireAuth';
 
@@ -41,7 +51,7 @@ export const Router: React.FC = () => (
           <TripsPage />
         </RequireAuth>
       }
-    ></Route>
+    />
     <Route
       path="trips/add"
       element={
@@ -63,6 +73,22 @@ export const Router: React.FC = () => (
       element={
         <RequireAuth>
           <TripsEditPage />
+        </RequireAuth>
+      }
+    />
+    <Route
+      path="flights"
+      element={
+        <RequireAuth>
+          <FlightsPage />
+        </RequireAuth>
+      }
+    />
+    <Route
+      path="flights/:id"
+      element={
+        <RequireAuth>
+          <FlightDetailPage />
         </RequireAuth>
       }
     />

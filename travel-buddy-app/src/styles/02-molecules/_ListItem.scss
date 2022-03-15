@@ -1,0 +1,16 @@
+.list-item {
+  text-align: left;
+
+  &:hover {
+    background-color: $light;
+    cursor: pointer;
+  }
+
+  &__heading {
+    text-align: left;
+  }
+
+  &__dates {
+    font-style: italic;
+  }
+}

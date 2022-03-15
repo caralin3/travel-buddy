@@ -1,9 +1,10 @@
 import React from 'react';
-import { Flight, Hotel, Trip } from '../api';
+import { Activity, Flight, Hotel, Trip } from '../api';
 import { flights } from '../__mocks__/flights';
 import { hotels } from '../__mocks__/hotels';
 import { formatDate, getAllDays, getDaysUntil, sortByDate } from '../utils';
 import { ItineraryCard } from './ItineraryCard';
+import { activities } from '../__mocks__/activities';
 
 export interface TripDetailProps {
   trip: Trip;
@@ -12,6 +13,7 @@ export interface TripDetailProps {
 export const TripDetail: React.FC<TripDetailProps> = ({ trip }) => {
   const sortedHotels: Hotel[] = sortByDate(hotels, 'checkInDate');
   const sortedFlights: Flight[] = sortByDate(flights, 'departureDate');
+  const sortedActivities: Activity[] = sortByDate(activities, 'startDate');
 
   const days = getAllDays(trip.startDate, trip.endDate);
 
@@ -33,7 +35,15 @@ export const TripDetail: React.FC<TripDetailProps> = ({ trip }) => {
       </div>
       <div className="itinerary px-5 my-4">
         <h3 className="itinerary__title mb-4">Itinerary Details</h3>
-        <ItineraryCard days={days} hotels={sortedHotels} flights={sortedFlights} />=
+        {days.map((day) => (
+          <ItineraryCard
+            key={day}
+            activities={sortedActivities}
+            day={day}
+            hotels={sortedHotels}
+            flights={sortedFlights}
+          />
+        ))}
       </div>
     </div>
   );

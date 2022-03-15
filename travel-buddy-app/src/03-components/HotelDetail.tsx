@@ -28,8 +28,6 @@ export const HotelDetail: React.FC<HotelDetailProps> = ({
 }) => {
   const nights = getDurationDays(checkInDate, checkOutDate);
 
-  console.log(checkInDate, checkOutDate, nights);
-
   return (
     <div className="hotel-detail">
       <Row>
@@ -54,7 +52,7 @@ export const HotelDetail: React.FC<HotelDetailProps> = ({
           {/* <Col xs={6} md={3}>
             <p className="hotel-detail__label">Confirmation</p>
           </Col> */}
-          <Col xs={6} md={3}>
+          <Col xs={6} md={6}>
             <p className="hotel-detail__label">Notes</p>
             {/* Terminal {terminal}
           {!!seats ? `; Seats ${seats}` : ''} */}

@@ -176,7 +176,6 @@ export const Hotel = t.intersection([
     currency: t.string,
     addressLine1: t.string,
     city: t.string,
-    state: t.string,
     trip: Trip,
   }),
   t.partial({
@@ -187,6 +186,7 @@ export const Hotel = t.intersection([
   }),
   t.partial({
     country: t.string,
+    state: t.string,
     postalCode: t.string,
   }),
 ]);
@@ -194,3 +194,32 @@ export type Hotel = t.TypeOf<typeof Hotel>;
 
 export const Hotels = t.array(Hotel);
 export type Hotels = t.TypeOf<typeof Hotels>;
+
+export const Activity = t.intersection([
+  t.interface({
+    id: t.number,
+    name: t.string,
+    description: t.string,
+    startDate: t.string,
+    endDate: t.string,
+    cost: t.number,
+    currency: t.string,
+    addressLine1: t.string,
+    city: t.string,
+    postalCode: t.string,
+    trip: Trip,
+  }),
+  t.partial({
+    addressLine2: t.string,
+    // port;
+    // cruise;
+  }),
+  t.partial({
+    company: t.string,
+  }),
+  t.partial({
+    state: t.string,
+    country: t.string,
+  }),
+]);
+export type Activity = t.TypeOf<typeof Activity>;

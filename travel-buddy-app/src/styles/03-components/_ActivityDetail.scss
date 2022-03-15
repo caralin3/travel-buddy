@@ -1,0 +1,35 @@
+.activity-detail {
+  text-align: left;
+
+  &__name {
+    font-size: $font-size-lg;
+    font-weight: bold;
+  }
+
+  &__label {
+    font-weight: bold;
+    margin: 0;
+  }
+}
+
+.activity {
+  margin-bottom: $spacer;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  // &__name {
+  //   font-weight: bold;
+  // }
+
+  &__address,
+  &__duration {
+    font-size: $font-size-sm;
+  }
+
+  &__notes {
+    font-style: italic;
+    text-align: left;
+  }
+}

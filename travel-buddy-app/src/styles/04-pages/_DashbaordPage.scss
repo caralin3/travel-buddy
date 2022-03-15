@@ -1,0 +1,12 @@
+.dashboard-page {
+  &__upcoming {
+    &-heading {
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding-bottom: $spacer;
+      text-align: left;
+    }
+  }
+}

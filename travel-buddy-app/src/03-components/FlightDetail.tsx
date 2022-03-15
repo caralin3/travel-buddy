@@ -1,10 +1,13 @@
 import moment from 'moment';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Col, Row } from 'reactstrap';
 import { Flight } from '../api';
+import { TRIPS_ROUTE } from '../router';
 
 export interface FlightDetailProps {
   flight: Flight;
+  showTrip?: boolean;
 }
 
 export const FlightDetail: React.FC<FlightDetailProps> = ({
@@ -20,10 +23,21 @@ export const FlightDetail: React.FC<FlightDetailProps> = ({
     flightNumber,
     seats,
     terminal,
+    trip,
   },
+  showTrip = false,
 }) => {
   return (
     <div className="flight-detail">
+      {showTrip && (
+        <Row>
+          <Col>
+            <Link className="text-dark" to={`${TRIPS_ROUTE}/${trip.id}`}>
+              {trip.title}
+            </Link>
+          </Col>
+        </Row>
+      )}
       <Row>
         <Col className="flight-detail__name text-primary">
           {airline} #{flightNumber}

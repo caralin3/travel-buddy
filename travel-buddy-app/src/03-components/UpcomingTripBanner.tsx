@@ -3,9 +3,12 @@ import React from 'react';
 import { Col, Row } from 'reactstrap';
 import { Banner, Countdown } from '../02-molecules';
 
-export interface UpcomingTripBannerProps {}
+export interface UpcomingTripBannerProps {
+  date: string;
+  title: string;
+}
 
-export const UpcomingTripBanner: React.FC<UpcomingTripBannerProps> = () => (
+export const UpcomingTripBanner: React.FC<UpcomingTripBannerProps> = ({ date, title }) => (
   <Banner>
     <Row>
       <Col>
@@ -15,13 +18,13 @@ export const UpcomingTripBanner: React.FC<UpcomingTripBannerProps> = () => (
       </Col>
     </Row>
     <Row>
-      <Countdown date={moment('05/6/2022').toString()} />
+      <Countdown date={date} />
     </Row>
     <Row>
       <Col>
-        <h2>Alaskan Cruise</h2>
+        <h2>{title}</h2>
         <p className="m-0">
-          <strong>{moment('05-06-2022').format('MMMM DD, YYYY')}</strong>
+          <strong>{moment(date).format('MMMM DD, YYYY')}</strong>
         </p>
       </Col>
     </Row>
