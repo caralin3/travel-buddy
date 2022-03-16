@@ -12,6 +12,8 @@ export const formatDate = (date: string, format = LONG_DATE_FORMAT) => moment(da
 export const sortByDate = (arr: any[], dateField: string) =>
   arr.sort((a, b) => moment(a[dateField]).valueOf() - moment(b[dateField]).valueOf());
 
+export const isFutureDate = (date: string) => moment(date).isAfter(moment());
+
 export function getDaysUntil(date: string) {
   const days = moment(date).diff(moment(), 'days');
   if (days < 0) {

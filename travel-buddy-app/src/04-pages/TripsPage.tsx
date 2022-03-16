@@ -14,7 +14,7 @@ export interface TripsPageProps {}
 export const TripsPage: React.FC<TripsPageProps> = () => {
   const navigate = useNavigate();
 
-  const trips = useSelector((state: RootState) => tripsState.selectAll(state));
+  const trips = useSelector((state: RootState) => tripsState.selectFutureTrips(state));
 
   return (
     <Container className="py-5">

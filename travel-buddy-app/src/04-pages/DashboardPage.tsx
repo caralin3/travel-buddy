@@ -25,7 +25,7 @@ export const DashboardPage: React.FC<DashboardPagePageProps> = () => {
 
   const MAX_VIEW = 3;
 
-  const trips = useSelector((state: RootState) => tripsState.selectAll(state)).slice(0, MAX_VIEW);
+  const trips = useSelector((state: RootState) => tripsState.selectFutureTrips(state)).slice(0, MAX_VIEW);
 
   const nextTrip = trips[0];
   const user = useSelector((state: RootState) => state.session.user);

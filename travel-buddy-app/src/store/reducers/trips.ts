@@ -2,6 +2,7 @@ import { createEntityAdapter, createSlice, EntityAdapter, PayloadAction } from '
 import moment from 'moment';
 import { RootState } from '..';
 import { Trip } from '../../api';
+import { isFutureDate } from '../../utils';
 
 export interface TripState extends EntityAdapter<Trip> {}
 
@@ -29,5 +30,9 @@ export const { reset, addTrip, deleteTrip, loadTrips, updateTrip } = TripsSlice.
 export const { selectById, selectIds, selectEntities, selectAll, selectTotal } = tripsAdapter.getSelectors(
   (state: RootState) => state.trips
 );
+
+export const selectFutureTrips = (state: RootState) => selectAll(state).filter((trip) => isFutureDate(trip.startDate));
+
+export const selectPastTrips = (state: RootState) => selectAll(state).filter((trip) => !isFutureDate(trip.startDate));
 
 export default TripsSlice.reducer;
