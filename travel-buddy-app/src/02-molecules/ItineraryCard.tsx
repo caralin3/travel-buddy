@@ -13,7 +13,7 @@ export const ItineraryCard: React.FC<ItineraryCardProps> = ({ children, date }) 
       <br />
       <span className="text-uppercase">{moment(date).format('ddd')}</span>
     </Col>
-    <Col xs={12} md={10} lg={11} className="px-4 py-3">
+    <Col xs={12} md={10} lg={11} className="d-flex flex-column justify-content-center px-4 py-3">
       {children}
     </Col>
   </Row>

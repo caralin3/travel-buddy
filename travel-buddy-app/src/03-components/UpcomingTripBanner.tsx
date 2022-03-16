@@ -1,7 +1,8 @@
 import moment from 'moment';
 import React from 'react';
 import { Col, Row } from 'reactstrap';
-import { Banner, Countdown } from '../02-molecules';
+import { Banner } from '../01-atoms';
+import { Countdown } from '../02-molecules';
 
 export interface UpcomingTripBannerProps {
   date: string;

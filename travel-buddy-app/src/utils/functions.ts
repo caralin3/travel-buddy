@@ -1,6 +1,12 @@
 import moment from 'moment';
 
-export const getDaysUntil = (date: string) => moment(date).diff(moment(), 'days');
+export function getDaysUntil(date: string) {
+  const days = moment(date).diff(moment(), 'days');
+  if (days < 0) {
+    return 0;
+  }
+  return days;
+}
 
 export const getDurationDays = (startDate: string, endDate: string) => moment(endDate).diff(startDate, 'days') + 1;
 

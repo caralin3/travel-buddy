@@ -1,4 +1,5 @@
 import { createEntityAdapter, createSlice, EntityAdapter, PayloadAction } from '@reduxjs/toolkit';
+import moment from 'moment';
 import { RootState } from '..';
 import { Trip } from '../../api';
 
@@ -6,7 +7,7 @@ export interface TripState extends EntityAdapter<Trip> {}
 
 const tripsAdapter = createEntityAdapter<Trip>({
   selectId: (trip) => trip.id,
-  sortComparer: (a, b) => a.title.localeCompare(b.title),
+  sortComparer: (a, b) => moment(a.startDate).valueOf() - moment(b.startDate).valueOf(),
 });
 
 export const TripsSlice = createSlice({

@@ -1,7 +1,9 @@
 import moment from 'moment';
 import React from 'react';
+import { EmptyMessage } from '../01-atoms';
 import { ItineraryCard } from '../02-molecules';
 import { Activity, Cruise, Flight, Hotel } from '../api';
+import { ADD_ACTIVITIES_ROUTE } from '../router';
 import { ActivityDetail } from './ActivityDetail';
 import { CruiseDetail } from './CruiseDetail';
 import { FlightDetail } from './FlightDetail';
@@ -36,47 +38,52 @@ export const TripItinerary: React.FC<TripItineraryProps> = ({ activities, cruise
 
   return (
     <ItineraryCard date={day}>
-      {getFlightByDay(day).length > 0 &&
-        getFlightByDay(day).map((flight) => (
-          <div className="itinerary-card__detail" key={flight.id}>
-            <FlightDetail flight={flight} />
-          </div>
-        ))}
-      {getHotelCheckInByDay(day).length > 0 &&
-        getHotelCheckInByDay(day).map((hotel) => (
-          <div className="itinerary-card__detail" key={hotel.checkInDate}>
-            <HotelDetail hotel={hotel} checkIn />
-          </div>
-        ))}
-      {getCruiseStartsByDay(day).length > 0 &&
-        getCruiseStartsByDay(day).map((cruise) => (
-          <div className="itinerary-card__detail" key={cruise.id}>
-            <CruiseDetail cruise={cruise} />
-          </div>
-        ))}
-      {getCruiseStartsByDay(day).length > 0 &&
-        getCruiseStartsByDay(day).map((cruise) => (
-          <div className="itinerary-card__detail" key={cruise.id}>
-            <CruiseDetail cruise={cruise} />
-          </div>
-        ))}
-      {getActivitiesByDay(day).length > 0 && (
-        <div className="itinerary-card__detail">
-          <ActivityDetail activities={getActivitiesByDay(day)} />
-        </div>
+      {getFlightByDay(day).length === 0 &&
+      getHotelCheckInByDay(day).length === 0 &&
+      getCruiseStartsByDay(day).length === 0 &&
+      getActivitiesByDay(day).length === 0 &&
+      getCruiseEndsByDay(day).length === 0 &&
+      getHotelCheckOutByDay(day).length === 0 ? (
+        <EmptyMessage message="No activities yet" link={{ label: 'Add activity', path: ADD_ACTIVITIES_ROUTE }} />
+      ) : (
+        <>
+          {getFlightByDay(day).length > 0 &&
+            getFlightByDay(day).map((flight) => (
+              <div className="itinerary-card__detail" key={flight.id}>
+                <FlightDetail flight={flight} />
+              </div>
+            ))}
+          {getHotelCheckInByDay(day).length > 0 &&
+            getHotelCheckInByDay(day).map((hotel) => (
+              <div className="itinerary-card__detail" key={hotel.checkInDate}>
+                <HotelDetail hotel={hotel} checkIn />
+              </div>
+            ))}
+          {getCruiseStartsByDay(day).length > 0 &&
+            getCruiseStartsByDay(day).map((cruise) => (
+              <div className="itinerary-card__detail" key={cruise.id}>
+                <CruiseDetail cruise={cruise} />
+              </div>
+            ))}
+          {getActivitiesByDay(day).length > 0 && (
+            <div className="itinerary-card__detail">
+              <ActivityDetail activities={getActivitiesByDay(day)} />
+            </div>
+          )}
+          {getCruiseEndsByDay(day).length > 0 &&
+            getCruiseEndsByDay(day).map((cruise) => (
+              <div className="itinerary-card__detail" key={cruise.id}>
+                <CruiseDetail end cruise={cruise} />
+              </div>
+            ))}
+          {getHotelCheckOutByDay(day).length > 0 &&
+            getHotelCheckOutByDay(day).map((hotel) => (
+              <div className="itinerary-card__detail" key={hotel.checkOutDate}>
+                <HotelDetail hotel={hotel} />
+              </div>
+            ))}
+        </>
       )}
-      {getCruiseEndsByDay(day).length > 0 &&
-        getCruiseEndsByDay(day).map((cruise) => (
-          <div className="itinerary-card__detail" key={cruise.id}>
-            <CruiseDetail end cruise={cruise} />
-          </div>
-        ))}
-      {getHotelCheckOutByDay(day).length > 0 &&
-        getHotelCheckOutByDay(day).map((hotel) => (
-          <div className="itinerary-card__detail" key={hotel.checkOutDate}>
-            <HotelDetail hotel={hotel} />
-          </div>
-        ))}
     </ItineraryCard>
   );
 };

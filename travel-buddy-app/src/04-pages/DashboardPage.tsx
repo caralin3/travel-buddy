@@ -14,17 +14,21 @@ import {
   TRIPS_ROUTE,
 } from '../router';
 import { RootState } from '../store';
-import { formatDate, SHORT_DATE_FORMAT, sortByDate } from '../utils';
+import * as tripsState from '../store/reducers/trips';
+import { formatDate, SHORT_DATE_FORMAT } from '../utils';
 import { cruises } from '../__mocks__';
 import { flights } from '../__mocks__/flights';
-import { trips } from '../__mocks__/trips';
 
 export interface DashboardPagePageProps {}
 
 export const DashboardPage: React.FC<DashboardPagePageProps> = () => {
   const navigate = useNavigate();
-  const sortedTrips: Trip[] = sortByDate(trips, 'startDate');
-  const nextTrip = sortedTrips[0];
+
+  const MAX_VIEW = 3;
+
+  const trips = useSelector((state: RootState) => tripsState.selectAll(state)).slice(0, MAX_VIEW);
+
+  const nextTrip = trips[0];
   const user = useSelector((state: RootState) => state.session.user);
 
   return (
@@ -64,7 +68,7 @@ export const DashboardPage: React.FC<DashboardPagePageProps> = () => {
               </div>
 
               <ListGroup>
-                {trips.slice(0, 2).map((trip) => (
+                {trips.map((trip) => (
                   <ListItem
                     key={trip.id}
                     heading={trip.title}

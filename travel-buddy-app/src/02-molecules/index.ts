@@ -1,4 +1,3 @@
-export * from './Banner';
 export * from './Card';
 export * from './Countdown';
 export * from './DetailBanner';

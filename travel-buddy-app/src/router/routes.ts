@@ -15,3 +15,11 @@ export const EDIT_FLIGHTS_ROUTE = '/flights/:id';
 export const CRUISES_ROUTE = '/cruises';
 export const ADD_CRUISES_ROUTE = '/cruises/add';
 export const EDIT_CRUISES_ROUTE = '/cruises/:id';
+
+export const PORTS_ROUTE = '/ports';
+export const ADD_PORTS_ROUTE = '/ports/add';
+export const EDIT_PORTS_ROUTE = '/ports/:id';
+
+export const ACTIVITIES_ROUTE = '/activities';
+export const ADD_ACTIVITIES_ROUTE = '/activities/add';
+export const EDIT_ACTIVITIES_ROUTE = '/activities/:id';
