@@ -3,6 +3,7 @@ import { Activity, Cruise, Flight, Hotel, Trip } from '../api';
 import { activities, cruises, flights, hotels } from '../__mocks__';
 import { formatDate, getAllDays, getDaysUntil, sortByDate } from '../utils';
 import { TripItinerary } from './TripItinerary';
+import { DetailBanner } from '../02-molecules';
 
 export interface TripDetailProps {
   trip: Trip;
@@ -24,20 +25,12 @@ export const TripDetail: React.FC<TripDetailProps> = ({ trip }) => {
 
   return (
     <div className="trip-detail">
-      <div className="trip-detail__header bg-secondary text-white px-5 py-4">
-        <div className="d-flex flex-column align-items-start">
-          <h1>{trip.title}</h1>
-          {!!trip.description && <p dangerouslySetInnerHTML={{ __html: trip.description }} />}
-          <p className="h4">
-            {formatDate(trip.startDate)} - {formatDate(trip.endDate)}
-          </p>
-        </div>
-        <p className="trip-detail__until text-uppercase m-0">
-          <strong>{getDaysUntil(trip.startDate)}</strong>
-          <br />
-          <strong>days left</strong>
-        </p>
-      </div>
+      <DetailBanner
+        title={trip.title}
+        description={trip.description}
+        endDate={trip.endDate}
+        startDate={trip.startDate}
+      />
       <div className="itinerary px-5 my-4">
         <h3 className="itinerary__title mb-4">Itinerary Details</h3>
         {days.map((day) => (
