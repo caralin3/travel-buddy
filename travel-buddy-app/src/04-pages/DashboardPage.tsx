@@ -66,6 +66,7 @@ export const DashboardPage: React.FC<DashboardPagePageProps> = () => {
               <ListGroup>
                 {trips.slice(0, 2).map((trip) => (
                   <ListItem
+                    key={trip.id}
                     heading={trip.title}
                     description={trip.description}
                     dates={`${formatDate(trip.startDate, SHORT_DATE_FORMAT)} - ${formatDate(
@@ -90,6 +91,7 @@ export const DashboardPage: React.FC<DashboardPagePageProps> = () => {
               <ListGroup>
                 {flights.slice(0, 2).map((flight) => (
                   <ListItem
+                    key={flight.id}
                     heading={`${flight.airline} #${flight.flightNumber} (${flight.confirmationCode})`}
                     description={`${flight.departureCity} to ${flight.arrivalCity}`}
                     dates={`${formatDate(flight.departureDate, SHORT_DATE_FORMAT)} - ${formatDate(
@@ -114,6 +116,7 @@ export const DashboardPage: React.FC<DashboardPagePageProps> = () => {
               <ListGroup>
                 {cruises.slice(0, 2).map((cruise) => (
                   <ListItem
+                    key={cruise.id}
                     heading={`${cruise.cruiseLine}: ${cruise.shipName}`}
                     description={
                       !!cruise.description

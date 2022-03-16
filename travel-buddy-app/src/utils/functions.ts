@@ -8,7 +8,7 @@ export const getDurationHours = (startDate: string, endDate: string) =>
   Math.ceil(moment.duration(moment(endDate).diff(startDate)).asHours() * 2) / 2;
 
 export function getAllDays(startDate: string, endDate: string) {
-  const days = [startDate];
+  const days = [moment(startDate).format('YYYY-MM-DD')];
   let date = moment(startDate);
   while (moment(endDate).diff(date, 'days') > 0) {
     date = date.add(1, 'day');

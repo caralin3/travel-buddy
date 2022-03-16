@@ -38,7 +38,7 @@ export const TripFormContainer: React.FC<TripFormContainerProps> = ({ tripId }) 
         setEndDate(trip.endDate);
       }
     }
-  }, [tripId]);
+  }, [trip, user, tripId]);
 
   const handleAdd = async (request: TripRequest) => {
     try {

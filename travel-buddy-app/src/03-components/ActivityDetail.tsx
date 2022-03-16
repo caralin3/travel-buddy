@@ -36,10 +36,19 @@ export const ActivityDetail: React.FC<ActivityDetailProps> = ({ activities }) =>
             </em>
           </Col>
           <Col xs={12} sm={4}>
-            <p className="activity__name text-primary m-0">{activity.name}</p>
+            <p className="activity__name text-primary m-0">
+              {activity.name}
+              {!!activity.port && (
+                <span className="activity__port">
+                  &nbsp;({activity.port.city}, {!!activity.port.state ? activity.port.state : activity.port.country})
+                </span>
+              )}
+            </p>
             <p className="activity__address m-0">
               {activity.addressLine1}
-              {!!activity.addressLine2 ? ` ${activity.addressLine2}` : ''}, {activity.city}, {activity.state}{' '}
+              {!!activity.addressLine2 ? ` ${activity.addressLine2}` : ''}
+              {!!activity.city ? `, ${activity.city}` : ''}
+              {!!activity.state ? `, ${activity.state}` : ''}
               {/* {!!activity.postalCode ? activity.postalCode : ''}{' '} */}
             </p>
           </Col>

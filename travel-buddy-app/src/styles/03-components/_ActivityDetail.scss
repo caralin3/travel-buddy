@@ -24,12 +24,9 @@
     margin-bottom: 0;
   }
 
-  // &__name {
-  //   font-weight: bold;
-  // }
-
   &__address,
-  &__duration {
+  &__duration,
+  &__port {
     font-size: $font-size-sm;
   }
 

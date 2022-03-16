@@ -1,4 +1,5 @@
 import { Activity } from '../api';
+import { cruises, cruise1Ports } from './cruises';
 import { trips } from './trips';
 
 export const activities: Activity[] = [
@@ -62,5 +63,45 @@ export const activities: Activity[] = [
     country: 'USA',
     postalCode: '75226',
     trip: trips[0],
+  },
+  {
+    id: 4,
+    name: 'Arrive in Seattle',
+    description: 'Arrive for cruise',
+    startDate: '2022-05-08 16:00:00',
+    endDate: '2022-05-08 18:00:00',
+    cost: 0,
+    currency: 'USD',
+    addressLine1: 'Seattle Washington',
+    trip: trips[0],
+    cruise: cruises[0],
+  },
+  {
+    id: 5,
+    name: 'After Dinner Show',
+    description: 'Show after dinner',
+    startDate: '2022-05-09 16:00:00',
+    endDate: '2022-05-09 18:00:00',
+    cost: 0,
+    currency: 'USD',
+    addressLine1: 'Main Theater',
+    trip: trips[0],
+    cruise: cruises[0],
+  },
+  {
+    id: 6,
+    name: 'Helicopter Ride',
+    description: 'Helicopter ride over glaciers',
+    startDate: '2022-05-10 08:00:00',
+    endDate: '2022-05-10 10:00:00',
+    cost: 200,
+    currency: 'USD',
+    addressLine1: '2624 Commerce Street',
+    city: 'Ketchikan',
+    state: 'Alaska',
+    country: 'USA',
+    trip: trips[0],
+    cruise: cruises[0],
+    port: cruise1Ports[0],
   },
 ];
