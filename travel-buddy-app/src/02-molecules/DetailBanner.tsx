@@ -9,8 +9,8 @@ export interface DetailBannerProps {
 }
 
 export const DetailBanner: React.FC<DetailBannerProps> = ({ description, endDate, title, startDate }) => (
-  <div className="detail-banner bg-secondary text-white px-5 py-4">
-    <div className="detail-banner__text d-flex flex-column align-items-start">
+  <div className="detail-banner bg-secondary px-5 py-4">
+    <div className="detail-banner__text d-flex flex-column align-items-start text-white">
       <h1>{title}</h1>
       {!!description && <p dangerouslySetInnerHTML={{ __html: description }} />}
       <p className="h4">
