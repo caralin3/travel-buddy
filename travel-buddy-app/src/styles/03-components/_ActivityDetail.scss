@@ -7,8 +7,13 @@
   }
 
   &__label {
+    display: none;
     font-weight: bold;
     margin: 0;
+
+    @include media-breakpoint-up(sm) {
+      display: block;
+    }
   }
 }
 

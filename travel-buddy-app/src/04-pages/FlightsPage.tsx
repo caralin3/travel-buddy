@@ -3,7 +3,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Container, ListGroup } from 'reactstrap';
 import { ListItem } from '../02-molecules';
-import { ADD_TRIPS_ROUTE, FLIGHTS_ROUTE, TRIPS_ROUTE } from '../router';
+import { ADD_FLIGHTS_ROUTE, FLIGHTS_ROUTE } from '../router';
 // import { RootState } from '../store';
 // import * as flightsState from '../store/reducers/flights';
 import { formatDate, SHORT_DATE_FORMAT } from '../utils';
@@ -21,7 +21,7 @@ export const FlightsPage: React.FC<FlightsPageProps> = () => {
     <Container className="py-5">
       <div className="d-flex align-items-center justify-content-center position-relative pb-3">
         <h1 className="">Flights</h1>
-        <Link className="btn btn-secondary position-absolute" style={{ right: 0 }} to={ADD_TRIPS_ROUTE}>
+        <Link className="btn btn-secondary position-absolute" style={{ right: 0 }} to={ADD_FLIGHTS_ROUTE}>
           Add New Flight
         </Link>
       </div>

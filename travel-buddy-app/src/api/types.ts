@@ -223,3 +223,63 @@ export const Activity = t.intersection([
   }),
 ]);
 export type Activity = t.TypeOf<typeof Activity>;
+
+export const Activities = t.array(Activity);
+export type Activities = t.TypeOf<typeof Activities>;
+
+export const Cruise = t.intersection([
+  t.interface({
+    id: t.number,
+    cruiseLine: t.string,
+    shipName: t.string,
+    cost: t.number,
+    currency: t.string,
+    cabinNumber: t.string,
+    startDate: t.string,
+    endDate: t.string,
+    departureCity: t.string,
+    departureCountry: t.string,
+    roundTrip: t.boolean,
+    trip: Trip,
+  }),
+  t.partial({
+    description: t.string,
+  }),
+  t.partial({
+    departureState: t.string,
+  }),
+  t.partial({
+    destinationCity: t.string,
+    destinationCountry: t.string,
+    destinationState: t.string,
+  }),
+  t.partial({
+    cabinType: RoomType,
+  }),
+]);
+export type Cruise = t.TypeOf<typeof Cruise>;
+
+export const Cruises = t.array(Cruise);
+export type Cruises = t.TypeOf<typeof Cruises>;
+
+export const Port = t.intersection([
+  t.interface({
+    id: t.number,
+    day: t.number,
+    arrival: t.string,
+    departure: t.string,
+    city: t.string,
+    country: t.string,
+    cruise: Cruise,
+  }),
+  t.partial({
+    description: t.string,
+  }),
+  t.partial({
+    state: t.string,
+  }),
+]);
+export type Port = t.TypeOf<typeof Port>;
+
+export const Ports = t.array(Port);
+export type Ports = t.TypeOf<typeof Ports>;

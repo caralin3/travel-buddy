@@ -11,6 +11,8 @@ import {
   FlightDetailPage,
   FlightsPage,
   TripDetailPage,
+  CruisesPage,
+  CruiseDetailPage,
 } from '../04-pages';
 import { PublicRoute } from './PublicRoute';
 import { RequireAuth } from './RequireAuth';
@@ -89,6 +91,22 @@ export const Router: React.FC = () => (
       element={
         <RequireAuth>
           <FlightDetailPage />
+        </RequireAuth>
+      }
+    />
+    <Route
+      path="cruises"
+      element={
+        <RequireAuth>
+          <CruisesPage />
+        </RequireAuth>
+      }
+    />
+    <Route
+      path="cruises/:id"
+      element={
+        <RequireAuth>
+          <CruiseDetailPage />
         </RequireAuth>
       }
     />

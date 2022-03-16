@@ -15,6 +15,7 @@ import {
 } from '../router';
 import { RootState } from '../store';
 import { formatDate, SHORT_DATE_FORMAT, sortByDate } from '../utils';
+import { cruises } from '../__mocks__';
 import { flights } from '../__mocks__/flights';
 import { trips } from '../__mocks__/trips';
 
@@ -102,7 +103,7 @@ export const DashboardPage: React.FC<DashboardPagePageProps> = () => {
             </Col>
           </Row>
         )}
-        {trips && trips.length > 0 && (
+        {cruises && cruises.length > 0 && (
           <Row className="dashboard-page__upcoming pb-5">
             <Col>
               <div className="dashboard-page__upcoming-heading">
@@ -111,15 +112,21 @@ export const DashboardPage: React.FC<DashboardPagePageProps> = () => {
               </div>
 
               <ListGroup>
-                {trips.slice(0, 2).map((trip) => (
+                {cruises.slice(0, 2).map((cruise) => (
                   <ListItem
-                    heading={trip.title}
-                    description={trip.description}
-                    dates={`${formatDate(trip.startDate, SHORT_DATE_FORMAT)} - ${formatDate(
-                      trip.endDate,
+                    heading={`${cruise.cruiseLine}: ${cruise.shipName}`}
+                    description={
+                      !!cruise.description
+                        ? cruise.description
+                        : cruise.roundTrip
+                        ? cruise.departureCity
+                        : cruise.destinationCity
+                    }
+                    dates={`${formatDate(cruise.startDate, SHORT_DATE_FORMAT)} - ${formatDate(
+                      cruise.endDate,
                       SHORT_DATE_FORMAT
                     )}`}
-                    onClick={() => navigate(`${CRUISES_ROUTE}/${trip.id}`)}
+                    onClick={() => navigate(`${CRUISES_ROUTE}/${cruise.id}`)}
                   />
                 ))}
               </ListGroup>

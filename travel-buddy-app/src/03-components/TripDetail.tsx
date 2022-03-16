@@ -1,19 +1,24 @@
 import React from 'react';
-import { Activity, Flight, Hotel, Trip } from '../api';
-import { flights } from '../__mocks__/flights';
-import { hotels } from '../__mocks__/hotels';
+import { Activity, Cruise, Flight, Hotel, Trip } from '../api';
+import { activities, cruises, flights, hotels } from '../__mocks__';
 import { formatDate, getAllDays, getDaysUntil, sortByDate } from '../utils';
-import { ItineraryCard } from './ItineraryCard';
-import { activities } from '../__mocks__/activities';
+import { TripItinerary } from './TripItinerary';
 
 export interface TripDetailProps {
   trip: Trip;
 }
 
 export const TripDetail: React.FC<TripDetailProps> = ({ trip }) => {
-  const sortedHotels: Hotel[] = sortByDate(hotels, 'checkInDate');
-  const sortedFlights: Flight[] = sortByDate(flights, 'departureDate');
-  const sortedActivities: Activity[] = sortByDate(activities, 'startDate');
+  const sortedHotels: Hotel[] = sortByDate(hotels, 'checkInDate').filter((hotel: Hotel) => hotel.trip.id === trip.id);
+  const sortedFlights: Flight[] = sortByDate(flights, 'departureDate').filter(
+    (flight: Flight) => flight.trip.id === trip.id
+  );
+  const sortedActivities: Activity[] = sortByDate(activities, 'startDate').filter(
+    (activity: Activity) => activity.trip.id === trip.id
+  );
+  const sortedCruises: Cruise[] = sortByDate(cruises, 'startDate').filter(
+    (cruise: Cruise) => cruise.trip.id === trip.id
+  );
 
   const days = getAllDays(trip.startDate, trip.endDate);
 
@@ -36,9 +41,10 @@ export const TripDetail: React.FC<TripDetailProps> = ({ trip }) => {
       <div className="itinerary px-5 my-4">
         <h3 className="itinerary__title mb-4">Itinerary Details</h3>
         {days.map((day) => (
-          <ItineraryCard
+          <TripItinerary
             key={day}
             activities={sortedActivities}
+            cruises={sortedCruises}
             day={day}
             hotels={sortedHotels}
             flights={sortedFlights}

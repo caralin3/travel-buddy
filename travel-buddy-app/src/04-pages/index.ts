@@ -1,3 +1,5 @@
+export * from './CruisesPage';
+export * from './CruiseDetailPage';
 export * from './DashboardPage';
 export * from './FlightDetailPage';
 export * from './FlightsPage';

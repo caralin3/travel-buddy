@@ -48,25 +48,6 @@ export const ActivityDetail: React.FC<ActivityDetailProps> = ({ activities }) =>
           </Col>
         </Row>
       ))}
-      {/* <Row>
-        <Col xs={12} sm={6} className="activity-detail__name text-primary">
-          {name}
-        </Col>
-        <Col xs={12} sm={6} className="activity-detail__address">
-          {addressLine1}
-          {!!addressLine2 ? ` ${addressLine2}` : ''}, {city}, {state} {!!postalCode ? postalCode : ''}{' '}
-        </Col>
-      </Row>
-      <Row className="my-2">
-        <Col xs={6} md={3}>
-          <p className="activity-detail__label">Check-In</p>
-          {moment(checkInDate).format('h:mm A')}
-        </Col>
-        <Col xs={6} md={3}>
-          <p className="activity-detail__label">Nights</p>
-          {nights}
-        </Col>
-      </Row> */}
     </div>
   );
 };

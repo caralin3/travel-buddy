@@ -1,0 +1,18 @@
+.cruise-detail {
+  text-align: left;
+
+  &__name {
+    font-size: $font-size-lg;
+    font-weight: bold;
+  }
+
+  &__label {
+    font-weight: bold;
+    margin: 0;
+  }
+
+  &__notes {
+    font-style: italic;
+    text-align: left;
+  }
+}
