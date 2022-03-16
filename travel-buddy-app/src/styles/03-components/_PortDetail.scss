@@ -1,0 +1,45 @@
+.port-detail {
+  text-align: left;
+
+  &__name {
+    font-size: $font-size-lg;
+    font-weight: bold;
+  }
+
+  &__label {
+    display: none;
+    font-weight: bold;
+    margin: 0;
+
+    @include media-breakpoint-up(sm) {
+      display: block;
+    }
+  }
+
+  &__hours {
+    font-weight: bold;
+    text-align: right;
+  }
+}
+
+.activity {
+  margin-bottom: $spacer;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  // &__name {
+  //   font-weight: bold;
+  // }
+
+  &__address,
+  &__duration {
+    font-size: $font-size-sm;
+  }
+
+  &__notes {
+    font-style: italic;
+    text-align: left;
+  }
+}

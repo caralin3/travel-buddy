@@ -1,7 +1,7 @@
 import React from 'react';
 import { Activity, Cruise, Flight, Hotel, Trip } from '../api';
 import { activities, cruises, flights, hotels } from '../__mocks__';
-import { formatDate, getAllDays, getDaysUntil, sortByDate } from '../utils';
+import { getAllDays, sortByDate } from '../utils';
 import { TripItinerary } from './TripItinerary';
 import { DetailBanner } from '../02-molecules';
 

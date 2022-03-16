@@ -2,7 +2,7 @@ import moment from 'moment';
 import React from 'react';
 import { Col, Row } from 'reactstrap';
 import { Activity } from '../api';
-import { getDurationDays, getDurationHours } from '../utils';
+import { getDurationHours } from '../utils';
 
 export interface ActivityDetailProps {
   activities: Activity[];
