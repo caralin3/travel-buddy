@@ -1,8 +1,8 @@
-import moment from 'moment';
 import React from 'react';
 import { Col, Row } from 'reactstrap';
 import { Banner } from '../01-atoms';
 import { Countdown } from '../02-molecules';
+import { formatDate } from '../utils';
 
 export interface UpcomingTripBannerProps {
   date: string;
@@ -25,7 +25,7 @@ export const UpcomingTripBanner: React.FC<UpcomingTripBannerProps> = ({ date, ti
       <Col>
         <h2>{title}</h2>
         <p className="m-0">
-          <strong>{moment(date).format('MMMM DD, YYYY')}</strong>
+          <strong>{formatDate(date)}</strong>
         </p>
       </Col>
     </Row>

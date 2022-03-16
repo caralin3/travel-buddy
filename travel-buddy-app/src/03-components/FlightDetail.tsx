@@ -1,9 +1,9 @@
-import moment from 'moment';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Col, Row } from 'reactstrap';
 import { Flight } from '../api';
 import { TRIPS_ROUTE } from '../router';
+import { formatDate, TIME_FORMAT } from '../utils';
 
 export interface FlightDetailProps {
   flight: Flight;
@@ -49,7 +49,7 @@ export const FlightDetail: React.FC<FlightDetailProps> = ({
       <Row className="my-2">
         <Col xs={6} md={3}>
           <p className="flight-detail__label">Depart</p>
-          {moment(departureDate).format('h:mm A')}
+          {formatDate(departureDate, TIME_FORMAT)}
         </Col>
         <Col xs={6} md={3}>
           <p className="flight-detail__label">Airport</p>
@@ -68,7 +68,7 @@ export const FlightDetail: React.FC<FlightDetailProps> = ({
       <Row>
         <Col xs={6} md={3}>
           <p className="flight-detail__label">Arrive</p>
-          {moment(arrivalDate).format('h:mm A')}
+          {formatDate(arrivalDate, TIME_FORMAT)}
         </Col>
         <Col xs={6} md={3}>
           <p className="flight-detail__label">Airport</p>

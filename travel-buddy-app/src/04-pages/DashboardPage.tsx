@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Col, Container, ListGroup, Row } from 'reactstrap';
 import { Card, ListItem } from '../02-molecules';
 import { UpcomingTripBanner } from '../03-components';
-import { Trip } from '../api';
 import {
   ADD_CRUISES_ROUTE,
   ADD_FLIGHTS_ROUTE,

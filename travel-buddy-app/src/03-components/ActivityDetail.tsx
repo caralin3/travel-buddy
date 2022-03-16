@@ -1,8 +1,7 @@
-import moment from 'moment';
 import React from 'react';
 import { Col, Row } from 'reactstrap';
 import { Activity } from '../api';
-import { getDurationHours } from '../utils';
+import { formatDate, getDurationHours, TIME_FORMAT } from '../utils';
 
 export interface ActivityDetailProps {
   activities: Activity[];
@@ -30,7 +29,7 @@ export const ActivityDetail: React.FC<ActivityDetailProps> = ({ activities }) =>
       {activities.map((activity) => (
         <Row key={activity.id} className="activity">
           <Col xs={12} sm={2}>
-            {moment(activity.startDate).format('h:mm A')}{' '}
+            {formatDate(activity.startDate, TIME_FORMAT)}{' '}
             <em className="activity__duration">
               ({getDuration(activity)} hr{getDuration(activity) > 1 ? 's' : ''})
             </em>

@@ -1,8 +1,7 @@
-import moment from 'moment';
 import React from 'react';
 import { Col, Row } from 'reactstrap';
 import { Cruise } from '../api';
-import { getDurationDays } from '../utils';
+import { formatDate, getDurationDays, TIME_FORMAT } from '../utils';
 
 export interface CruiseDetailProps {
   cruise: Cruise;
@@ -42,12 +41,12 @@ export const CruiseDetail: React.FC<CruiseDetailProps> = ({
           {end && !roundTrip ? (
             <p className="m-0">
               {destinationCity}, {!!destinationState ? destinationState : destinationCountry} at{' '}
-              {moment(endDate).format('h:mm A')}
+              {formatDate(endDate, TIME_FORMAT)}
             </p>
           ) : (
             <p className="m-0">
               {departureCity}, {!!departureState ? departureState : departureCountry} at{' '}
-              {moment(end ? endDate : startDate).format('h:mm A')}
+              {formatDate(end ? endDate : startDate, TIME_FORMAT)}
             </p>
           )}
         </Col>

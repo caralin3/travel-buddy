@@ -1,8 +1,7 @@
-import moment from 'moment';
 import React from 'react';
 import { Col, Row } from 'reactstrap';
 import { Hotel } from '../api';
-import { getDurationDays } from '../utils';
+import { formatDate, getDurationDays, TIME_FORMAT } from '../utils';
 
 export interface HotelDetailProps {
   checkIn?: boolean;
@@ -43,7 +42,7 @@ export const HotelDetail: React.FC<HotelDetailProps> = ({
         <Row className="my-2">
           <Col xs={6} md={3}>
             <p className="hotel-detail__label">Check-In</p>
-            {moment(checkInDate).format('h:mm A')}
+            {formatDate(checkInDate, TIME_FORMAT)}
           </Col>
           <Col xs={6} md={3}>
             <p className="hotel-detail__label">Nights</p>
@@ -62,7 +61,7 @@ export const HotelDetail: React.FC<HotelDetailProps> = ({
         <Row className="my-2">
           <Col xs={6} md={3}>
             <p className="hotel-detail__label">Check-Out</p>
-            {moment(checkOutDate).format('h:mm A')}
+            {formatDate(checkOutDate, TIME_FORMAT)}
           </Col>
         </Row>
       )}

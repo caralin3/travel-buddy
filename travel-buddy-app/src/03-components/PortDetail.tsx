@@ -1,8 +1,7 @@
-import moment from 'moment';
 import React from 'react';
 import { Col, Row } from 'reactstrap';
 import { Port } from '../api';
-import { getDurationHours } from '../utils';
+import { formatDate, getDurationHours, TIME_FORMAT } from '../utils';
 
 export interface PortDetailProps {
   port: Port;
@@ -26,11 +25,11 @@ export const PortDetail: React.FC<PortDetailProps> = ({
       <Row className="my-2">
         <Col xs={6} md={3}>
           <p className="port-detail__label">Arrive</p>
-          {moment(arrival).format('h:mm A')}
+          {formatDate(arrival, TIME_FORMAT)}
         </Col>
         <Col xs={6} md={3}>
           <p className="port-detail__label">Depart</p>
-          {moment(departure).format('h:mm A')}
+          {formatDate(departure, TIME_FORMAT)}
         </Col>
         <Col xs={6} md={6}>
           <p className="port-detail__label">Notes</p>
