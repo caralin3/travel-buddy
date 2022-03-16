@@ -11,30 +11,30 @@ const activitiesAdapter = createEntityAdapter<Activity>({
   sortComparer: (a, b) => moment(a.startDate).valueOf() - moment(b.startDate).valueOf(),
 });
 
-export const ActivitysSlice = createSlice({
+export const ActivitiesSlice = createSlice({
   name: 'activities',
   initialState: activitiesAdapter.getInitialState(),
   reducers: {
     reset: () => activitiesAdapter.getInitialState(),
     addActivity: activitiesAdapter.addOne,
     deleteActivity: activitiesAdapter.removeOne,
-    loadActivitys(state, action: PayloadAction<Activity[]>) {
+    loadActivities(state, action: PayloadAction<Activity[]>) {
       activitiesAdapter.setAll(state, action.payload);
     },
     updateActivity: activitiesAdapter.updateOne,
   },
 });
 
-export const { reset, addActivity, deleteActivity, loadActivitys, updateActivity } = ActivitysSlice.actions;
+export const { reset, addActivity, deleteActivity, loadActivities, updateActivity } = ActivitiesSlice.actions;
 
 export const { selectById, selectIds, selectEntities, selectAll, selectTotal } = activitiesAdapter.getSelectors(
   (state: RootState) => state.activities
 );
 
-export const selectFutureActivitys = (state: RootState) =>
+export const selectFutureActivities = (state: RootState) =>
   selectAll(state).filter((activity) => isFutureDate(activity.startDate));
 
-export const selectPastActivitys = (state: RootState) =>
+export const selectPastActivities = (state: RootState) =>
   selectAll(state).filter((activity) => !isFutureDate(activity.startDate));
 
-export default ActivitysSlice.reducer;
+export default ActivitiesSlice.reducer;

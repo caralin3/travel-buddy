@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Col, Container, ListGroup, Row } from 'reactstrap';
 import { Card, ListItem } from '../02-molecules';
 import { UpcomingTripBanner } from '../03-components';
+import { Trip } from '../api';
 import {
   ADD_CRUISES_ROUTE,
   ADD_FLIGHTS_ROUTE,
@@ -13,33 +14,44 @@ import {
   TRIPS_ROUTE,
 } from '../router';
 import { RootState } from '../store';
+import * as cruisesState from '../store/reducers/cruises';
+import * as flightsState from '../store/reducers/flights';
 import * as tripsState from '../store/reducers/trips';
 import { formatDate, SHORT_DATE_FORMAT } from '../utils';
-import { cruises } from '../__mocks__';
-import { flights } from '../__mocks__/flights';
 
 export interface DashboardPagePageProps {}
 
 export const DashboardPage: React.FC<DashboardPagePageProps> = () => {
   const navigate = useNavigate();
-
   const MAX_VIEW = 3;
 
   const trips = useSelector((state: RootState) => tripsState.selectFutureTrips(state)).slice(0, MAX_VIEW);
-
-  const nextTrip = trips[0];
+  const cruises = useSelector((state: RootState) => cruisesState.selectFutureCruises(state)).slice(0, MAX_VIEW);
+  const flights = useSelector((state: RootState) => flightsState.selectFutureFlights(state)).slice(0, MAX_VIEW);
   const user = useSelector((state: RootState) => state.session.user);
+
+  const [nextTrip, setNextTrip] = React.useState<Trip | undefined>(undefined);
+
+  React.useEffect(() => {
+    if (trips.length > 0) {
+      setNextTrip(trips[0]);
+    } else {
+      setNextTrip(undefined);
+    }
+  }, [trips]);
 
   return (
     <div className="dashboard-page">
       <Container className="py-4">
         <h1>Welcome {user?.firstName}!</h1>
       </Container>
-      <Row>
-        <Col sm={12}>
-          <UpcomingTripBanner title={nextTrip.title} date={nextTrip.startDate} />
-        </Col>
-      </Row>
+      {!!nextTrip && (
+        <Row>
+          <Col sm={12}>
+            <UpcomingTripBanner title={nextTrip.title} date={nextTrip.startDate} />
+          </Col>
+        </Row>
+      )}
       <Container className="py-5">
         <Row>
           <Col sm={4}>

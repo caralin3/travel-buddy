@@ -5,6 +5,7 @@ import {
   ABOUT_ROUTE,
   CRUISES_ROUTE,
   DASHBOARD_ROUTE,
+  FLIGHTS_ROUTE,
   HOME_ROUTE,
   LOGIN_ROUTE,
   REGISTER_ROUTE,
@@ -28,6 +29,7 @@ export const Header: React.FC<HeaderProps> = ({ auth = false, logout }) => {
   const authLinks: LinkItem[] = [
     { label: 'Dashboard', path: DASHBOARD_ROUTE },
     { label: 'Trips', path: TRIPS_ROUTE },
+    { label: 'Flights', path: FLIGHTS_ROUTE },
     { label: 'Cruises', path: CRUISES_ROUTE },
     { label: 'Account', path: HOME_ROUTE },
   ];

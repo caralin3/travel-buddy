@@ -1,21 +1,19 @@
 import React from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { Container, ListGroup } from 'reactstrap';
 import { ListItem } from '../02-molecules';
 import { ADD_CRUISES_ROUTE, CRUISES_ROUTE } from '../router';
-// import { RootState } from '../store';
-// import * as cruisesState from '../store/reducers/cruises';
+import { RootState } from '../store';
+import * as cruisesState from '../store/reducers/cruises';
 import { formatDate, SHORT_DATE_FORMAT } from '../utils';
-import { cruises } from '../__mocks__/cruises';
 
 export interface CruisesPageProps {}
 
 export const CruisesPage: React.FC<CruisesPageProps> = () => {
   const navigate = useNavigate();
 
-  // const user = useSelector((state: RootState) => state.session.user);
-  // const cruises = useSelector((state: RootState) => cruisesState.selectAll(state));
+  const cruises = useSelector((state: RootState) => cruisesState.selectFutureCruises(state));
 
   return (
     <Container className="py-5">

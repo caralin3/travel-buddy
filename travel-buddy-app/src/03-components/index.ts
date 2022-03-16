@@ -9,5 +9,4 @@ export * from './RegisterForm';
 export * from './SeaDayDetail';
 export * from './TripDetail';
 export * from './TripForm';
-export * from './TripItinerary';
 export * from './UpcomingTripBanner';

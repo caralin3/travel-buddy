@@ -1,21 +1,19 @@
 import React from 'react';
-// import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { Container, ListGroup } from 'reactstrap';
 import { ListItem } from '../02-molecules';
 import { ADD_FLIGHTS_ROUTE, FLIGHTS_ROUTE } from '../router';
-// import { RootState } from '../store';
-// import * as flightsState from '../store/reducers/flights';
+import { RootState } from '../store';
+import * as flightsState from '../store/reducers/flights';
 import { formatDate, SHORT_DATE_FORMAT } from '../utils';
-import { flights } from '../__mocks__/flights';
 
 export interface FlightsPageProps {}
 
 export const FlightsPage: React.FC<FlightsPageProps> = () => {
   const navigate = useNavigate();
 
-  // const user = useSelector((state: RootState) => state.session.user);
-  // const flights = useSelector((state: RootState) => flightsState.selectAll(state));
+  const flights = useSelector((state: RootState) => flightsState.selectFutureFlights(state));
 
   return (
     <Container className="py-5">
