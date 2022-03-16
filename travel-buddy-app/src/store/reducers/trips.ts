@@ -1,8 +1,8 @@
 import { createEntityAdapter, createSlice, EntityAdapter, PayloadAction } from '@reduxjs/toolkit';
 import moment from 'moment';
-import { RootState } from '..';
 import { Trip } from '../../api';
 import { isFutureDate } from '../../utils';
+import { RootState } from '..';
 
 export interface TripState extends EntityAdapter<Trip> {}
 
