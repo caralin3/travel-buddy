@@ -1,6 +1,7 @@
 export * from './ActivityDetail';
 export * from './CruiseDetail';
 export * from './FlightDetail';
+export * from './FlightForm';
 export * from './HotelDetail';
 export * from './Layout';
 export * from './LoginForm';

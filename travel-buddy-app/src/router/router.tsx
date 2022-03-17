@@ -13,6 +13,8 @@ import {
   TripDetailPage,
   CruisesPage,
   CruiseDetailPage,
+  FlightsAddPage,
+  FlightsEditPage,
 } from '../04-pages';
 import { PublicRoute } from './PublicRoute';
 import { RequireAuth } from './RequireAuth';
@@ -95,6 +97,22 @@ export const Router: React.FC = () => (
       }
     />
     <Route
+      path="flights/add"
+      element={
+        <RequireAuth>
+          <FlightsAddPage />
+        </RequireAuth>
+      }
+    />
+    <Route
+      path="flights/edit/:id"
+      element={
+        <RequireAuth>
+          <FlightsEditPage />
+        </RequireAuth>
+      }
+    />
+    <Route
       path="cruises"
       element={
         <RequireAuth>
@@ -107,6 +125,70 @@ export const Router: React.FC = () => (
       element={
         <RequireAuth>
           <CruiseDetailPage />
+        </RequireAuth>
+      }
+    />
+    <Route
+      path="cruises/add"
+      element={
+        <RequireAuth>
+          <TripsAddPage />
+        </RequireAuth>
+      }
+    />
+    <Route
+      path="cruises/edit/:id"
+      element={
+        <RequireAuth>
+          <TripsAddPage />
+        </RequireAuth>
+      }
+    />
+    <Route
+      path="ports/add"
+      element={
+        <RequireAuth>
+          <TripsAddPage />
+        </RequireAuth>
+      }
+    />
+    <Route
+      path="ports/edit/:id"
+      element={
+        <RequireAuth>
+          <TripsAddPage />
+        </RequireAuth>
+      }
+    />
+    <Route
+      path="hotels/add"
+      element={
+        <RequireAuth>
+          <TripsAddPage />
+        </RequireAuth>
+      }
+    />
+    <Route
+      path="hotels/edit/:id"
+      element={
+        <RequireAuth>
+          <TripsAddPage />
+        </RequireAuth>
+      }
+    />
+    <Route
+      path="activities/add"
+      element={
+        <RequireAuth>
+          <TripsAddPage />
+        </RequireAuth>
+      }
+    />
+    <Route
+      path="activities/edit/:id"
+      element={
+        <RequireAuth>
+          <TripsAddPage />
         </RequireAuth>
       }
     />

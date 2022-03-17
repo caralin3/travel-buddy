@@ -2,6 +2,8 @@ export * from './CruisesPage';
 export * from './CruiseDetailPage';
 export * from './DashboardPage';
 export * from './FlightDetailPage';
+export * from './FlightsAddPage';
+export * from './FlightsEditPage';
 export * from './FlightsPage';
 export * from './HomePage';
 export * from './LoginPage';

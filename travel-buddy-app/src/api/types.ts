@@ -158,6 +158,36 @@ export type Flight = t.TypeOf<typeof Flight>;
 export const Flights = t.array(Flight);
 export type Flights = t.TypeOf<typeof Flights>;
 
+export const FlightRequest = t.intersection([
+  t.interface({
+    airline: t.string,
+    arrivalAirport: t.string,
+    arrivalCity: t.string,
+    arrivalDate: t.string,
+    confirmationCode: t.string,
+    departureAirport: t.string,
+    departureCity: t.string,
+    departureDate: t.string,
+    flightClass: FlightClass,
+    flightNumber: t.string,
+    terminal: t.string,
+    tripId: t.number,
+  }),
+  t.partial({
+    cost: t.number,
+    currency: t.string,
+  }),
+  t.partial({
+    gate: t.string,
+  }),
+  t.partial({
+    seats: t.string,
+  }),
+]);
+export type FlightRequest = t.TypeOf<typeof FlightRequest>;
+
+export const FlightResponse = t.union([Flight, GenericErrorResponse]);
+
 export const RoomType = t.keyof({
   SINGLE: null,
   DOUBLE: null,
