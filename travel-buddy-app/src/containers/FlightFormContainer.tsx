@@ -1,7 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { FlightForm } from '../03-components';
-import { FlightRequest } from '../api';
+import { Flight, FlightRequest, handleError } from '../api';
+import FlightService from '../api/services/FlightService';
+import { FLIGHTS_ROUTE } from '../router';
 import { RootState } from '../store';
 import * as flightsState from '../store/reducers/flights';
 import * as tripsState from '../store/reducers/trips';
@@ -12,6 +15,11 @@ export interface FlightFormContainerProps {
 }
 
 export const FlightFormContainer: React.FC<FlightFormContainerProps> = ({ flightId }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const accessToken = useSelector((state: RootState) => state.session.token);
+  const user = useSelector((state: RootState) => state.session.user);
   const existingFlight = useSelector((state: RootState) => flightsState.selectById(state, flightId || ''));
   const [nextTrip] = useSelector((state: RootState) => tripsState.selectFutureTrips(state));
 
@@ -54,55 +62,48 @@ export const FlightFormContainer: React.FC<FlightFormContainerProps> = ({ flight
   }, [flightId, nextTrip]);
 
   const handleAdd = async (request: FlightRequest) => {
-    // try {
-    //   if (accessToken) {
-    //     setLoading(true);
-    //     const res = await TripService.createTrip(request, accessToken);
-    //     if (Trip.is(res)) {
-    //       dispatch(tripsState.addTrip(res));
-    //       setLoading(false);
-    //       navigate(TRIPS_ROUTE);
-    //     }
-    //   }
-    // } catch (err) {
-    //   setLoading(false);
-    //   handleError(err, (msg) => setErrorMessage(msg));
-    // }
+    try {
+      if (accessToken) {
+        setLoading(true);
+        const res = await FlightService.createFlight(request, accessToken);
+        if (Flight.is(res)) {
+          dispatch(flightsState.addFlight(res));
+          setLoading(false);
+          navigate(FLIGHTS_ROUTE);
+        }
+      }
+    } catch (err) {
+      setLoading(false);
+      handleError(err, (msg) => setErrorMessage(msg));
+    }
   };
 
   const handleEdit = async (request: FlightRequest) => {
-    // try {
-    //   if (accessToken) {
-    //     setLoading(true);
-    //     // const res = await TripService.updateTrip(request, accessToken);
-    //     // if (Trip.is(res)) {
-    //     // dispatch(tripsState.updateTrip({id: res.id, changes: {}}));
-    //     //   navigate(DASHBOARD_ROUTE, { replace: true });
-    //     // }
-    //   }
-    // } catch (err) {
-    //   setLoading(false);
-    //   handleError(err, (msg) => setErrorMessage(msg));
-    // }
+    try {
+      if (accessToken && flightId) {
+        setLoading(true);
+        const res = await FlightService.updateFlight(request, flightId, accessToken);
+        if (Flight.is(res)) {
+          dispatch(flightsState.updateFlight({ id: res.id, changes: {} }));
+          navigate(FLIGHTS_ROUTE);
+        }
+      }
+    } catch (err) {
+      setLoading(false);
+      handleError(err, (msg) => setErrorMessage(msg));
+    }
   };
 
   const handleSubmit = () => {
-    // if (!isEndDateValid(startDate, endDate)) {
-    //   setEndDateInvalid(true);
-    // } else if (!!user) {
-    //   const req: FlightRequest = {
-    //     description,
-    //     endDate,
-    //     startDate,
-    //     title,
-    //     userId: user.id,
-    //   };
-    //   if (!!tripId) {
-    //     handleEdit(req);
-    //   } else {
-    //     handleAdd(req);
-    //   }
-    // }
+    if (!isEndDateValid(flight.departureDate, flight.arrivalDate)) {
+      setEndDateInvalid(true);
+    } else if (!!user) {
+      if (!!flightId) {
+        handleEdit(flight);
+      } else {
+        handleAdd(flight);
+      }
+    }
   };
 
   const handleChange = (value: string, field: keyof FlightRequest) => {

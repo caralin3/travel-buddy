@@ -7,3 +7,6 @@ export const getLoginUrl = () => `${BASE_URL}/auth/login`;
 
 export const getTripsUrl = () => `${BASE_URL}/trips`;
 export const getTripsByIdUrl = (id: number) => `/trips/${id}`;
+
+export const getFlightsUrl = () => `${BASE_URL}/flights`;
+export const getFlightsByIdUrl = (id: number) => `/flights/${id}`;

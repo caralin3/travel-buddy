@@ -54,17 +54,17 @@ export const DashboardPage: React.FC<DashboardPagePageProps> = () => {
       )}
       <Container className="py-5">
         <Row>
-          <Col sm={4}>
+          <Col sm={6} md={4}>
             <Card title="Trips" link={{ label: 'Create Trip', path: ADD_TRIPS_ROUTE }}>
               Add trips to view vacation information such as activities, flights and cruises.
             </Card>
           </Col>
-          <Col sm={4}>
+          <Col sm={6} md={4}>
             <Card title="Flights" link={{ label: 'Create Flight', path: ADD_FLIGHTS_ROUTE }}>
               Add flights to view information like flight number, departure and arrival details.
             </Card>
           </Col>
-          <Col sm={4}>
+          <Col sm={6} md={4}>
             <Card title="Cruises" link={{ label: 'Create Cruise', path: ADD_CRUISES_ROUTE }}>
               Add cruises to view ports and activity details along with cruise dates.
             </Card>
