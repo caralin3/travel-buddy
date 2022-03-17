@@ -227,7 +227,6 @@ export type Hotels = t.TypeOf<typeof Hotels>;
 
 export const HotelRequest = t.intersection([
   t.interface({
-    id: t.number,
     name: t.string,
     roomType: RoomType,
     roomCount: t.number,
@@ -292,11 +291,8 @@ export type Cruises = t.TypeOf<typeof Cruises>;
 
 export const CruiseRequest = t.intersection([
   t.interface({
-    id: t.number,
     cruiseLine: t.string,
     shipName: t.string,
-    cost: t.number,
-    currency: t.string,
     cabinNumber: t.string,
     startDate: t.string,
     endDate: t.string,
@@ -308,14 +304,17 @@ export const CruiseRequest = t.intersection([
   t.partial({
     description: t.string,
   }),
-  t.partial({
-    departureState: t.string,
-  }),
-  t.partial({
-    destinationCity: t.string,
-    destinationCountry: t.string,
-    destinationState: t.string,
-  }),
+  t.partial({ cost: t.number, currency: t.string }),
+  t.intersection([
+    t.partial({
+      departureState: t.string,
+    }),
+    t.partial({
+      destinationCity: t.string,
+      destinationCountry: t.string,
+      destinationState: t.string,
+    }),
+  ]),
   t.partial({
     cabinType: RoomType,
   }),
@@ -348,7 +347,6 @@ export type Ports = t.TypeOf<typeof Ports>;
 
 export const PortRequest = t.intersection([
   t.interface({
-    id: t.number,
     day: t.number,
     arrival: t.string,
     departure: t.string,
@@ -407,13 +405,10 @@ export type Activities = t.TypeOf<typeof Activities>;
 
 export const ActivityRequest = t.intersection([
   t.interface({
-    id: t.number,
     name: t.string,
     description: t.string,
     startDate: t.string,
     endDate: t.string,
-    cost: t.number,
-    currency: t.string,
     addressLine1: t.string,
     tripId: t.number,
   }),
@@ -431,11 +426,15 @@ export const ActivityRequest = t.intersection([
     }),
   ]),
   t.partial({
+    cost: t.number,
+    currency: t.string,
+  }),
+  t.partial({
     company: t.string,
   }),
   t.partial({
-    port: Port,
-    cruise: Cruise,
+    portId: t.number,
+    cruiseId: t.number,
   }),
 ]);
 export type ActivityRequest = t.TypeOf<typeof ActivityRequest>;

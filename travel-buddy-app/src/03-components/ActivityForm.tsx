@@ -1,0 +1,277 @@
+import React from 'react';
+import { Input, Col, Row, FormFeedback } from 'reactstrap';
+import { CostInput, Form, FormGroup, Label, SelectOption } from '../02-molecules';
+import { ActivityRequest } from '../api';
+import { TripSelector } from '../containers';
+
+export interface ActivityFormProps {
+  edit?: boolean;
+  endDateInvalid: boolean;
+  errorMessage?: string;
+  activity: ActivityRequest;
+  loading: boolean;
+  onSubmit: () => void;
+  setErrorMessage?: (value: string) => void;
+  setActivityField: (value: string, field: keyof ActivityRequest) => void;
+}
+
+export const ActivityForm: React.FC<ActivityFormProps> = ({
+  edit = false,
+  endDateInvalid,
+  errorMessage,
+  activity,
+  loading,
+  onSubmit,
+  setErrorMessage,
+  setActivityField,
+}) => {
+  const setMessage = () => {
+    if (setErrorMessage) {
+      setErrorMessage('');
+    }
+  };
+
+  const activityClassOptions: SelectOption[] = [
+    {
+      label: 'Business',
+      value: 'BUSINESS',
+    },
+    {
+      label: 'Economy',
+      value: 'ECONOMY',
+    },
+    {
+      label: 'Economy Plus',
+      value: 'ECONOMY_PLUS',
+    },
+    {
+      label: 'First Class',
+      value: 'FIRST',
+    },
+  ];
+
+  return (
+    <Form title={edit ? 'Update Activity' : 'Create Activity'} onSubmit={onSubmit} loading={loading}>
+      <Row>
+        <Col sm={12}>
+          <TripSelector
+            required
+            value={activity.tripId.toString()}
+            onSelect={(e) => {
+              setMessage();
+              setActivityField(e.target.value, 'tripId');
+            }}
+          />
+        </Col>
+        <Col sm={12} md={6} lg={3}>
+          <FormGroup>
+            <Label required for="activity-name">
+              Name
+            </Label>
+            <Input
+              required
+              id="activity-name"
+              name="activity-name"
+              type="text"
+              defaultValue={activity.name}
+              onChange={(e) => {
+                setMessage();
+                setActivityField(e.target.value, 'name');
+              }}
+            />
+          </FormGroup>
+        </Col>
+        <Col sm={12} md={6} lg={3}>
+          <FormGroup>
+            <Label required for="activity-description">
+              Description
+            </Label>
+            <Input
+              required
+              id="activity-description"
+              name="activity-description"
+              type="textarea"
+              defaultValue={activity.description}
+              onChange={(e) => {
+                setMessage();
+                setActivityField(e.target.value, 'description');
+              }}
+            />
+          </FormGroup>
+        </Col>
+        <Col sm={12} md={6} lg={3}>
+          <FormGroup>
+            <Label required for="activity-start-date">
+              Start Date
+            </Label>
+            <Input
+              required
+              id="activity-start-date"
+              name="activity-start-date"
+              type="datetime"
+              defaultValue={activity.startDate}
+              onChange={(e) => {
+                setMessage();
+                setActivityField(e.target.value, 'startDate');
+              }}
+            />
+          </FormGroup>
+        </Col>
+        <Col sm={12} md={6} lg={3}>
+          <FormGroup>
+            <Label required for="activity-end-date">
+              End Date
+            </Label>
+            <Input
+              required
+              id="activity-end-date"
+              name="activity-end-date"
+              type="datetime"
+              defaultValue={activity.endDate}
+              invalid={endDateInvalid}
+              onChange={(e) => {
+                setMessage();
+                setActivityField(e.target.value, 'endDate');
+              }}
+            />
+            <FormFeedback>End date must be after start date.</FormFeedback>
+          </FormGroup>
+        </Col>
+        <Col sm={12} md={6} lg={3}>
+          <FormGroup>
+            <Label required for="activity-street">
+              Street
+            </Label>
+            <Input
+              required
+              id="activity-street"
+              name="activity-street"
+              className="text-uppercase"
+              type="text"
+              defaultValue={activity.addressLine1}
+              maxLength={3}
+              onChange={(e) => {
+                setMessage();
+                setActivityField(e.target.value, 'addressLine1');
+              }}
+            />
+          </FormGroup>
+        </Col>
+        <Col sm={12} md={6} lg={3}>
+          <FormGroup>
+            <Label for="activity-street-2">Street 2</Label>
+            <Input
+              id="activity-street-2"
+              name="activity-street-2"
+              className="text-uppercase"
+              type="text"
+              defaultValue={activity.addressLine2}
+              maxLength={3}
+              onChange={(e) => {
+                setMessage();
+                setActivityField(e.target.value, 'addressLine2');
+              }}
+            />
+          </FormGroup>
+        </Col>
+        <Col sm={12} md={6} lg={3}>
+          <FormGroup>
+            <Label for="activity-city">City</Label>
+            <Input
+              id="activity-city"
+              name="activity-city"
+              type="text"
+              defaultValue={activity.city}
+              onChange={(e) => {
+                setMessage();
+                setActivityField(e.target.value, 'city');
+              }}
+            />
+          </FormGroup>
+        </Col>
+        {/* @TODO: State Dropdown */}
+        <Col sm={12} md={6} lg={3}>
+          <FormGroup>
+            <Label for="activity-postal-code">Postal Code</Label>
+            <Input
+              id="activity-postal-code"
+              name="activity-postal-code"
+              className="text-uppercase"
+              type="text"
+              defaultValue={activity.postalCode}
+              onChange={(e) => {
+                setMessage();
+                setActivityField(e.target.value, 'postalCode');
+              }}
+            />
+          </FormGroup>
+        </Col>
+        <Col sm={12} md={6} lg={3}>
+          <FormGroup>
+            <Label for="activity-country">Country</Label>
+            <Input
+              id="activity-country"
+              name="activity-country"
+              type="text"
+              defaultValue={activity.country}
+              onChange={(e) => {
+                setMessage();
+                setActivityField(e.target.value, 'country');
+              }}
+            />
+          </FormGroup>
+        </Col>
+        <Col sm={12} md={4}>
+          <FormGroup>
+            <Label for="activity-company">Company</Label>
+            <Input
+              id="activity-company"
+              name="activity-company"
+              type="text"
+              defaultValue={activity.company}
+              onChange={(e) => {
+                setMessage();
+                setActivityField(e.target.value, 'company');
+              }}
+            />
+          </FormGroup>
+        </Col>
+        {/* @TODO: Cruise Dropdown */}
+        {/* @TODO: Port Dropdown */}
+        <Col sm={12} md={6} lg={3}>
+          <FormGroup>
+            <Label for="activity-cost">Cost</Label>
+            <CostInput
+              id="activity-cost"
+              name="activity-cost"
+              defaultValue={activity.cost}
+              onChange={(e) => {
+                setMessage();
+                setActivityField(e.target.value, 'cost');
+              }}
+            />
+          </FormGroup>
+        </Col>
+        <Col sm={12} md={6} lg={3}>
+          <FormGroup>
+            <Label for="activity-currency">Currency</Label>
+            <Input
+              id="activity-currency"
+              name="activity-currency"
+              className="text-uppercase"
+              type="text"
+              defaultValue={activity.currency}
+              maxLength={3}
+              onChange={(e) => {
+                setMessage();
+                setActivityField(e.target.value, 'currency');
+              }}
+            />
+          </FormGroup>
+        </Col>
+      </Row>
+      {/* @TODO optional fields */}
+      {!!errorMessage && <p className="form-text text-danger">{errorMessage}</p>}
+    </Form>
+  );
+};

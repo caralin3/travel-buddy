@@ -324,7 +324,6 @@ export const FlightForm: React.FC<FlightFormProps> = ({
           </FormGroup>
         </Col>
       </Row>
-      {/* @TODO optional fields */}
       {!!errorMessage && <p className="form-text text-danger">{errorMessage}</p>}
     </Form>
   );

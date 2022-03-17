@@ -15,6 +15,14 @@ import {
   CruiseDetailPage,
   FlightsAddPage,
   FlightsEditPage,
+  ActivitiesEditPage,
+  ActivitiesAddPage,
+  HotelsEditPage,
+  HotelsAddPage,
+  PortsEditPage,
+  PortsAddPage,
+  CruisesEditPage,
+  CruisesAddPage,
 } from '../04-pages';
 import { PublicRoute } from './PublicRoute';
 import { RequireAuth } from './RequireAuth';
@@ -132,7 +140,7 @@ export const Router: React.FC = () => (
       path="cruises/add"
       element={
         <RequireAuth>
-          <TripsAddPage />
+          <CruisesAddPage />
         </RequireAuth>
       }
     />
@@ -140,7 +148,7 @@ export const Router: React.FC = () => (
       path="cruises/edit/:id"
       element={
         <RequireAuth>
-          <TripsAddPage />
+          <CruisesEditPage />
         </RequireAuth>
       }
     />
@@ -148,7 +156,7 @@ export const Router: React.FC = () => (
       path="ports/add"
       element={
         <RequireAuth>
-          <TripsAddPage />
+          <PortsAddPage />
         </RequireAuth>
       }
     />
@@ -156,7 +164,7 @@ export const Router: React.FC = () => (
       path="ports/edit/:id"
       element={
         <RequireAuth>
-          <TripsAddPage />
+          <PortsEditPage />
         </RequireAuth>
       }
     />
@@ -164,7 +172,7 @@ export const Router: React.FC = () => (
       path="hotels/add"
       element={
         <RequireAuth>
-          <TripsAddPage />
+          <HotelsAddPage />
         </RequireAuth>
       }
     />
@@ -172,7 +180,7 @@ export const Router: React.FC = () => (
       path="hotels/edit/:id"
       element={
         <RequireAuth>
-          <TripsAddPage />
+          <HotelsEditPage />
         </RequireAuth>
       }
     />
@@ -180,7 +188,7 @@ export const Router: React.FC = () => (
       path="activities/add"
       element={
         <RequireAuth>
-          <TripsAddPage />
+          <ActivitiesAddPage />
         </RequireAuth>
       }
     />
@@ -188,7 +196,7 @@ export const Router: React.FC = () => (
       path="activities/edit/:id"
       element={
         <RequireAuth>
-          <TripsAddPage />
+          <ActivitiesEditPage />
         </RequireAuth>
       }
     />

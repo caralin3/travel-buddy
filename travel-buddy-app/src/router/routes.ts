@@ -20,6 +20,9 @@ export const PORTS_ROUTE = '/ports';
 export const ADD_PORTS_ROUTE = '/ports/add';
 export const EDIT_PORTS_ROUTE = '/ports/:id';
 
+export const ADD_HOTELS_ROUTE = '/hotels/add';
+export const EDIT_HOTELS_ROUTE = '/hotels/:id';
+
 export const ACTIVITIES_ROUTE = '/activities';
 export const ADD_ACTIVITIES_ROUTE = '/activities/add';
 export const EDIT_ACTIVITIES_ROUTE = '/activities/:id';
