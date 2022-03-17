@@ -225,6 +225,36 @@ export type Hotel = t.TypeOf<typeof Hotel>;
 export const Hotels = t.array(Hotel);
 export type Hotels = t.TypeOf<typeof Hotels>;
 
+export const HotelRequest = t.intersection([
+  t.interface({
+    id: t.number,
+    name: t.string,
+    roomType: RoomType,
+    roomCount: t.number,
+    checkInDate: t.string,
+    checkOutDate: t.string,
+    cost: t.number,
+    currency: t.string,
+    addressLine1: t.string,
+    city: t.string,
+    tripId: t.number,
+  }),
+  t.partial({
+    addressLine2: t.string,
+  }),
+  t.partial({
+    description: t.string,
+  }),
+  t.partial({
+    country: t.string,
+    state: t.string,
+    postalCode: t.string,
+  }),
+]);
+export type HotelRequest = t.TypeOf<typeof HotelRequest>;
+
+export const HotelResponse = t.union([Hotel, GenericErrorResponse]);
+
 export const Cruise = t.intersection([
   t.interface({
     id: t.number,
@@ -260,6 +290,40 @@ export type Cruise = t.TypeOf<typeof Cruise>;
 export const Cruises = t.array(Cruise);
 export type Cruises = t.TypeOf<typeof Cruises>;
 
+export const CruiseRequest = t.intersection([
+  t.interface({
+    id: t.number,
+    cruiseLine: t.string,
+    shipName: t.string,
+    cost: t.number,
+    currency: t.string,
+    cabinNumber: t.string,
+    startDate: t.string,
+    endDate: t.string,
+    departureCity: t.string,
+    departureCountry: t.string,
+    roundTrip: t.boolean,
+    tripId: t.number,
+  }),
+  t.partial({
+    description: t.string,
+  }),
+  t.partial({
+    departureState: t.string,
+  }),
+  t.partial({
+    destinationCity: t.string,
+    destinationCountry: t.string,
+    destinationState: t.string,
+  }),
+  t.partial({
+    cabinType: RoomType,
+  }),
+]);
+export type CruiseRequest = t.TypeOf<typeof CruiseRequest>;
+
+export const CruiseResponse = t.union([Cruise, GenericErrorResponse]);
+
 export const Port = t.intersection([
   t.interface({
     id: t.number,
@@ -281,6 +345,27 @@ export type Port = t.TypeOf<typeof Port>;
 
 export const Ports = t.array(Port);
 export type Ports = t.TypeOf<typeof Ports>;
+
+export const PortRequest = t.intersection([
+  t.interface({
+    id: t.number,
+    day: t.number,
+    arrival: t.string,
+    departure: t.string,
+    city: t.string,
+    country: t.string,
+    cruiseId: t.number,
+  }),
+  t.partial({
+    description: t.string,
+  }),
+  t.partial({
+    state: t.string,
+  }),
+]);
+export type PortRequest = t.TypeOf<typeof PortRequest>;
+
+export const PortResponse = t.union([Port, GenericErrorResponse]);
 
 export const Activity = t.intersection([
   t.interface({
@@ -319,3 +404,40 @@ export type Activity = t.TypeOf<typeof Activity>;
 
 export const Activities = t.array(Activity);
 export type Activities = t.TypeOf<typeof Activities>;
+
+export const ActivityRequest = t.intersection([
+  t.interface({
+    id: t.number,
+    name: t.string,
+    description: t.string,
+    startDate: t.string,
+    endDate: t.string,
+    cost: t.number,
+    currency: t.string,
+    addressLine1: t.string,
+    tripId: t.number,
+  }),
+  t.intersection([
+    t.partial({
+      city: t.string,
+      country: t.string,
+    }),
+    t.partial({
+      addressLine2: t.string,
+      postalCode: t.string,
+    }),
+    t.partial({
+      state: t.string,
+    }),
+  ]),
+  t.partial({
+    company: t.string,
+  }),
+  t.partial({
+    port: Port,
+    cruise: Cruise,
+  }),
+]);
+export type ActivityRequest = t.TypeOf<typeof ActivityRequest>;
+
+export const ActivityResponse = t.union([Activity, GenericErrorResponse]);

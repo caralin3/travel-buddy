@@ -10,3 +10,15 @@ export const getTripsByIdUrl = (id: number) => `/trips/${id}`;
 
 export const getFlightsUrl = () => `${BASE_URL}/flights`;
 export const getFlightsByIdUrl = (id: number) => `/flights/${id}`;
+
+export const getCruisesUrl = () => `${BASE_URL}/cruises`;
+export const getCruisesByIdUrl = (id: number) => `/cruises/${id}`;
+
+export const getPortsUrl = () => `${BASE_URL}/ports`;
+export const getPortsByIdUrl = (id: number) => `/ports/${id}`;
+
+export const getHotelsUrl = () => `${BASE_URL}/hotels`;
+export const getHotelsByIdUrl = (id: number) => `/hotels/${id}`;
+
+export const getActivitiesUrl = () => `${BASE_URL}/activities`;
+export const getActivitiesByIdUrl = (id: number) => `/activities/${id}`;
