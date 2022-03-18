@@ -49,7 +49,7 @@ export const ActivityFormContainer: React.FC<ActivityFormContainerProps> = ({ ac
   }, [existingActivity, activityId]);
 
   React.useEffect(() => {
-    if (!activityId) {
+    if (!activityId && !!nextTrip) {
       setActivity({
         ...initialActivity,
         tripId: nextTrip.id,

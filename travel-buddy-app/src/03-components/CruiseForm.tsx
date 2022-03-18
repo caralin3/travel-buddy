@@ -1,7 +1,10 @@
 import React from 'react';
 import { Input, Col, Row, FormFeedback } from 'reactstrap';
-import { CostInput, Form, FormGroup, Label, Select, SelectOption } from '../02-molecules';
+import { CostInput, Form, FormGroup, Label } from '../02-molecules';
 import { CruiseRequest } from '../api';
+import { TripSelector } from '../containers';
+import { RoomTypeSelector } from './RoomTypeSelector';
+import { StateSelector } from './StateSelector';
 
 export interface CruiseFormProps {
   edit?: boolean;
@@ -30,25 +33,20 @@ export const CruiseForm: React.FC<CruiseFormProps> = ({
     }
   };
 
-  const cabinTypeOptions: SelectOption[] = [
-    {
-      label: 'Single',
-      value: 'SINGLE',
-    },
-    {
-      label: 'Double',
-      value: 'DOUBLE',
-    },
-    {
-      label: 'Suite',
-      value: 'SUITE',
-    },
-  ];
-
   return (
     <Form title={edit ? 'Update Cruise' : 'Create Cruise'} onSubmit={onSubmit} loading={loading}>
       <Row>
-        <Col sm={12} md={6}>
+        <Col xs={12}>
+          <TripSelector
+            required
+            value={cruise.tripId.toString()}
+            onSelect={(e) => {
+              setMessage();
+              setCruiseField(e.target.value, 'tripId');
+            }}
+          />
+        </Col>
+        <Col xs={12} md={6}>
           <FormGroup>
             <Label required for="cruise-cruise-line">
               Cruise Line
@@ -66,7 +64,7 @@ export const CruiseForm: React.FC<CruiseFormProps> = ({
             />
           </FormGroup>
         </Col>
-        <Col sm={12} md={6}>
+        <Col xs={12} md={6}>
           <FormGroup>
             <Label required for="cruise-ship-name">
               Ship Name
@@ -84,7 +82,25 @@ export const CruiseForm: React.FC<CruiseFormProps> = ({
             />
           </FormGroup>
         </Col>
-        <Col sm={12} md={4}>
+        <Col xs={12}>
+          <FormGroup>
+            <Label required for="cruise-description">
+              Description
+            </Label>
+            <Input
+              required
+              id="cruise-description"
+              name="cruise-description"
+              type="textarea"
+              defaultValue={cruise.description}
+              onChange={(e) => {
+                setMessage();
+                setCruiseField(e.target.value, 'description');
+              }}
+            />
+          </FormGroup>
+        </Col>
+        <Col xs={12} md={3}>
           <FormGroup>
             <Label required for="cruise-number">
               Cabin Number
@@ -102,11 +118,10 @@ export const CruiseForm: React.FC<CruiseFormProps> = ({
             />
           </FormGroup>
         </Col>
-        <Col sm={12} md={4}>
-          <Select
+        <Col xs={12} md={3}>
+          <RoomTypeSelector
             id="cruise-cabin-type"
             label="Cabin Type"
-            options={cabinTypeOptions}
             value={cruise.cabinType ? cruise.cabinType.toString() : ''}
             onSelect={(e) => {
               setMessage();
@@ -114,25 +129,7 @@ export const CruiseForm: React.FC<CruiseFormProps> = ({
             }}
           />
         </Col>
-        <Col sm={12} md={4}>
-          <FormGroup>
-            <Label required for="cruise-description">
-              Description
-            </Label>
-            <Input
-              required
-              id="cruise-description"
-              name="cruise-description"
-              type="text"
-              defaultValue={cruise.description}
-              onChange={(e) => {
-                setMessage();
-                setCruiseField(e.target.value, 'description');
-              }}
-            />
-          </FormGroup>
-        </Col>
-        <Col sm={12} md={6} lg={3}>
+        <Col xs={12} md={3}>
           <FormGroup>
             <Label required for="cruise-start-date">
               Start Date
@@ -150,7 +147,7 @@ export const CruiseForm: React.FC<CruiseFormProps> = ({
             />
           </FormGroup>
         </Col>
-        <Col sm={12} md={6} lg={3}>
+        <Col xs={12} md={3}>
           <FormGroup>
             <Label required for="cruise-end-date">
               End Date
@@ -170,7 +167,7 @@ export const CruiseForm: React.FC<CruiseFormProps> = ({
             <FormFeedback>End date must be after start date.</FormFeedback>
           </FormGroup>
         </Col>
-        <Col sm={12} md={6} lg={3}>
+        <Col xs={12} md={4}>
           <FormGroup>
             <Label required for="cruise-departure-city">
               Departure City
@@ -188,8 +185,18 @@ export const CruiseForm: React.FC<CruiseFormProps> = ({
             />
           </FormGroup>
         </Col>
-        {/* @TODO: State dropdown */}
-        <Col sm={12} md={6} lg={3}>
+        <Col xs={12} md={4}>
+          <StateSelector
+            id="cruise-departure-state"
+            label="Departure State"
+            value={cruise.departureState ? cruise.departureState.toString() : ''}
+            onSelect={(e) => {
+              setMessage();
+              setCruiseField(e.target.value, 'departureState');
+            }}
+          />
+        </Col>
+        <Col xs={12} md={4}>
           <FormGroup>
             <Label required for="cruise-departure-country">
               Departure Country
@@ -207,13 +214,10 @@ export const CruiseForm: React.FC<CruiseFormProps> = ({
             />
           </FormGroup>
         </Col>
-        <Col sm={12} md={6} lg={3}>
+        <Col xs={12} md={4}>
           <FormGroup>
-            <Label required for="cruise-destination-city">
-              Destination City
-            </Label>
+            <Label for="cruise-destination-city">Destination City</Label>
             <Input
-              required
               id="cruise-destination-city"
               name="cruise-destination-city"
               type="text"
@@ -225,8 +229,18 @@ export const CruiseForm: React.FC<CruiseFormProps> = ({
             />
           </FormGroup>
         </Col>
-        {/* @TODO: State dropdown */}
-        <Col sm={12} md={6} lg={3}>
+        <Col xs={12} md={4}>
+          <StateSelector
+            id="cruise-destination-state"
+            label="Destination State"
+            value={cruise.destinationState ? cruise.destinationState.toString() : ''}
+            onSelect={(e) => {
+              setMessage();
+              setCruiseField(e.target.value, 'destinationState');
+            }}
+          />
+        </Col>
+        <Col xs={12} md={4}>
           <FormGroup>
             <Label for="cruise-destination-country">Destination Country</Label>
             <Input
@@ -241,7 +255,7 @@ export const CruiseForm: React.FC<CruiseFormProps> = ({
             />
           </FormGroup>
         </Col>
-        <Col sm={12} md={6} lg={3}>
+        <Col xs={12} md={4}>
           <FormGroup>
             <Label for="cruise-cost">Cost</Label>
             <CostInput
@@ -255,7 +269,7 @@ export const CruiseForm: React.FC<CruiseFormProps> = ({
             />
           </FormGroup>
         </Col>
-        <Col sm={12} md={6} lg={3}>
+        <Col xs={12} md={4}>
           <FormGroup>
             <Label for="cruise-currency">Currency</Label>
             <Input

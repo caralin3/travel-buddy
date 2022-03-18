@@ -2,24 +2,24 @@ import React, { ChangeEvent } from 'react';
 import { useSelector } from 'react-redux';
 import { Select, SelectOption } from '../02-molecules';
 import { RootState } from '../store';
-import * as tripsState from '../store/reducers/trips';
+import * as cruisesState from '../store/reducers/cruises';
 
-export interface TripSelectorProps {
+export interface CruiseSelectorProps {
   onSelect: (e: ChangeEvent<HTMLInputElement>) => void;
   required?: boolean;
   value: string;
 }
 
-export const TripSelector: React.FC<TripSelectorProps> = ({ onSelect, required, value }) => {
-  const trips = useSelector((state: RootState) => tripsState.selectFutureTrips(state));
+export const CruiseSelector: React.FC<CruiseSelectorProps> = ({ onSelect, required, value }) => {
+  const cruises = useSelector((state: RootState) => cruisesState.selectFutureCruises(state));
 
   function getOptions() {
     const options: SelectOption[] = [];
-    if (trips.length > 0) {
-      trips.forEach((trip) => {
+    if (cruises.length > 0) {
+      cruises.forEach((cruise) => {
         options.push({
-          label: trip.title,
-          value: trip.id.toString(),
+          label: `${cruise.cruiseLine} ${cruise.shipName}`,
+          value: cruise.id.toString(),
         });
       });
     }
@@ -29,8 +29,8 @@ export const TripSelector: React.FC<TripSelectorProps> = ({ onSelect, required, 
   return (
     <Select
       value={value}
-      label="Trip"
-      id="trip-select"
+      label="Cruise"
+      id="cruise-select"
       options={getOptions()}
       onSelect={onSelect}
       required={required}

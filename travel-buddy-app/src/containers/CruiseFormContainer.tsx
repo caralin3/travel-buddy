@@ -52,7 +52,7 @@ export const CruiseFormContainer: React.FC<CruiseFormContainerProps> = ({ cruise
   }, [existingCruise, cruiseId]);
 
   React.useEffect(() => {
-    if (!cruiseId) {
+    if (!cruiseId && !!nextTrip) {
       setCruise({
         ...initialCruise,
         tripId: nextTrip.id,

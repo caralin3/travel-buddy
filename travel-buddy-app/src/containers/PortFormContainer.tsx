@@ -47,7 +47,7 @@ export const PortFormContainer: React.FC<PortFormContainerProps> = ({ portId }) 
   }, [existingPort, portId]);
 
   React.useEffect(() => {
-    if (!portId) {
+    if (!portId && !!nextCruise) {
       setPort({
         ...initialPort,
         cruiseId: nextCruise.id,

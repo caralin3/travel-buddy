@@ -53,7 +53,7 @@ export const FlightFormContainer: React.FC<FlightFormContainerProps> = ({ flight
   }, [existingFlight, flightId]);
 
   React.useEffect(() => {
-    if (!flightId) {
+    if (!flightId && !!nextTrip) {
       setFlight({
         ...initialFlight,
         tripId: nextTrip.id,

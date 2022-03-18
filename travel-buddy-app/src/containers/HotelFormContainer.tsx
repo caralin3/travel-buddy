@@ -26,7 +26,7 @@ export const HotelFormContainer: React.FC<HotelFormContainerProps> = ({ hotelId 
   const initialHotel: HotelRequest = {
     name: '',
     roomType: 'DOUBLE',
-    roomCount: 0,
+    roomCount: 1,
     checkInDate: '',
     checkOutDate: '',
     cost: 0,
@@ -51,7 +51,7 @@ export const HotelFormContainer: React.FC<HotelFormContainerProps> = ({ hotelId 
   }, [existingHotel, hotelId]);
 
   React.useEffect(() => {
-    if (!hotelId) {
+    if (!hotelId && !!nextTrip) {
       setHotel({
         ...initialHotel,
         tripId: nextTrip.id,

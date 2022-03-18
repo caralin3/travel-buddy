@@ -2,7 +2,8 @@ import React from 'react';
 import { Input, Col, Row, FormFeedback } from 'reactstrap';
 import { CostInput, Form, FormGroup, Label, Select, SelectOption } from '../02-molecules';
 import { PortRequest } from '../api';
-import { TripSelector } from '../containers';
+import { CruiseSelector, TripSelector } from '../containers';
+import { StateSelector } from './StateSelector';
 
 export interface PortFormProps {
   edit?: boolean;
@@ -34,9 +35,8 @@ export const PortForm: React.FC<PortFormProps> = ({
   return (
     <Form title={edit ? 'Update Port' : 'Create Port'} onSubmit={onSubmit} loading={loading}>
       <Row>
-        <Col xs={12} sm={6}>
-          {/* @TODO: Change to cruise dropdown */}
-          <TripSelector
+        <Col xs={12}>
+          <CruiseSelector
             required
             value={port.cruiseId.toString()}
             onSelect={(e) => {
@@ -45,7 +45,7 @@ export const PortForm: React.FC<PortFormProps> = ({
             }}
           />
         </Col>
-        <Col xs={12} sm={6}>
+        <Col xs={12} md={4}>
           <FormGroup>
             <Label required for="port-day">
               Day
@@ -63,62 +63,7 @@ export const PortForm: React.FC<PortFormProps> = ({
             />
           </FormGroup>
         </Col>
-        <Col sm={12} md={6} lg={3}>
-          <FormGroup>
-            <Label required for="port-city">
-              City
-            </Label>
-            <Input
-              required
-              id="port-city"
-              name="port-city"
-              type="text"
-              defaultValue={port.city}
-              onChange={(e) => {
-                setMessage();
-                setPortField(e.target.value, 'city');
-              }}
-            />
-          </FormGroup>
-        </Col>
-        {/* @TODO: State dropdown */}
-        <Col sm={12} md={6} lg={3}>
-          <FormGroup>
-            <Label required for="port-country">
-              Country
-            </Label>
-            <Input
-              required
-              id="port-country"
-              name="port-country"
-              type="text"
-              defaultValue={port.city}
-              onChange={(e) => {
-                setMessage();
-                setPortField(e.target.value, 'country');
-              }}
-            />
-          </FormGroup>
-        </Col>
-        <Col sm={12} md={6} lg={3}>
-          <FormGroup>
-            <Label required for="port-description">
-              Description
-            </Label>
-            <Input
-              required
-              id="port-description"
-              name="port-description"
-              type="textarea"
-              defaultValue={port.description}
-              onChange={(e) => {
-                setMessage();
-                setPortField(e.target.value, 'description');
-              }}
-            />
-          </FormGroup>
-        </Col>
-        <Col sm={12} md={6} lg={3}>
+        <Col xs={12} md={4}>
           <FormGroup>
             <Label required for="port-start-date">
               Departure Date
@@ -136,7 +81,7 @@ export const PortForm: React.FC<PortFormProps> = ({
             />
           </FormGroup>
         </Col>
-        <Col sm={12} md={6} lg={3}>
+        <Col xs={12} md={4}>
           <FormGroup>
             <Label required for="port-end-date">
               Arrival Date
@@ -154,6 +99,71 @@ export const PortForm: React.FC<PortFormProps> = ({
               }}
             />
             <FormFeedback>End date must be after start date.</FormFeedback>
+          </FormGroup>
+        </Col>
+        <Col xs={12}>
+          <FormGroup>
+            <Label required for="port-description">
+              Description
+            </Label>
+            <Input
+              required
+              id="port-description"
+              name="port-description"
+              type="textarea"
+              defaultValue={port.description}
+              onChange={(e) => {
+                setMessage();
+                setPortField(e.target.value, 'description');
+              }}
+            />
+          </FormGroup>
+        </Col>
+        <Col xs={12} md={4}>
+          <FormGroup>
+            <Label required for="port-city">
+              City
+            </Label>
+            <Input
+              required
+              id="port-city"
+              name="port-city"
+              type="text"
+              defaultValue={port.city}
+              onChange={(e) => {
+                setMessage();
+                setPortField(e.target.value, 'city');
+              }}
+            />
+          </FormGroup>
+        </Col>
+        <Col xs={12} md={4}>
+          <StateSelector
+            id="port-state"
+            label="State"
+            value={port.state ? port.state.toString() : ''}
+            onSelect={(e) => {
+              setMessage();
+              setPortField(e.target.value, 'state');
+            }}
+          />
+        </Col>
+        <Col xs={12} md={4}>
+          <FormGroup>
+            <Label required for="port-country">
+              Country
+            </Label>
+            <Input
+              required
+              id="port-country"
+              name="port-country"
+              type="text"
+              defaultValue={port.city}
+              onChange={(e) => {
+                setMessage();
+                setPortField(e.target.value, 'country');
+              }}
+            />
           </FormGroup>
         </Col>
       </Row>

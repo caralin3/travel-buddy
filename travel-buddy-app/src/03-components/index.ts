@@ -11,6 +11,7 @@ export * from './LoginForm';
 export * from './PortDetail';
 export * from './PortForm';
 export * from './RegisterForm';
+export * from './RoomTypeSelector';
 export * from './SeaDayDetail';
 export * from './TripDetail';
 export * from './TripForm';

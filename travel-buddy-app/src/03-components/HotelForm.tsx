@@ -1,8 +1,10 @@
 import React from 'react';
 import { Input, Col, Row, FormFeedback } from 'reactstrap';
-import { CostInput, Form, FormGroup, Label, Select, SelectOption } from '../02-molecules';
+import { CostInput, Form, FormGroup, Label, SelectOption } from '../02-molecules';
 import { HotelRequest } from '../api';
 import { TripSelector } from '../containers';
+import { RoomTypeSelector } from './RoomTypeSelector';
+import { StateSelector } from './StateSelector';
 
 export interface HotelFormProps {
   edit?: boolean;
@@ -31,25 +33,10 @@ export const HotelForm: React.FC<HotelFormProps> = ({
     }
   };
 
-  const roomTypeOptions: SelectOption[] = [
-    {
-      label: 'Single',
-      value: 'SINGLE',
-    },
-    {
-      label: 'Double',
-      value: 'DOUBLE',
-    },
-    {
-      label: 'Suite',
-      value: 'SUITE',
-    },
-  ];
-
   return (
     <Form title={edit ? 'Update Hotel' : 'Create Hotel'} onSubmit={onSubmit} loading={loading}>
       <Row>
-        <Col sm={12}>
+        <Col xs={12} md={6}>
           <TripSelector
             required
             value={hotel.tripId.toString()}
@@ -59,7 +46,7 @@ export const HotelForm: React.FC<HotelFormProps> = ({
             }}
           />
         </Col>
-        <Col sm={12} md={6} lg={3}>
+        <Col xs={12} md={6}>
           <FormGroup>
             <Label required for="hotel-name">
               Name
@@ -77,7 +64,22 @@ export const HotelForm: React.FC<HotelFormProps> = ({
             />
           </FormGroup>
         </Col>
-        <Col sm={12} md={6} lg={3}>
+        <Col xs={12}>
+          <FormGroup>
+            <Label for="hotel-description">Description</Label>
+            <Input
+              id="hotel-description"
+              name="hotel-description"
+              type="textarea"
+              defaultValue={hotel.description}
+              onChange={(e) => {
+                setMessage();
+                setHotelField(e.target.value, 'description');
+              }}
+            />
+          </FormGroup>
+        </Col>
+        <Col xs={12} md={6} lg={3}>
           <FormGroup>
             <Label required for="hotel-room-count">
               Room Count
@@ -95,11 +97,10 @@ export const HotelForm: React.FC<HotelFormProps> = ({
             />
           </FormGroup>
         </Col>
-        <Col sm={12} md={6} lg={3}>
-          <Select
+        <Col xs={12} md={6} lg={3}>
+          <RoomTypeSelector
             id="hotel-room-type"
             label="Room Type"
-            options={roomTypeOptions}
             value={hotel.roomType ? hotel.roomType.toString() : ''}
             onSelect={(e) => {
               setMessage();
@@ -107,22 +108,7 @@ export const HotelForm: React.FC<HotelFormProps> = ({
             }}
           />
         </Col>
-        <Col sm={12} md={6} lg={3}>
-          <FormGroup>
-            <Label for="hotel-description">Description</Label>
-            <Input
-              id="hotel-description"
-              name="hotel-description"
-              type="textarea"
-              defaultValue={hotel.description}
-              onChange={(e) => {
-                setMessage();
-                setHotelField(e.target.value, 'description');
-              }}
-            />
-          </FormGroup>
-        </Col>
-        <Col sm={12} md={6} lg={3}>
+        <Col xs={12} md={6} lg={3}>
           <FormGroup>
             <Label required for="hotel-start-date">
               Check In Date
@@ -140,7 +126,7 @@ export const HotelForm: React.FC<HotelFormProps> = ({
             />
           </FormGroup>
         </Col>
-        <Col sm={12} md={6} lg={3}>
+        <Col xs={12} md={6} lg={3}>
           <FormGroup>
             <Label required for="hotel-end-date">
               Check Out Date
@@ -160,7 +146,7 @@ export const HotelForm: React.FC<HotelFormProps> = ({
             <FormFeedback>End date must be after start date.</FormFeedback>
           </FormGroup>
         </Col>
-        <Col sm={12} md={6} lg={3}>
+        <Col xs={12} md={6} lg={3}>
           <FormGroup>
             <Label required for="hotel-street">
               Street
@@ -180,7 +166,7 @@ export const HotelForm: React.FC<HotelFormProps> = ({
             />
           </FormGroup>
         </Col>
-        <Col sm={12} md={6} lg={3}>
+        <Col xs={12} md={6} lg={3}>
           <FormGroup>
             <Label for="hotel-street-2">Street 2</Label>
             <Input
@@ -197,7 +183,7 @@ export const HotelForm: React.FC<HotelFormProps> = ({
             />
           </FormGroup>
         </Col>
-        <Col sm={12} md={6} lg={3}>
+        <Col xs={12} md={6} lg={3}>
           <FormGroup>
             <Label required for="hotel-city">
               City
@@ -215,8 +201,18 @@ export const HotelForm: React.FC<HotelFormProps> = ({
             />
           </FormGroup>
         </Col>
-        {/* @TODO: State Dropdown */}
-        <Col sm={12} md={6} lg={3}>
+        <Col xs={12} md={6} lg={3}>
+          <StateSelector
+            id="hotel-state"
+            label="State"
+            value={hotel.state ? hotel.state.toString() : ''}
+            onSelect={(e) => {
+              setMessage();
+              setHotelField(e.target.value, 'state');
+            }}
+          />
+        </Col>
+        <Col xs={12} md={6} lg={3}>
           <FormGroup>
             <Label for="hotel-postal-code">Postal Code</Label>
             <Input
@@ -232,7 +228,7 @@ export const HotelForm: React.FC<HotelFormProps> = ({
             />
           </FormGroup>
         </Col>
-        <Col sm={12} md={6} lg={3}>
+        <Col xs={12} md={6} lg={3}>
           <FormGroup>
             <Label for="hotel-country">Country</Label>
             <Input
@@ -247,7 +243,7 @@ export const HotelForm: React.FC<HotelFormProps> = ({
             />
           </FormGroup>
         </Col>
-        <Col sm={12} md={6} lg={3}>
+        <Col xs={12} md={6} lg={3}>
           <FormGroup>
             <Label for="hotel-cost">Cost</Label>
             <CostInput
@@ -261,7 +257,7 @@ export const HotelForm: React.FC<HotelFormProps> = ({
             />
           </FormGroup>
         </Col>
-        <Col sm={12} md={6} lg={3}>
+        <Col xs={12} md={6} lg={3}>
           <FormGroup>
             <Label for="hotel-currency">Currency</Label>
             <Input
