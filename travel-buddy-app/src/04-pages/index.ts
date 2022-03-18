@@ -1,3 +1,4 @@
+export * from './AccounPage';
 export * from './ActivitiesAddPage';
 export * from './ActivitiesEditPage';
 export * from './CruisesAddPage';

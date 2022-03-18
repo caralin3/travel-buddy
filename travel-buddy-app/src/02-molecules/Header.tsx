@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Collapse, Nav, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import {
-  ABOUT_ROUTE,
+  ACCOUNT_ROUTE,
   CRUISES_ROUTE,
   DASHBOARD_ROUTE,
   FLIGHTS_ROUTE,
@@ -21,7 +21,6 @@ export interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ auth = false, logout }) => {
   const publicLinks: LinkItem[] = [
     { label: 'Home', path: HOME_ROUTE },
-    { label: 'About', path: ABOUT_ROUTE },
     { label: 'Login', path: LOGIN_ROUTE },
     { label: 'Register', path: REGISTER_ROUTE },
   ];
@@ -31,7 +30,7 @@ export const Header: React.FC<HeaderProps> = ({ auth = false, logout }) => {
     { label: 'Trips', path: TRIPS_ROUTE },
     { label: 'Flights', path: FLIGHTS_ROUTE },
     { label: 'Cruises', path: CRUISES_ROUTE },
-    { label: 'Account', path: HOME_ROUTE },
+    { label: 'Account', path: ACCOUNT_ROUTE },
   ];
 
   const links = auth ? authLinks : publicLinks;
@@ -39,7 +38,7 @@ export const Header: React.FC<HeaderProps> = ({ auth = false, logout }) => {
   return (
     <header>
       <Navbar color="light" expand="md" light>
-        <NavbarBrand tag={Link} to={HOME_ROUTE}>
+        <NavbarBrand tag={Link} to={auth ? DASHBOARD_ROUTE : HOME_ROUTE}>
           Travel Buddy
         </NavbarBrand>
         <NavbarToggler onClick={function noRefCheck() {}} />

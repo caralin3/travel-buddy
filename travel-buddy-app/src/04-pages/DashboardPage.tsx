@@ -1,10 +1,16 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import { Col, Container, ListGroup, Row } from 'reactstrap';
+import { Col, Container, ListGroup, Row, Spinner } from 'reactstrap';
 import { Card, ListItem } from '../02-molecules';
 import { UpcomingTripBanner } from '../03-components';
 import { Trip } from '../api';
+import ActivityService from '../api/services/ActivityService';
+import CruiseService from '../api/services/CruiseService';
+import FlightService from '../api/services/FlightService';
+import HotelService from '../api/services/HotelService';
+import PortService from '../api/services/PortService';
+import TripService from '../api/services/TripService';
 import {
   ADD_CRUISES_ROUTE,
   ADD_FLIGHTS_ROUTE,
@@ -14,23 +20,35 @@ import {
   TRIPS_ROUTE,
 } from '../router';
 import { RootState } from '../store';
+import * as activitiesState from '../store/reducers/activities';
 import * as cruisesState from '../store/reducers/cruises';
 import * as flightsState from '../store/reducers/flights';
+import * as hotelsState from '../store/reducers/hotels';
+import * as portsState from '../store/reducers/ports';
 import * as tripsState from '../store/reducers/trips';
 import { formatDate, SHORT_DATE_FORMAT } from '../utils';
 
 export interface DashboardPagePageProps {}
 
 export const DashboardPage: React.FC<DashboardPagePageProps> = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const MAX_VIEW = 3;
 
+  const accessToken = useSelector((state: RootState) => state.session.token);
   const trips = useSelector((state: RootState) => tripsState.selectFutureTrips(state)).slice(0, MAX_VIEW);
   const cruises = useSelector((state: RootState) => cruisesState.selectFutureCruises(state)).slice(0, MAX_VIEW);
   const flights = useSelector((state: RootState) => flightsState.selectFutureFlights(state)).slice(0, MAX_VIEW);
   const user = useSelector((state: RootState) => state.session.user);
 
+  const [loading, setLoading] = React.useState(false);
   const [nextTrip, setNextTrip] = React.useState<Trip | undefined>(undefined);
+
+  React.useEffect(() => {
+    (async () => {
+      await loadData();
+    })();
+  }, []);
 
   React.useEffect(() => {
     if (trips.length > 0) {
@@ -39,6 +57,29 @@ export const DashboardPage: React.FC<DashboardPagePageProps> = () => {
       setNextTrip(undefined);
     }
   }, [trips]);
+
+  const loadData = async () => {
+    try {
+      if (accessToken) {
+        setLoading(true);
+        const tripRes = await TripService.getTrips(accessToken);
+        dispatch(tripsState.loadTrips(tripRes));
+        const flightRes = await FlightService.getFlights(accessToken);
+        dispatch(flightsState.loadFlights(flightRes));
+        const hotelRes = await HotelService.getHotels(accessToken);
+        dispatch(hotelsState.loadHotels(hotelRes));
+        const cruiseRes = await CruiseService.getCruises(accessToken);
+        dispatch(cruisesState.loadCruises(cruiseRes));
+        const portRes = await PortService.getPorts(accessToken);
+        dispatch(portsState.loadPorts(portRes));
+        const activityRes = await ActivityService.getActivities(accessToken);
+        dispatch(activitiesState.loadActivities(activityRes));
+        setLoading(false);
+      }
+    } catch (err) {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="dashboard-page">
@@ -70,7 +111,7 @@ export const DashboardPage: React.FC<DashboardPagePageProps> = () => {
             </Card>
           </Col>
         </Row>
-        {trips && trips.length > 0 && (
+        {!loading && trips && trips.length > 0 && (
           <Row className="dashboard-page__upcoming py-5">
             <Col>
               <div className="dashboard-page__upcoming-heading">
@@ -95,7 +136,7 @@ export const DashboardPage: React.FC<DashboardPagePageProps> = () => {
             </Col>
           </Row>
         )}
-        {flights && flights.length > 0 && (
+        {!loading && flights && flights.length > 0 && (
           <Row className="dashboard-page__upcoming pb-5">
             <Col>
               <div className="dashboard-page__upcoming-heading">
@@ -120,7 +161,7 @@ export const DashboardPage: React.FC<DashboardPagePageProps> = () => {
             </Col>
           </Row>
         )}
-        {cruises && cruises.length > 0 && (
+        {!loading && cruises && cruises.length > 0 && (
           <Row className="dashboard-page__upcoming pb-5">
             <Col>
               <div className="dashboard-page__upcoming-heading">
@@ -151,6 +192,7 @@ export const DashboardPage: React.FC<DashboardPagePageProps> = () => {
             </Col>
           </Row>
         )}
+        {loading && <Spinner>Loading...</Spinner>}
       </Container>
     </div>
   );

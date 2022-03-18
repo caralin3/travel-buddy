@@ -1,28 +1,29 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import {
-  DashboardPage,
-  RegisterPage,
-  LoginPage,
-  HomePage,
-  TripsPage,
-  TripsEditPage,
-  TripsAddPage,
-  FlightDetailPage,
-  FlightsPage,
-  TripDetailPage,
-  CruisesPage,
-  CruiseDetailPage,
-  FlightsAddPage,
-  FlightsEditPage,
-  ActivitiesEditPage,
+  AccounPage,
   ActivitiesAddPage,
-  HotelsEditPage,
-  HotelsAddPage,
-  PortsEditPage,
-  PortsAddPage,
-  CruisesEditPage,
+  ActivitiesEditPage,
   CruisesAddPage,
+  CruiseDetailPage,
+  CruisesEditPage,
+  CruisesPage,
+  DashboardPage,
+  FlightsAddPage,
+  FlightsPage,
+  FlightDetailPage,
+  FlightsEditPage,
+  HomePage,
+  HotelsAddPage,
+  HotelsEditPage,
+  LoginPage,
+  PortsAddPage,
+  PortsEditPage,
+  RegisterPage,
+  TripsAddPage,
+  TripDetailPage,
+  TripsEditPage,
+  TripsPage,
 } from '../04-pages';
 import { PublicRoute } from './PublicRoute';
 import { RequireAuth } from './RequireAuth';
@@ -30,8 +31,7 @@ import { RequireAuth } from './RequireAuth';
 export const Router: React.FC = () => (
   <Routes>
     <Route path="/" element={<HomePage />} />
-    {/* @TODO */}
-    <Route path="about" element={<HomePage />} />
+    <Route path="account" element={<AccounPage />} />
     <Route
       path="register"
       element={
