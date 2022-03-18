@@ -1,6 +1,6 @@
 import React from 'react';
 import { Input, Col, Row, FormFeedback } from 'reactstrap';
-import { CostInput, Form, FormGroup, Label, SelectOption } from '../02-molecules';
+import { CostInput, Form, FormGroup, Label } from '../02-molecules';
 import { ActivityRequest } from '../api';
 import { CruiseSelector, PortSelector, TripSelector } from '../containers';
 import { StateSelector } from './StateSelector';

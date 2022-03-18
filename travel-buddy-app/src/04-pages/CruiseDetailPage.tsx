@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Container } from 'reactstrap';
 import { EmptyMessage } from '../01-atoms';
-import { DetailBanner, ItineraryCard } from '../02-molecules';
+import { AddDropdown, DetailBanner, ItineraryCard } from '../02-molecules';
 import { ActivityDetail, PortDetail, SeaDayDetail } from '../03-components';
 import { Activity, Port } from '../api';
 import { CRUISES_ROUTE } from '../router';
@@ -42,7 +42,10 @@ export const CruiseDetailPage: React.FC<CruiseDetailPageProps> = () => {
             startDate={cruise.startDate}
           />
           <div className="itinerary px-5 my-4">
-            <h3 className="itinerary__title mb-4">Itinerary Details</h3>
+            <div className="d-flex flex-row justify-content-between">
+              <h3 className="itinerary__title mb-4">Itinerary Details</h3>
+              <AddDropdown />
+            </div>
             {days.map((day, index) => (
               <ItineraryCard date={day} key={index}>
                 {getEntityByDay(ports, 'arrival', day).length > 0

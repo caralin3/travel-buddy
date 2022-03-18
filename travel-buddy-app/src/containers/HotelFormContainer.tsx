@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { HotelForm } from '../03-components';
-import { Hotel, HotelRequest, handleError, RoomType } from '../api';
+import { Hotel, HotelRequest, handleError } from '../api';
 import HotelService from '../api/services/HotelService';
 import { TRIPS_ROUTE } from '../router';
 import { RootState } from '../store';

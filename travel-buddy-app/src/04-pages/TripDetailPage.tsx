@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { Container } from 'reactstrap';
 import { EmptyMessage } from '../01-atoms';
-import { DetailBanner } from '../02-molecules';
+import { AddDropdown, DetailBanner } from '../02-molecules';
 import { TripDetail } from '../03-components';
 import { Activity, Cruise, Flight, Hotel } from '../api';
 import { TRIPS_ROUTE } from '../router';
@@ -53,7 +53,10 @@ export const TripDetailPage: React.FC<TripDetailPageProps> = () => {
             startDate={trip.startDate}
           />
           <div className="itinerary px-5 my-4">
-            <h3 className="itinerary__title mb-4">Itinerary Details</h3>
+            <div className="d-flex flex-row justify-content-between">
+              <h3 className="itinerary__title mb-4">Itinerary Details</h3>
+              <AddDropdown />
+            </div>
             {days.map((day) => (
               <TripDetail
                 key={day}

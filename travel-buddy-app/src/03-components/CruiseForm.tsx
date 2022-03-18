@@ -275,7 +275,7 @@ export const CruiseForm: React.FC<CruiseFormProps> = ({
             <Input
               id="cruise-currency"
               name="cruise-currency"
-              cabintypeName="text-uppercase"
+              className="text-uppercase"
               type="text"
               defaultValue={cruise.currency}
               maxLength={3}

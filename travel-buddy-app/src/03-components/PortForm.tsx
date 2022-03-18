@@ -1,8 +1,8 @@
 import React from 'react';
 import { Input, Col, Row, FormFeedback } from 'reactstrap';
-import { CostInput, Form, FormGroup, Label, Select, SelectOption } from '../02-molecules';
+import { Form, FormGroup, Label } from '../02-molecules';
 import { PortRequest } from '../api';
-import { CruiseSelector, TripSelector } from '../containers';
+import { CruiseSelector } from '../containers';
 import { StateSelector } from './StateSelector';
 
 export interface PortFormProps {
