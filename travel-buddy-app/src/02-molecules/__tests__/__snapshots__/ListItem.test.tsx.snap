@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListItem should render correctly 1`] = `
+<ListGroupItem
+  className="list-item py-3"
+  onClick={[MockFunction]}
+  tag="li"
+>
+  <ListGroupItemHeading
+    className="list-item__heading text-primary"
+    tag="h5"
+  >
+    Heading
+  </ListGroupItemHeading>
+  <ListGroupItemText
+    className="list-item__body d-flex flex-column align-items-start m-0"
+    tag="p"
+  >
+    <span
+      className="list-item__dates"
+    >
+      2022-03-24
+    </span>
+    <span
+      className="list-item__description mt-3"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Description",
+        }
+      }
+    />
+  </ListGroupItemText>
+</ListGroupItem>
+`;

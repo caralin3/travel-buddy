@@ -1,0 +1,206 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form CostInput component should render correctly 1`] = `
+<InputGroup
+  tag="div"
+>
+  <InputGroupText
+    tag="span"
+  >
+    $
+  </InputGroupText>
+  <Input
+    type="number"
+  />
+</InputGroup>
+`;
+
+exports[`Form CostInput component should render correctly 2`] = `
+<InputGroup
+  tag="div"
+>
+  <InputGroupText
+    tag="span"
+  >
+    $
+  </InputGroupText>
+  <Input
+    type="number"
+  />
+</InputGroup>
+`;
+
+exports[`Form Form component should render correctly 1`] = `
+<Form
+  className="d-flex flex-column shadow-sm px-5 py-4 border rounded"
+  onSubmit={[Function]}
+  tag="form"
+>
+  <h2
+    className="mb-4"
+  >
+    Form
+  </h2>
+  <Button
+    className="mt-3 text-align-center align-self-center"
+    color="primary"
+    tag="button"
+  >
+    Submit
+  </Button>
+  <Link
+    className="mt-3"
+    key="#"
+    to="#"
+  >
+    Link
+  </Link>
+</Form>
+`;
+
+exports[`Form Form component should render loading correctly 1`] = `
+<Form
+  className="d-flex flex-column shadow-sm px-5 py-4 border rounded"
+  onSubmit={[Function]}
+  tag="form"
+>
+  <h2
+    className="mb-4"
+  >
+    Form
+  </h2>
+  <Button
+    className="mt-3 px-4 text-align-center align-self-center"
+    color="secondary"
+    disabled={true}
+    tag="button"
+  >
+    <Spinner
+      size="sm"
+      tag="div"
+      type="border"
+    >
+      Loading...
+    </Spinner>
+  </Button>
+  <Link
+    className="mt-3"
+    key="#"
+    to="#"
+  >
+    Link
+  </Link>
+</Form>
+`;
+
+exports[`Form FormGroup component should render correctly 1`] = `
+<FormGroup
+  className="d-flex flex-column align-items-start"
+  tag="div"
+/>
+`;
+
+exports[`Form Label component should render correctly 1`] = `
+<Label
+  tag="label"
+  widths={
+    Array [
+      "xs",
+      "sm",
+      "md",
+      "lg",
+      "xl",
+      "xxl",
+    ]
+  }
+>
+  test label
+</Label>
+`;
+
+exports[`Form Label component should render required correctly 1`] = `
+<Label
+  tag="label"
+  widths={
+    Array [
+      "xs",
+      "sm",
+      "md",
+      "lg",
+      "xl",
+      "xxl",
+    ]
+  }
+>
+  test label
+  <span
+    className="text-danger"
+  >
+    *
+  </span>
+</Label>
+`;
+
+exports[`Form Select component should render correctly 1`] = `
+<FormGroup>
+  <Label
+    for="select2"
+    required={false}
+  >
+    Label2
+  </Label>
+  <Input
+    defaultValue="2"
+    id="select2"
+    name="select"
+    onChange={[MockFunction]}
+    required={false}
+    type="select"
+  >
+    <option
+      key="1"
+      value="1"
+    >
+      option1
+    </option>
+    <option
+      key="2"
+      value="2"
+    >
+      option2
+    </option>
+  </Input>
+</FormGroup>
+`;
+
+exports[`Form Select component should render required correctly 1`] = `
+<FormGroup>
+  <Label
+    for="select"
+    required={true}
+  >
+    Label
+  </Label>
+  <Input
+    defaultValue="1"
+    id="select"
+    name="select"
+    onChange={[MockFunction]}
+    required={true}
+    type="select"
+  >
+    <option
+      key="1"
+      value="1"
+    >
+      option1
+    </option>
+    <option
+      key="2"
+      value="2"
+    >
+      option2
+    </option>
+  </Input>
+</FormGroup>
+`;

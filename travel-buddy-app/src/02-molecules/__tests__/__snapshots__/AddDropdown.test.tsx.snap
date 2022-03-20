@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddDropdown.tsx should render correctly 1`] = `
+<Dropdown
+  isOpen={false}
+  label="Add"
+  menuItems={
+    Array [
+      Object {
+        "label": "Add Trip",
+        "onClick": [Function],
+      },
+      Object {
+        "label": "Add Flight",
+        "onClick": [Function],
+      },
+      Object {
+        "label": "Add Hotel",
+        "onClick": [Function],
+      },
+      Object {
+        "label": "Add Cruise",
+        "onClick": [Function],
+      },
+      Object {
+        "label": "Add Port",
+        "onClick": [Function],
+      },
+      Object {
+        "label": "Add Activity",
+        "onClick": [Function],
+      },
+    ]
+  }
+  toggle={[Function]}
+/>
+`;

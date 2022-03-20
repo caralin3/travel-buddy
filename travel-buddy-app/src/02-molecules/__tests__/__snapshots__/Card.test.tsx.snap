@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card should render correctly 1`] = `
+<Card
+  tag="div"
+>
+  <CardBody
+    tag="div"
+  >
+    <CardTitle
+      tag="h5"
+    >
+      Card
+    </CardTitle>
+    <CardSubtitle
+      className="mb-2 text-muted"
+      tag="h6"
+    >
+      Subtitle
+    </CardSubtitle>
+    <CardText
+      tag="p"
+    />
+    <Button
+      color="primary"
+      tag="button"
+    >
+      Click
+    </Button>
+    <Link
+      className="btn btn-primary"
+      to="#"
+    >
+      Link
+    </Link>
+  </CardBody>
+</Card>
+`;

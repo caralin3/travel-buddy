@@ -1,0 +1,259 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should render auth correctly 1`] = `
+<header>
+  <Navbar
+    color="light"
+    container="fluid"
+    expand="md"
+    light={true}
+    tag="nav"
+  >
+    <NavbarBrand
+      tag={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        }
+      }
+      to="/dashboard"
+    >
+      Travel Buddy
+    </NavbarBrand>
+    <NavbarToggler
+      onClick={[Function]}
+      tag="button"
+      type="button"
+    />
+    <Collapse
+      appear={false}
+      className="flex-grow-0"
+      enter={true}
+      exit={true}
+      horizontal={false}
+      in={false}
+      isOpen={false}
+      mountOnEnter={false}
+      navbar={true}
+      onEnter={[Function]}
+      onEntered={[Function]}
+      onEntering={[Function]}
+      onExit={[Function]}
+      onExited={[Function]}
+      onExiting={[Function]}
+      tag="div"
+      timeout={350}
+      unmountOnExit={false}
+    >
+      <Nav
+        className="me-auto"
+        navbar={true}
+        tag="ul"
+        vertical={false}
+      >
+        <NavItem
+          key="/dashboard"
+          tag="li"
+        >
+          <NavLink
+            tag={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "render": [Function],
+              }
+            }
+            to="/dashboard"
+          >
+            Dashboard
+          </NavLink>
+        </NavItem>
+        <NavItem
+          key="/trips"
+          tag="li"
+        >
+          <NavLink
+            tag={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "render": [Function],
+              }
+            }
+            to="/trips"
+          >
+            Trips
+          </NavLink>
+        </NavItem>
+        <NavItem
+          key="/flights"
+          tag="li"
+        >
+          <NavLink
+            tag={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "render": [Function],
+              }
+            }
+            to="/flights"
+          >
+            Flights
+          </NavLink>
+        </NavItem>
+        <NavItem
+          key="/cruises"
+          tag="li"
+        >
+          <NavLink
+            tag={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "render": [Function],
+              }
+            }
+            to="/cruises"
+          >
+            Cruises
+          </NavLink>
+        </NavItem>
+        <NavItem
+          key="/account"
+          tag="li"
+        >
+          <NavLink
+            tag={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "render": [Function],
+              }
+            }
+            to="/account"
+          >
+            Account
+          </NavLink>
+        </NavItem>
+        <NavItem
+          tag="li"
+        >
+          <NavLink
+            onClick={[MockFunction]}
+            tag={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "render": [Function],
+              }
+            }
+            to="/"
+          >
+            Logout
+          </NavLink>
+        </NavItem>
+      </Nav>
+    </Collapse>
+  </Navbar>
+</header>
+`;
+
+exports[`Header should render correctly 1`] = `
+<header>
+  <Navbar
+    color="light"
+    container="fluid"
+    expand="md"
+    light={true}
+    tag="nav"
+  >
+    <NavbarBrand
+      tag={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "render": [Function],
+        }
+      }
+      to="/"
+    >
+      Travel Buddy
+    </NavbarBrand>
+    <NavbarToggler
+      onClick={[Function]}
+      tag="button"
+      type="button"
+    />
+    <Collapse
+      appear={false}
+      className="flex-grow-0"
+      enter={true}
+      exit={true}
+      horizontal={false}
+      in={false}
+      isOpen={false}
+      mountOnEnter={false}
+      navbar={true}
+      onEnter={[Function]}
+      onEntered={[Function]}
+      onEntering={[Function]}
+      onExit={[Function]}
+      onExited={[Function]}
+      onExiting={[Function]}
+      tag="div"
+      timeout={350}
+      unmountOnExit={false}
+    >
+      <Nav
+        className="me-auto"
+        navbar={true}
+        tag="ul"
+        vertical={false}
+      >
+        <NavItem
+          key="/"
+          tag="li"
+        >
+          <NavLink
+            tag={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "render": [Function],
+              }
+            }
+            to="/"
+          >
+            Home
+          </NavLink>
+        </NavItem>
+        <NavItem
+          key="/login"
+          tag="li"
+        >
+          <NavLink
+            tag={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "render": [Function],
+              }
+            }
+            to="/login"
+          >
+            Login
+          </NavLink>
+        </NavItem>
+        <NavItem
+          key="/register"
+          tag="li"
+        >
+          <NavLink
+            tag={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "render": [Function],
+              }
+            }
+            to="/register"
+          >
+            Register
+          </NavLink>
+        </NavItem>
+      </Nav>
+    </Collapse>
+  </Navbar>
+</header>
+`;

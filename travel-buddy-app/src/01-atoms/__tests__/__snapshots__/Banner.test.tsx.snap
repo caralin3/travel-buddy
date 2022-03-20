@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Banner should render correctly 1`] = `
+<Container
+  className="px-2 py-3 bg-secondary text-white border-bottom border-top"
+  fluid={true}
+  tag="div"
+/>
+`;

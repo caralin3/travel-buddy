@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DetailBanner should render correctly 1`] = `
+<div
+  className="detail-banner bg-secondary px-5 py-4"
+>
+  <div
+    className="detail-banner__text d-flex flex-column align-items-start text-white"
+  >
+    <h1>
+      Title
+    </h1>
+    <p
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Description",
+        }
+      }
+    />
+    <p
+      className="h4"
+    >
+      March 20, 2022
+       - 
+      March 31, 2022
+    </p>
+  </div>
+  <p
+    className="detail-banner__until circle text-uppercase m-0"
+  >
+    <strong>
+      0
+    </strong>
+    <strong>
+      days left
+    </strong>
+  </p>
+</div>
+`;

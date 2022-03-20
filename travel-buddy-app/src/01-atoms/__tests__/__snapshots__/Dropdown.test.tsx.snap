@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown should render correctly 1`] = `
+<Dropdown
+  a11y={true}
+  active={false}
+  direction="down"
+  inNavbar={false}
+  isOpen={false}
+  nav={false}
+  setActiveFromChild={false}
+  toggle={[MockFunction]}
+>
+  <DropdownToggle
+    aria-haspopup={true}
+    caret={true}
+    color="secondary"
+  >
+    Dropdown
+  </DropdownToggle>
+  <DropdownMenu
+    end={true}
+    flip={true}
+    modifiers={Array []}
+    tag="div"
+  >
+    <DropdownItem
+      key="One"
+      onClick={[MockFunction]}
+      tag="button"
+      toggle={true}
+    >
+      One
+    </DropdownItem>
+    <DropdownItem
+      key="Two"
+      onClick={[MockFunction]}
+      tag="button"
+      toggle={true}
+    >
+      Two
+    </DropdownItem>
+  </DropdownMenu>
+</Dropdown>
+`;
+
+exports[`Dropdown should render open correctly 1`] = `
+<Dropdown
+  a11y={true}
+  active={false}
+  direction="down"
+  inNavbar={false}
+  isOpen={true}
+  nav={false}
+  setActiveFromChild={false}
+  toggle={[MockFunction]}
+>
+  <DropdownToggle
+    aria-haspopup={true}
+    caret={true}
+    color="secondary"
+  >
+    Dropdown
+  </DropdownToggle>
+  <DropdownMenu
+    end={true}
+    flip={true}
+    modifiers={Array []}
+    tag="div"
+  >
+    <DropdownItem
+      key="One"
+      onClick={[MockFunction]}
+      tag="button"
+      toggle={true}
+    >
+      One
+    </DropdownItem>
+    <DropdownItem
+      key="Two"
+      onClick={[MockFunction]}
+      tag="button"
+      toggle={true}
+    >
+      Two
+    </DropdownItem>
+  </DropdownMenu>
+</Dropdown>
+`;
