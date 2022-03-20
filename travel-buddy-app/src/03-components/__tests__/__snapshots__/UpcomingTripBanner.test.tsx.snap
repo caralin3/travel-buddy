@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UpcomingTripBanner should render correctly 1`] = `
+<Banner>
+  <Row
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "xxl",
+      ]
+    }
+  >
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+    >
+      <p
+        className="text-uppercase"
+      >
+        <strong>
+          Upcoming Trip
+        </strong>
+      </p>
+    </Col>
+  </Row>
+  <Row
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "xxl",
+      ]
+    }
+  >
+    <Countdown
+      date="2121-05-12"
+    />
+  </Row>
+  <Row
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "xxl",
+      ]
+    }
+  >
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+    >
+      <h2>
+        Trip
+      </h2>
+      <p
+        className="m-0"
+      >
+        <strong>
+          May 12, 2121
+        </strong>
+      </p>
+    </Col>
+  </Row>
+</Banner>
+`;

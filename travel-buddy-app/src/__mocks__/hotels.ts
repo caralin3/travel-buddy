@@ -16,4 +16,18 @@ export const hotels: Hotel[] = [
     state: 'TX',
     trip: trips[0],
   },
+  {
+    id: 0,
+    name: 'Courtyard By Marriot Denton',
+    roomType: 'DOUBLE',
+    roomCount: 1,
+    checkInDate: '2022-06-03 15:00:00',
+    checkOutDate: '2022-06-03 11:00:00',
+    cost: 0,
+    currency: 'USD',
+    addressLine1: '2800 Colorado Blvd',
+    city: 'Denton',
+    state: 'TX',
+    trip: trips[0],
+  },
 ];

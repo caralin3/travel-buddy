@@ -1,0 +1,250 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StateSelector should render correctly 1`] = `
+<Select
+  id="state"
+  label="Select"
+  onSelect={[MockFunction]}
+  options={
+    Array [
+      Object {
+        "label": "Alabama",
+        "value": "Alabama",
+      },
+      Object {
+        "label": "Alaska",
+        "value": "Alaska",
+      },
+      Object {
+        "label": "American Samoa",
+        "value": "American Samoa",
+      },
+      Object {
+        "label": "Arizona",
+        "value": "Arizona",
+      },
+      Object {
+        "label": "Arkansas",
+        "value": "Arkansas",
+      },
+      Object {
+        "label": "California",
+        "value": "California",
+      },
+      Object {
+        "label": "Colorado",
+        "value": "Colorado",
+      },
+      Object {
+        "label": "Connecticut",
+        "value": "Connecticut",
+      },
+      Object {
+        "label": "Delaware",
+        "value": "Delaware",
+      },
+      Object {
+        "label": "District of Columbia",
+        "value": "District of Columbia",
+      },
+      Object {
+        "label": "Federated States of Micronesia",
+        "value": "Federated States of Micronesia",
+      },
+      Object {
+        "label": "Florida",
+        "value": "Florida",
+      },
+      Object {
+        "label": "Georgia",
+        "value": "Georgia",
+      },
+      Object {
+        "label": "Guam",
+        "value": "Guam",
+      },
+      Object {
+        "label": "Hawaii",
+        "value": "Hawaii",
+      },
+      Object {
+        "label": "Idaho",
+        "value": "Idaho",
+      },
+      Object {
+        "label": "Illinois",
+        "value": "Illinois",
+      },
+      Object {
+        "label": "Indiana",
+        "value": "Indiana",
+      },
+      Object {
+        "label": "Iowa",
+        "value": "Iowa",
+      },
+      Object {
+        "label": "Kansas",
+        "value": "Kansas",
+      },
+      Object {
+        "label": "Kentucky",
+        "value": "Kentucky",
+      },
+      Object {
+        "label": "Louisiana",
+        "value": "Louisiana",
+      },
+      Object {
+        "label": "Maine",
+        "value": "Maine",
+      },
+      Object {
+        "label": "Marshall Islands",
+        "value": "Marshall Islands",
+      },
+      Object {
+        "label": "Maryland",
+        "value": "Maryland",
+      },
+      Object {
+        "label": "Massachusetts",
+        "value": "Massachusetts",
+      },
+      Object {
+        "label": "Michigan",
+        "value": "Michigan",
+      },
+      Object {
+        "label": "Minnesota",
+        "value": "Minnesota",
+      },
+      Object {
+        "label": "Mississippi",
+        "value": "Mississippi",
+      },
+      Object {
+        "label": "Missouri",
+        "value": "Missouri",
+      },
+      Object {
+        "label": "Montana",
+        "value": "Montana",
+      },
+      Object {
+        "label": "Nebraska",
+        "value": "Nebraska",
+      },
+      Object {
+        "label": "Nevada",
+        "value": "Nevada",
+      },
+      Object {
+        "label": "New Hampshire",
+        "value": "New Hampshire",
+      },
+      Object {
+        "label": "New Jersey",
+        "value": "New Jersey",
+      },
+      Object {
+        "label": "New Mexico",
+        "value": "New Mexico",
+      },
+      Object {
+        "label": "New York",
+        "value": "New York",
+      },
+      Object {
+        "label": "North Carolina",
+        "value": "North Carolina",
+      },
+      Object {
+        "label": "North Dakota",
+        "value": "North Dakota",
+      },
+      Object {
+        "label": "Northern Mariana Islands",
+        "value": "Northern Mariana Islands",
+      },
+      Object {
+        "label": "Ohio",
+        "value": "Ohio",
+      },
+      Object {
+        "label": "Oklahoma",
+        "value": "Oklahoma",
+      },
+      Object {
+        "label": "Oregon",
+        "value": "Oregon",
+      },
+      Object {
+        "label": "Palau",
+        "value": "Palau",
+      },
+      Object {
+        "label": "Pennsylvania",
+        "value": "Pennsylvania",
+      },
+      Object {
+        "label": "Puerto Rico",
+        "value": "Puerto Rico",
+      },
+      Object {
+        "label": "Rhode Island",
+        "value": "Rhode Island",
+      },
+      Object {
+        "label": "South Carolina",
+        "value": "South Carolina",
+      },
+      Object {
+        "label": "South Dakota",
+        "value": "South Dakota",
+      },
+      Object {
+        "label": "Tennessee",
+        "value": "Tennessee",
+      },
+      Object {
+        "label": "Texas",
+        "value": "Texas",
+      },
+      Object {
+        "label": "Utah",
+        "value": "Utah",
+      },
+      Object {
+        "label": "Vermont",
+        "value": "Vermont",
+      },
+      Object {
+        "label": "Virgin Island",
+        "value": "Virgin Island",
+      },
+      Object {
+        "label": "Virginia",
+        "value": "Virginia",
+      },
+      Object {
+        "label": "Washington",
+        "value": "Washington",
+      },
+      Object {
+        "label": "West Virginia",
+        "value": "West Virginia",
+      },
+      Object {
+        "label": "Wisconsin",
+        "value": "Wisconsin",
+      },
+      Object {
+        "label": "Wyoming",
+        "value": "Wyoming",
+      },
+    ]
+  }
+  value="Ohio"
+/>
+`;

@@ -1,0 +1,246 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HotelDetail should render correctly 1`] = `
+<div
+  className="hotel-detail"
+>
+  <Row
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "xxl",
+      ]
+    }
+  >
+    <Col
+      className="hotel-detail__name text-primary"
+      sm={6}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      Courtyard By Marriot Denton
+    </Col>
+    <Col
+      className="hotel-detail__address"
+      sm={6}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      2800 Colorado Blvd
+      , 
+      Denton
+      , 
+      TX
+       
+       
+    </Col>
+  </Row>
+  <Row
+    className="my-2"
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "xxl",
+      ]
+    }
+  >
+    <Col
+      md={3}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={6}
+    >
+      <p
+        className="hotel-detail__label"
+      >
+        Check-Out
+      </p>
+      11:00 AM
+    </Col>
+  </Row>
+</div>
+`;
+
+exports[`HotelDetail should render with check-in correctly 1`] = `
+<div
+  className="hotel-detail"
+>
+  <Row
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "xxl",
+      ]
+    }
+  >
+    <Col
+      className="hotel-detail__name text-primary"
+      sm={6}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      Courtyard By Marriot Denton
+    </Col>
+    <Col
+      className="hotel-detail__address"
+      sm={6}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      2800 Colorado Blvd
+       apt
+      , 
+      Denton
+      , 
+      TX
+       
+      12345
+       
+    </Col>
+  </Row>
+  <Row
+    className="my-2"
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "xxl",
+      ]
+    }
+  >
+    <Col
+      md={3}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={6}
+    >
+      <p
+        className="hotel-detail__label"
+      >
+        Check-In
+      </p>
+      3:00 PM
+    </Col>
+    <Col
+      md={3}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={6}
+    >
+      <p
+        className="hotel-detail__label"
+      >
+        Nights
+      </p>
+      3
+    </Col>
+    <Col
+      md={6}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={6}
+    >
+      <p
+        className="hotel-detail__label"
+      >
+        Notes
+      </p>
+    </Col>
+  </Row>
+</div>
+`;

@@ -1,0 +1,764 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActivityDetail should render correctly 1`] = `
+<div
+  className="activity-detail"
+>
+  <Row
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "xxl",
+      ]
+    }
+  >
+    <Col
+      className="activity-detail__name text-primary"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+    >
+      Activities
+    </Col>
+  </Row>
+  <Row
+    className="my-2"
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "xxl",
+      ]
+    }
+  >
+    <Col
+      sm={2}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      <p
+        className="activity-detail__label"
+      >
+        Time
+      </p>
+    </Col>
+    <Col
+      sm={4}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      <p
+        className="activity-detail__label"
+      >
+        Name
+      </p>
+    </Col>
+    <Col
+      sm={6}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      <p
+        className="activity-detail__label"
+      >
+        Notes
+      </p>
+    </Col>
+  </Row>
+  <Row
+    className="activity"
+    key="0"
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "xxl",
+      ]
+    }
+  >
+    <Col
+      sm={2}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      11:00 AM
+       
+      <em
+        className="activity__duration"
+      >
+        (
+        1
+         hr
+        )
+      </em>
+    </Col>
+    <Col
+      sm={4}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      <p
+        className="activity__name text-primary m-0"
+      >
+        Horseback Riding
+      </p>
+      <p
+        className="activity__address m-0"
+      >
+        157 E Exchange Ave
+        , Fort Worth
+        , Texas
+      </p>
+    </Col>
+    <Col
+      sm={6}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      <p
+        className="activity__notes m-0"
+      >
+        Horseback riding at Stockyard stables.
+      </p>
+    </Col>
+  </Row>
+  <Row
+    className="activity"
+    key="1"
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "xxl",
+      ]
+    }
+  >
+    <Col
+      sm={2}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      4:00 PM
+       
+      <em
+        className="activity__duration"
+      >
+        (
+        2
+         hr
+        s
+        )
+      </em>
+    </Col>
+    <Col
+      sm={4}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      <p
+        className="activity__name text-primary m-0"
+      >
+        Billy Bobs Texas
+      </p>
+      <p
+        className="activity__address m-0"
+      >
+        2520 Rodeo Plaza
+        , Fort Worth
+        , Texas
+      </p>
+    </Col>
+    <Col
+      sm={6}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      <p
+        className="activity__notes m-0"
+      >
+        Honky Tonk near Stockyard stables.
+      </p>
+    </Col>
+  </Row>
+  <Row
+    className="activity"
+    key="2"
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "xxl",
+      ]
+    }
+  >
+    <Col
+      sm={2}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      1:30 PM
+       
+      <em
+        className="activity__duration"
+      >
+        (
+        1.5
+         hr
+        s
+        )
+      </em>
+    </Col>
+    <Col
+      sm={4}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      <p
+        className="activity__name text-primary m-0"
+      >
+        The Sixth Floor Museum at Dealey Plaza
+      </p>
+      <p
+        className="activity__address m-0"
+      >
+        411 Elm Street
+        , Dallas
+        , Texas
+      </p>
+    </Col>
+    <Col
+      sm={6}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      <p
+        className="activity__notes m-0"
+      >
+        JFK Museum
+      </p>
+    </Col>
+  </Row>
+  <Row
+    className="activity"
+    key="3"
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "xxl",
+      ]
+    }
+  >
+    <Col
+      sm={2}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      4:00 PM
+       
+      <em
+        className="activity__duration"
+      >
+        (
+        2
+         hr
+        s
+        )
+      </em>
+    </Col>
+    <Col
+      sm={4}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      <p
+        className="activity__name text-primary m-0"
+      >
+        Adair's Saloon
+      </p>
+      <p
+        className="activity__address m-0"
+      >
+        2624 Commerce Street
+        , Dallas
+        , Texas
+      </p>
+    </Col>
+    <Col
+      sm={6}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      <p
+        className="activity__notes m-0"
+      >
+        Same area=Dallas World Aquarium, 6th floor museum and dealy plaza, and Museum of Nature and Science SE of hotel 
+      </p>
+    </Col>
+  </Row>
+  <Row
+    className="activity"
+    key="4"
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "xxl",
+      ]
+    }
+  >
+    <Col
+      sm={2}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      4:00 PM
+       
+      <em
+        className="activity__duration"
+      >
+        (
+        2
+         hr
+        s
+        )
+      </em>
+    </Col>
+    <Col
+      sm={4}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      <p
+        className="activity__name text-primary m-0"
+      >
+        Arrive in Seattle
+      </p>
+      <p
+        className="activity__address m-0"
+      >
+        Seattle Washington
+      </p>
+    </Col>
+    <Col
+      sm={6}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      <p
+        className="activity__notes m-0"
+      >
+        Arrive for cruise
+      </p>
+    </Col>
+  </Row>
+  <Row
+    className="activity"
+    key="5"
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "xxl",
+      ]
+    }
+  >
+    <Col
+      sm={2}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      4:00 PM
+       
+      <em
+        className="activity__duration"
+      >
+        (
+        2
+         hr
+        s
+        )
+      </em>
+    </Col>
+    <Col
+      sm={4}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      <p
+        className="activity__name text-primary m-0"
+      >
+        After Dinner Show
+      </p>
+      <p
+        className="activity__address m-0"
+      >
+        Main Theater
+      </p>
+    </Col>
+    <Col
+      sm={6}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      <p
+        className="activity__notes m-0"
+      >
+        Show after dinner
+      </p>
+    </Col>
+  </Row>
+  <Row
+    className="activity"
+    key="6"
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "xxl",
+      ]
+    }
+  >
+    <Col
+      sm={2}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      8:00 AM
+       
+      <em
+        className="activity__duration"
+      >
+        (
+        2
+         hr
+        s
+        )
+      </em>
+    </Col>
+    <Col
+      sm={4}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      <p
+        className="activity__name text-primary m-0"
+      >
+        Helicopter Ride
+        <span
+          className="activity__port"
+        >
+           (
+          Ketchikan
+          , 
+          Alaska
+          )
+        </span>
+      </p>
+      <p
+        className="activity__address m-0"
+      >
+        2624 Commerce Street
+        , Ketchikan
+        , Alaska
+      </p>
+    </Col>
+    <Col
+      sm={6}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={12}
+    >
+      <p
+        className="activity__notes m-0"
+      >
+        Helicopter ride over glaciers
+      </p>
+    </Col>
+  </Row>
+</div>
+`;

@@ -1,0 +1,280 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PortDetail should render correctly 1`] = `
+<div
+  className="port-detail"
+>
+  <Row
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "xxl",
+      ]
+    }
+  >
+    <Col
+      className="port-detail__name text-primary"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+    >
+      Day 
+      2
+      : 
+      Ketchikan
+      , 
+      Alaska
+    </Col>
+    <Col
+      className="port-detail__hours"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+    >
+      8.5
+       hour
+      s
+    </Col>
+  </Row>
+  <Row
+    className="my-2"
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "xxl",
+      ]
+    }
+  >
+    <Col
+      md={3}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={6}
+    >
+      <p
+        className="port-detail__label"
+      >
+        Arrive
+      </p>
+      6:30 AM
+    </Col>
+    <Col
+      md={3}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={6}
+    >
+      <p
+        className="port-detail__label"
+      >
+        Depart
+      </p>
+      3:00 PM
+    </Col>
+    <Col
+      md={6}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={6}
+    >
+      <p
+        className="port-detail__label"
+      >
+        Notes
+      </p>
+    </Col>
+  </Row>
+</div>
+`;
+
+exports[`PortDetail should render correctly 2`] = `
+<div
+  className="port-detail"
+>
+  <Row
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "xxl",
+      ]
+    }
+  >
+    <Col
+      className="port-detail__name text-primary"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+    >
+      Day 
+      2
+      : 
+      Ketchikan
+      , 
+      US
+    </Col>
+    <Col
+      className="port-detail__hours"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+    >
+      0
+       hour
+    </Col>
+  </Row>
+  <Row
+    className="my-2"
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "xxl",
+      ]
+    }
+  >
+    <Col
+      md={3}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={6}
+    >
+      <p
+        className="port-detail__label"
+      >
+        Arrive
+      </p>
+      12:00 AM
+    </Col>
+    <Col
+      md={3}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={6}
+    >
+      <p
+        className="port-detail__label"
+      >
+        Depart
+      </p>
+      12:00 AM
+    </Col>
+    <Col
+      md={6}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+          "xxl",
+        ]
+      }
+      xs={6}
+    >
+      <p
+        className="port-detail__label"
+      >
+        Notes
+      </p>
+    </Col>
+  </Row>
+</div>
+`;

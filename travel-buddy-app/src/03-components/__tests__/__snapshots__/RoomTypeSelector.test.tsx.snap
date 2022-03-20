@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RoomTypeSelector should render correctly 1`] = `
+<Select
+  id="room"
+  label="Select"
+  onSelect={[MockFunction]}
+  options={
+    Array [
+      Object {
+        "label": "Single",
+        "value": "SINGLE",
+      },
+      Object {
+        "label": "Double",
+        "value": "DOUBLE",
+      },
+      Object {
+        "label": "Suite",
+        "value": "SUITE",
+      },
+    ]
+  }
+  value="SINGLE"
+/>
+`;

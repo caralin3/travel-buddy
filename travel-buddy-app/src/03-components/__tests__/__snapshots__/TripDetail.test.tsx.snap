@@ -1,0 +1,375 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TripDetail should render correctly 1`] = `
+<ItineraryCard
+  date="2022-06-03"
+>
+  <div
+    className="itinerary-card__detail"
+    key="0"
+  >
+    <FlightDetail
+      flight={
+        Object {
+          "airline": "JetBlue",
+          "arrivalAirport": "DFW",
+          "arrivalCity": "Dallas",
+          "arrivalDate": "2022-06-03 13:39:00",
+          "confirmationCode": "FWD5DBJ",
+          "cost": 300.03,
+          "currency": "USD",
+          "departureAirport": "JFK",
+          "departureCity": "NYC",
+          "departureDate": "2022-06-03 10:05:00",
+          "flightClass": "ECONOMY",
+          "flightNumber": "123",
+          "id": 0,
+          "terminal": "5",
+          "trip": Object {
+            "description": "Travelers: Cara, Elizabeth, Sarah<br/>Destination: Dallas, Texas",
+            "endDate": "2022-06-06",
+            "id": 0,
+            "startDate": "2022-06-03",
+            "title": "Texas Girls Trip 2022",
+            "uniqueLink": "",
+            "user": Object {
+              "email": "janeD@email.com",
+              "firstName": "Jane",
+              "id": 0,
+              "lastName": "Doe",
+              "roles": Array [
+                Object {
+                  "id": 0,
+                  "name": "ROLE_USER",
+                },
+              ],
+            },
+          },
+        }
+      }
+    />
+  </div>
+  <div
+    className="itinerary-card__detail"
+    key="0"
+  >
+    <FlightDetail
+      flight={
+        Object {
+          "airline": "JetBlue",
+          "arrivalAirport": "DFW",
+          "arrivalCity": "Dallas",
+          "arrivalDate": "2022-06-03 13:39:00",
+          "confirmationCode": "FWD5DBJ",
+          "cost": 300.03,
+          "currency": "USD",
+          "departureAirport": "JFK",
+          "departureCity": "NYC",
+          "departureDate": "2022-06-03 10:05:00",
+          "flightClass": "ECONOMY",
+          "flightNumber": "123",
+          "id": 0,
+          "terminal": "5",
+          "trip": Object {
+            "description": "Travelers: Cara, Elizabeth, Sarah<br/>Destination: Dallas, Texas",
+            "endDate": "2022-06-06",
+            "id": 0,
+            "startDate": "2022-06-03",
+            "title": "Texas Girls Trip 2022",
+            "uniqueLink": "",
+            "user": Object {
+              "email": "janeD@email.com",
+              "firstName": "Jane",
+              "id": 0,
+              "lastName": "Doe",
+              "roles": Array [
+                Object {
+                  "id": 0,
+                  "name": "ROLE_USER",
+                },
+              ],
+            },
+          },
+        }
+      }
+    />
+  </div>
+  <div
+    className="itinerary-card__detail"
+    key="2022-06-03 15:00:00"
+  >
+    <HotelDetail
+      checkIn={true}
+      hotel={
+        Object {
+          "addressLine1": "2800 Colorado Blvd",
+          "checkInDate": "2022-06-03 15:00:00",
+          "checkOutDate": "2022-06-06 11:00:00",
+          "city": "Denton",
+          "cost": 0,
+          "currency": "USD",
+          "id": 0,
+          "name": "Courtyard By Marriot Denton",
+          "roomCount": 1,
+          "roomType": "DOUBLE",
+          "state": "TX",
+          "trip": Object {
+            "description": "Travelers: Cara, Elizabeth, Sarah<br/>Destination: Dallas, Texas",
+            "endDate": "2022-06-06",
+            "id": 0,
+            "startDate": "2022-06-03",
+            "title": "Texas Girls Trip 2022",
+            "uniqueLink": "",
+            "user": Object {
+              "email": "janeD@email.com",
+              "firstName": "Jane",
+              "id": 0,
+              "lastName": "Doe",
+              "roles": Array [
+                Object {
+                  "id": 0,
+                  "name": "ROLE_USER",
+                },
+              ],
+            },
+          },
+        }
+      }
+    />
+  </div>
+  <div
+    className="itinerary-card__detail"
+    key="2022-06-03 15:00:00"
+  >
+    <HotelDetail
+      checkIn={true}
+      hotel={
+        Object {
+          "addressLine1": "2800 Colorado Blvd",
+          "checkInDate": "2022-06-03 15:00:00",
+          "checkOutDate": "2022-06-03 11:00:00",
+          "city": "Denton",
+          "cost": 0,
+          "currency": "USD",
+          "id": 0,
+          "name": "Courtyard By Marriot Denton",
+          "roomCount": 1,
+          "roomType": "DOUBLE",
+          "state": "TX",
+          "trip": Object {
+            "description": "Travelers: Cara, Elizabeth, Sarah<br/>Destination: Dallas, Texas",
+            "endDate": "2022-06-06",
+            "id": 0,
+            "startDate": "2022-06-03",
+            "title": "Texas Girls Trip 2022",
+            "uniqueLink": "",
+            "user": Object {
+              "email": "janeD@email.com",
+              "firstName": "Jane",
+              "id": 0,
+              "lastName": "Doe",
+              "roles": Array [
+                Object {
+                  "id": 0,
+                  "name": "ROLE_USER",
+                },
+              ],
+            },
+          },
+        }
+      }
+    />
+  </div>
+  <div
+    className="itinerary-card__detail"
+    key="1"
+  >
+    <CruiseDetail
+      cruise={
+        Object {
+          "cabinNumber": "9112",
+          "cost": 5402.97,
+          "cruiseLine": "Royal Caribbean",
+          "currency": "USD",
+          "departureCity": "Sicily",
+          "departureCountry": "Italy",
+          "destinationCity": "Athens",
+          "destinationCountry": "Greece",
+          "endDate": "2022-06-03",
+          "id": 1,
+          "roundTrip": false,
+          "shipName": "Discovery Princess",
+          "startDate": "2022-06-03",
+          "trip": Object {
+            "description": "Travelers: Cara, Elizabeth, Sarah<br/>Destination: Dallas, Texas",
+            "endDate": "2022-06-06",
+            "id": 0,
+            "startDate": "2022-06-03",
+            "title": "Texas Girls Trip 2022",
+            "uniqueLink": "",
+            "user": Object {
+              "email": "janeD@email.com",
+              "firstName": "Jane",
+              "id": 0,
+              "lastName": "Doe",
+              "roles": Array [
+                Object {
+                  "id": 0,
+                  "name": "ROLE_USER",
+                },
+              ],
+            },
+          },
+        }
+      }
+    />
+  </div>
+  <div
+    className="itinerary-card__detail"
+  >
+    <ActivityDetail
+      activities={
+        Array [
+          Object {
+            "addressLine1": "2624 Commerce Street",
+            "city": "Dallas",
+            "cost": 20,
+            "country": "USA",
+            "currency": "USD",
+            "description": "Same area=Dallas World Aquarium, 6th floor museum and dealy plaza, and Museum of Nature and Science SE of hotel ",
+            "endDate": "2022-06-03 18:00:00",
+            "id": 3,
+            "name": "Adair's Saloon",
+            "postalCode": "75226",
+            "startDate": "2022-06-03 16:00:00",
+            "state": "Texas",
+            "trip": Object {
+              "description": "Travelers: Cara, Elizabeth, Sarah<br/>Destination: Dallas, Texas",
+              "endDate": "2022-06-06",
+              "id": 0,
+              "startDate": "2022-06-03",
+              "title": "Texas Girls Trip 2022",
+              "uniqueLink": "",
+              "user": Object {
+                "email": "janeD@email.com",
+                "firstName": "Jane",
+                "id": 0,
+                "lastName": "Doe",
+                "roles": Array [
+                  Object {
+                    "id": 0,
+                    "name": "ROLE_USER",
+                  },
+                ],
+              },
+            },
+          },
+        ]
+      }
+    />
+  </div>
+  <div
+    className="itinerary-card__detail"
+    key="1"
+  >
+    <CruiseDetail
+      cruise={
+        Object {
+          "cabinNumber": "9112",
+          "cost": 5402.97,
+          "cruiseLine": "Royal Caribbean",
+          "currency": "USD",
+          "departureCity": "Sicily",
+          "departureCountry": "Italy",
+          "destinationCity": "Athens",
+          "destinationCountry": "Greece",
+          "endDate": "2022-06-03",
+          "id": 1,
+          "roundTrip": false,
+          "shipName": "Discovery Princess",
+          "startDate": "2022-06-03",
+          "trip": Object {
+            "description": "Travelers: Cara, Elizabeth, Sarah<br/>Destination: Dallas, Texas",
+            "endDate": "2022-06-06",
+            "id": 0,
+            "startDate": "2022-06-03",
+            "title": "Texas Girls Trip 2022",
+            "uniqueLink": "",
+            "user": Object {
+              "email": "janeD@email.com",
+              "firstName": "Jane",
+              "id": 0,
+              "lastName": "Doe",
+              "roles": Array [
+                Object {
+                  "id": 0,
+                  "name": "ROLE_USER",
+                },
+              ],
+            },
+          },
+        }
+      }
+      end={true}
+    />
+  </div>
+  <div
+    className="itinerary-card__detail"
+    key="2022-06-03 11:00:00"
+  >
+    <HotelDetail
+      hotel={
+        Object {
+          "addressLine1": "2800 Colorado Blvd",
+          "checkInDate": "2022-06-03 15:00:00",
+          "checkOutDate": "2022-06-03 11:00:00",
+          "city": "Denton",
+          "cost": 0,
+          "currency": "USD",
+          "id": 0,
+          "name": "Courtyard By Marriot Denton",
+          "roomCount": 1,
+          "roomType": "DOUBLE",
+          "state": "TX",
+          "trip": Object {
+            "description": "Travelers: Cara, Elizabeth, Sarah<br/>Destination: Dallas, Texas",
+            "endDate": "2022-06-06",
+            "id": 0,
+            "startDate": "2022-06-03",
+            "title": "Texas Girls Trip 2022",
+            "uniqueLink": "",
+            "user": Object {
+              "email": "janeD@email.com",
+              "firstName": "Jane",
+              "id": 0,
+              "lastName": "Doe",
+              "roles": Array [
+                Object {
+                  "id": 0,
+                  "name": "ROLE_USER",
+                },
+              ],
+            },
+          },
+        }
+      }
+    />
+  </div>
+</ItineraryCard>
+`;
+
+exports[`TripDetail should render empty correctly 1`] = `
+<ItineraryCard
+  date="2034-06-03"
+>
+  <EmptyMessage
+    link={
+      Object {
+        "label": "Add activity",
+        "path": "/activities/add",
+      }
+    }
+    message="No activities yet"
+  />
+</ItineraryCard>
+`;
